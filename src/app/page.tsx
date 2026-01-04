@@ -709,8 +709,8 @@ export default function Home() {
                   
                   {/* Instagram Feed Carousel */}
                   <div className="mb-6">
-                    <div className="flex gap-3 overflow-x-auto pb-2 instagram-scroll">
-                      <div className="flex-shrink-0 w-32 h-32 rounded-xl overflow-hidden relative group">
+                    <div className="grid grid-cols-2 sm:flex sm:flex-row gap-2 sm:gap-3 overflow-x-auto pb-2 instagram-scroll">
+                      <div className="aspect-square w-full sm:w-32 sm:h-32 rounded-xl overflow-hidden relative group">
                         <Image
                           src="https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                           alt="Schwangerschaft"
@@ -719,11 +719,11 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                           <div className="absolute bottom-2 left-2 right-2">
-                            <p className="text-white text-xs font-medium">✨ Neues Leben</p>
+                            <p className="text-white text-xs sm:text-xs font-medium">✨ Neues Leben</p>
                           </div>
                         </div>
                       </div>
-                      <div className="flex-shrink-0 w-32 h-32 rounded-xl overflow-hidden relative group">
+                      <div className="aspect-square w-full sm:w-32 sm:h-32 rounded-xl overflow-hidden relative group">
                         <Image
                           src="https://images.pexels.com/photos/3875090/pexels-photo-3875090.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                           alt="Neugeborenes"
@@ -732,11 +732,11 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                           <div className="absolute bottom-2 left-2 right-2">
-                            <p className="text-white text-xs font-medium">👶 Willkommen</p>
+                            <p className="text-white text-xs sm:text-xs font-medium">👶 Willkommen</p>
                           </div>
                         </div>
                       </div>
-                      <div className="flex-shrink-0 w-32 h-32 rounded-xl overflow-hidden relative group">
+                      <div className="aspect-square w-full sm:w-32 sm:h-32 rounded-xl overflow-hidden relative group">
                         <Image
                           src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                           alt="Hebamme"
@@ -745,11 +745,11 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                           <div className="absolute bottom-2 left-2 right-2">
-                            <p className="text-white text-xs font-medium">👩‍⚕️ Unser Team</p>
+                            <p className="text-white text-xs sm:text-xs font-medium">👩‍⚕️ Unser Team</p>
                           </div>
                         </div>
                       </div>
-                      <div className="flex-shrink-0 w-32 h-32 rounded-xl overflow-hidden relative group">
+                      <div className="aspect-square w-full sm:w-32 sm:h-32 rounded-xl overflow-hidden relative group hidden sm:block">
                         <Image
                           src="https://images.pexels.com/photos/3845747/pexels-photo-3845747.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                           alt="Mutter und Kind"
@@ -762,7 +762,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex-shrink-0 w-32 h-32 rounded-xl overflow-hidden relative group">
+                      <div className="aspect-square w-full sm:w-32 sm:h-32 rounded-xl overflow-hidden relative group hidden sm:block">
                         <Image
                           src="https://images.pexels.com/photos/3985296/pexels-photo-3985296.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
                           alt="Geburtshilfe"
