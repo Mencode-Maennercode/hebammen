@@ -110,10 +110,11 @@ async function findImageInDrive(imageName: string, sheetName: string): Promise<s
 }
 
 export async function GET(request: NextRequest) {
+  const url = new URL(request.url);
+  const sheetName = url.searchParams.get('sheet') || 'Aktuelles'; // Standard: Aktuelles
+  
   try {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-    const url = new URL(request.url);
-    const sheetName = url.searchParams.get('sheet') || 'Aktuelles'; // Standard: Aktuelles
     const range = `${sheetName}!A:Z`;
 
     const response = await sheets.spreadsheets.values.get({
