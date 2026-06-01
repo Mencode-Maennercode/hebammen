@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
-const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS!),
-  scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-});
-
-const drive = google.drive({ version: 'v3', auth });
+function getDrive() {
+  const credentials = process.env.GOOGLE_SHEETS_CREDENTIALS;
+  if (!credentials) throw new Error('GOOGLE_SHEETS_CREDENTIALS not set');
+  const auth = new google.auth.GoogleAuth({
+    credentials: JSON.parse(credentials),
+    scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+  });
+  return google.drive({ version: 'v3', auth });
+}
 
 // In-memory cache for image bytes (avoids re-downloading)
 const imageCache = new Map<string, { buffer: Buffer; contentType: string; timestamp: number }>();
@@ -36,6 +39,7 @@ export async function GET(
 
   try {
     console.log(`[drive-image] Downloading: ${id}`);
+    const drive = getDrive();
 
     // Get file metadata first for content type
     const meta = await drive.files.get({

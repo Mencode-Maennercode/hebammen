@@ -1,14 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
-// Google Sheets API Konfiguration
-const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS!),
-  scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive.readonly'],
-});
+// Google Sheets API Konfiguration (lazy initialization)
+function getAuth() {
+  const credentials = process.env.GOOGLE_SHEETS_CREDENTIALS;
+  if (!credentials) throw new Error('GOOGLE_SHEETS_CREDENTIALS not set');
+  return new google.auth.GoogleAuth({
+    credentials: JSON.parse(credentials),
+    scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive.readonly'],
+  });
+}
 
-const sheets = google.sheets({ version: 'v4', auth });
-const drive = google.drive({ version: 'v3', auth });
+function getSheets() {
+  return google.sheets({ version: 'v4', auth: getAuth() });
+}
+
+function getDrive() {
+  return google.drive({ version: 'v3', auth: getAuth() });
+}
 
 // Ordner-Zuordnung basierend auf Sheet-Namen
 const folderMapping: { [key: string]: string } = {
@@ -33,6 +42,7 @@ async function findImageInDrive(imageName: string, sheetName: string): Promise<s
     }
 
     // Zuerst den Zielordner finden
+    const drive = getDrive();
     const folderResponse = await drive.files.list({
       q: `name='${targetFolder}' and mimeType='application/vnd.google-apps.folder' and parents in '${DRIVE_FOLDER_ID}'`,
       fields: 'files(id, name)',
@@ -117,6 +127,7 @@ export async function GET(request: NextRequest) {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     const range = `${sheetName}!A:Z`;
 
+    const sheets = getSheets();
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range,
