@@ -43,7 +43,7 @@ const PEXELS_IMAGES = {
   team2: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=600",
   team3: "https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg?auto=compress&cs=tinysrgb&w=600",
   team4: "https://images.pexels.com/photos/5327921/pexels-photo-5327921.jpeg?auto=compress&cs=tinysrgb&w=600",
-  about: "/Hebammen Bilder/gruppe.avif",
+  about: "/Hebammen Bilder/Gruppe.avif",
   delivery: "https://images.pexels.com/photos/3845455/pexels-photo-3845455.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
 

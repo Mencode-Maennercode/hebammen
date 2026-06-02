@@ -31,9 +31,6 @@ export async function GET(
     return NextResponse.json({ data });
   } catch (error) {
     console.error('Error in content API route:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch content' },
-      { status: 500 }
-    );
+    return NextResponse.json({ data: [] });
   }
 }

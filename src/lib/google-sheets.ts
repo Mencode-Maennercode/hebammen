@@ -1,5 +1,4 @@
 // Google Sheets API Client Wrapper
-import { google } from 'googleapis';
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
@@ -18,6 +17,7 @@ export async function getSheetsClient() {
   }
 
   try {
+    const { google } = await import('googleapis');
     const auth = new google.auth.GoogleAuth({
       credentials: JSON.parse(credentials),
       scopes: SCOPES,
@@ -54,12 +54,12 @@ export async function getWorksheetData(worksheetName: string): Promise<SheetRow[
     }
 
     // First row contains headers
-    const headers = rows[0].map(h => h.toLowerCase().trim());
+    const headers = rows[0].map((h: string) => h.toLowerCase().trim());
     
     // Convert remaining rows to objects
-    return rows.slice(1).map(row => {
+    return rows.slice(1).map((row: string[]) => {
       const obj: SheetRow = {};
-      headers.forEach((header, index) => {
+      headers.forEach((header: string, index: number) => {
         obj[header] = row[index] || '';
       });
       return obj;

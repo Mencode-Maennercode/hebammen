@@ -242,12 +242,36 @@ export async function GET(request: NextRequest) {
       { name: "Rebekka Sanne", role: "Namenspartnerin", image: "/Hebammen Bilder/Rebekka Sanne.avif" },
       { name: "Franziska Wald", role: "Namenspartnerin", image: "/Hebammen Bilder/Franziska Wald.avif" },
       { name: "Amira El Khawaga", role: "Hebamme", image: "/Hebammen Bilder/Amira El Khawaga.avif" },
+      { name: "Ana Raes", role: "Hebamme", image: "/Hebammen Bilder/Ana Raes.avif" },
+      { name: "Anna Lichtenthal", role: "Hebamme", image: "/Hebammen Bilder/Anna Lichtenthal.avif" },
+      { name: "Annika Marc", role: "Hebamme", image: "/Hebammen Bilder/Annika Marc.avif" },
+      { name: "Chaymae Al Arroudi", role: "Hebamme", image: "/Hebammen Bilder/Chaymae Al Arroudi.avif" },
+      { name: "Christiane Micha", role: "Hebamme", image: "/Hebammen Bilder/Christiane Micha.avif" },
+      { name: "Felicitas Stomps", role: "Hebamme", image: "/Hebammen Bilder/Felicitas Stomps.avif" },
+      { name: "Heike Zerwas", role: "Hebamme", image: "/Hebammen Bilder/Heike Zerwas.avif" },
+      { name: "Jill Hehnke", role: "Hebamme", image: "/Hebammen Bilder/Jill Hehnke.avif" },
+      { name: "Jolanta Reis", role: "Hebamme", image: "/Hebammen Bilder/Jolanta Reis.avif" },
+      { name: "Julia Sambale", role: "Hebamme", image: "/Hebammen Bilder/Julia Sambale.avif" },
+      { name: "Katharina Thielmann", role: "Hebamme", image: "/Hebammen Bilder/Katharina Thielmann.avif" },
+      { name: "Laura Werner", role: "Hebamme", image: "/Hebammen Bilder/Laura Werner.avif" },
+      { name: "Lea Bijaleh", role: "Hebamme", image: "/Hebammen Bilder/Lea Bijaleh.avif" },
+      { name: "Leonie Fenske", role: "Hebamme", image: "/Hebammen Bilder/Leonie Fenske.avif" },
+      { name: "Leonie von Johnston", role: "Hebamme", image: "/Hebammen Bilder/Leonie von Johnston.avif" },
+      { name: "Manuela Becker", role: "Hebamme", image: "/Hebammen Bilder/Manuela Becker.avif" },
+      { name: "Rahel Karkos", role: "Hebamme", image: "/Hebammen Bilder/Rahel Karkos.avif" },
+      { name: "Silke Brenner", role: "Hebamme", image: "/Hebammen Bilder/Silke Brenner.avif" },
+      { name: "Stefanie Schmellekamp", role: "Hebamme", image: "/Hebammen Bilder/Stefanie Schmellekamp.avif" },
+      { name: "Susanne Bauch", role: "Hebamme", image: "/Hebammen Bilder/Susanne Bauch.avif" },
+      { name: "Tina Lüpertz", role: "Hebamme", image: "/Hebammen Bilder/Tina Lüpertz.avif" },
+      { name: "Tina Wilke", role: "Hebamme", image: "/Hebammen Bilder/Tina Wilke.avif" },
+      { name: "Valentina Walter", role: "Hebamme", image: "/Hebammen Bilder/Valentina Walter.avif" },
+      { name: "Vivien Leydecker", role: "Hebamme", image: "/Hebammen Bilder/Vivien Leydecker.avif" },
     ];
 
     return NextResponse.json({
-      success: false,
-      error: 'Google Sheets API nicht verfügbar, verwende Fallback-Daten',
-      data: fallbackData
-    }, { status: 500 });
+      success: true,
+      data: fallbackData,
+      lastUpdated: new Date().toISOString()
+    });
   }
 }

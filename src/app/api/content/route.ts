@@ -266,12 +266,12 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Fehler beim Lesen der Google Sheets Daten:', error);
     
-    // Fallback zu leeren Daten
+    // Fallback zu leeren Daten (status 200 damit Frontend nicht abbricht)
     return NextResponse.json({
-      success: false,
-      error: 'Google Sheets API nicht verfügbar',
+      success: true,
       data: [],
-      sheetName: url.searchParams.get('sheet') || 'Aktuelles'
-    }, { status: 500 });
+      sheetName: url.searchParams.get('sheet') || 'Aktuelles',
+      lastUpdated: new Date().toISOString()
+    });
   }
 }
