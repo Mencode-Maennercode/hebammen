@@ -1,22 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { google } from 'googleapis';
 
-// Google Sheets API Konfiguration (lazy initialization)
-function getAuth() {
+// Google Sheets API Konfiguration (dynamic import to prevent build crash)
+async function getAuth() {
   const credentials = process.env.GOOGLE_SHEETS_CREDENTIALS;
   if (!credentials) throw new Error('GOOGLE_SHEETS_CREDENTIALS not set');
+  const { google } = await import('googleapis');
   return new google.auth.GoogleAuth({
     credentials: JSON.parse(credentials),
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive.readonly'],
   });
 }
 
-function getSheets() {
-  return google.sheets({ version: 'v4', auth: getAuth() });
+async function getSheets() {
+  const { google } = await import('googleapis');
+  return google.sheets({ version: 'v4', auth: await getAuth() });
 }
 
-function getDrive() {
-  return google.drive({ version: 'v3', auth: getAuth() });
+async function getDrive() {
+  const { google } = await import('googleapis');
+  return google.drive({ version: 'v3', auth: await getAuth() });
 }
 
 // Ordner-Zuordnung basierend auf Sheet-Namen
@@ -43,7 +45,7 @@ async function getSubFolderId(subFolderName: string): Promise<string | null> {
   if (folderIdCache[subFolderName]) return folderIdCache[subFolderName];
 
   try {
-    const drive = getDrive();
+    const drive = await getDrive();
     const res = await drive.files.list({
       q: `name='${subFolderName}' and mimeType='application/vnd.google-apps.folder' and '${DRIVE_FOLDER_ID}' in parents and trashed=false`,
       fields: 'files(id, name)',
@@ -92,7 +94,7 @@ async function findImageInDrive(rawValue: string, sheetName: string): Promise<st
     if (!subFolderId) return null;
 
     // Strategie 1: Exakter Dateiname mit originaler Endung (wie im Sheet angegeben)
-    const drive = getDrive();
+    const drive = await getDrive();
     if (fileNameWithExt) {
       const exactRes = await drive.files.list({
         q: `name='${fileNameWithExt}' and '${subFolderId}' in parents and trashed=false`,
@@ -156,7 +158,7 @@ export async function GET(request: NextRequest) {
     const sheetName = url.searchParams.get('sheet') || 'Mitarbeiter'; // Dynamisch: Mitarbeiter, Aktuelles, FAQ, etc.
     const range = `${sheetName}!A:Z`; // Alle Spalten vom gewählten Sheet
 
-    const sheets = getSheets();
+    const sheets = await getSheets();
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range,

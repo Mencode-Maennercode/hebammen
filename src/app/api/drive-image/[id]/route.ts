@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { google } from 'googleapis';
 
-function getDrive() {
+async function getDrive() {
   const credentials = process.env.GOOGLE_SHEETS_CREDENTIALS;
   if (!credentials) throw new Error('GOOGLE_SHEETS_CREDENTIALS not set');
+  const { google } = await import('googleapis');
   const auth = new google.auth.GoogleAuth({
     credentials: JSON.parse(credentials),
     scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -39,7 +39,7 @@ export async function GET(
 
   try {
     console.log(`[drive-image] Downloading: ${id}`);
-    const drive = getDrive();
+    const drive = await getDrive();
 
     // Get file metadata first for content type
     const meta = await drive.files.get({
