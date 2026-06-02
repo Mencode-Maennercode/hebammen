@@ -12,12 +12,18 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-export default function Aktuelles() {
-  const [entries, setEntries] = useState<AktuellesEntry[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function Aktuelles({ preloadedData }: { preloadedData?: AktuellesEntry[] }) {
+  const [entries, setEntries] = useState<AktuellesEntry[]>(preloadedData || []);
+  const [loading, setLoading] = useState(!preloadedData);
   const [selectedPost, setSelectedPost] = useState<AktuellesEntry | null>(null);
 
   useEffect(() => {
+    if (preloadedData) {
+      setEntries(preloadedData);
+      setLoading(false);
+      return;
+    }
+
     async function fetchAktuelles() {
       try {
         const response = await fetch('/api/content/aktuelles');
@@ -30,7 +36,7 @@ export default function Aktuelles() {
       }
     }
     fetchAktuelles();
-  }, []);
+  }, [preloadedData]);
 
   if (loading) {
     return (

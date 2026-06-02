@@ -32,24 +32,24 @@ export async function GET(request: NextRequest) {
 
     const headers = rows[0];
     
-    const faqItems = rows.slice(1).map((row) => {
+    const faqItems = rows.slice(1).map((row: string[]) => {
       const item: any = {};
       
-      headers.forEach((header, headerIndex) => {
+      headers.forEach((header: string, headerIndex: number) => {
         const value = row[headerIndex] || '';
         
         switch(header.toLowerCase()) {
           case 'frage':
           case 'question':
-            item.question = value;
+            item.frage = value;
             break;
           case 'antwort':
           case 'answer':
-            item.answer = value;
+            item.antwort = value;
             break;
           case 'kategorie':
           case 'category':
-            item.category = value;
+            item.kategorie = value;
             break;
           default:
             item[header.toLowerCase().replace(/\s+/g, '_')] = value;
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
       });
       
       return item;
-    }).filter(item => item.question && item.answer);
+    }).filter((item: any) => item.frage && item.antwort);
 
     return NextResponse.json({
       success: true,

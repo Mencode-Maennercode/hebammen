@@ -29,6 +29,7 @@ import {
 import Aktuelles from "@/components/content/Aktuelles";
 import FAQ from "@/components/content/FAQ";
 import TeamCarousel from "@/components/TeamCarousel";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const LOGO_URL = "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png/v1/fill/w_209,h_205,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png";
 
@@ -108,6 +109,8 @@ export default function Home() {
   const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [team, setTeam] = useState<any[]>([]);
+  const [aktuellesData, setAktuellesData] = useState<any[]>([]);
+  const [isPreloading, setIsPreloading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState('de');
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showHebammenListeModal, setShowHebammenListeModal] = useState(false);
@@ -155,63 +158,61 @@ useEffect(() => {
     };
   }, []);
 
-  // Team-Daten von Google Sheets laden
+  // Alle Inhalte parallel vorladen (Team, FAQ, Aktuelles, Bewertungen).
+  // Der Ladescreen verschwindet wenn alles geladen ist ODER nach max. 4 Sekunden.
   useEffect(() => {
-    async function fetchTeamData() {
-      try {
-        const response = await fetch('/api/team');
-        const result = await response.json();
-        
-        if (result.success) {
-          setTeam(result.data);
-        } else {
-          console.error('Fehler beim Laden der Team-Daten:', result.error);
-          // Fallback zu statischen Daten
-          setTeam([
-            { name: "Rebekka Sanne", role: "Namenspartnerin", image: "/Hebammen Bilder/Rebekka Sanne.avif" },
-            { name: "Franziska Wald", role: "Namenspartnerin", image: "/Hebammen Bilder/Franziska Wald.avif" },
-            { name: "Amira El Khawaga", role: "Hebamme", image: "/Hebammen Bilder/Amira El Khawaga.avif" },
-          ]);
-        }
-      } catch (error) {
-        console.error('Error fetching team data:', error);
+    let finished = false;
+    const done = () => {
+      if (!finished) {
+        finished = true;
+        setIsPreloading(false);
       }
-    }
-    fetchTeamData();
-  }, []);
+    };
 
-  // Preload FAQ data
-  useEffect(() => {
-    async function preloadFAQ() {
-      try {
-        const response = await fetch('/api/content/faq');
-        const result = await response.json();
-        setFaqData(result.data || []);
-      } catch (error) {
-        console.error('Error preloading FAQ:', error);
-      }
-    }
-    preloadFAQ();
-  }, []);
+    // Sicherheits-Timeout: spätestens nach 4s die Seite anzeigen
+    const timeout = setTimeout(done, 4000);
 
-  // Fetch Google reviews
-  useEffect(() => {
-    async function fetchGoogleReviews() {
-      try {
-        const response = await fetch('/api/google-reviews');
-        const data = await response.json();
-        
-        if (data.reviews && data.reviews.length > 0) {
-          setGoogleReviews(data.reviews);
-          setOverallRating(data.overallRating || 4.9);
-          setTotalReviews(data.totalReviews || 0);
-        }
-      } catch (error) {
-        console.error('Error fetching Google reviews:', error);
-        // Keep using placeholder reviews if API fails
-      }
+    async function preloadAll() {
+      const tasks = [
+        // Team
+        fetch('/api/team')
+          .then((r) => r.json())
+          .then((result) => {
+            if (Array.isArray(result.data) && result.data.length > 0) {
+              setTeam(result.data);
+            }
+          })
+          .catch((e) => console.error('Team load error:', e)),
+        // FAQ
+        fetch('/api/content/faq')
+          .then((r) => r.json())
+          .then((result) => setFaqData(result.data || []))
+          .catch((e) => console.error('FAQ load error:', e)),
+        // Aktuelles
+        fetch('/api/content/aktuelles')
+          .then((r) => r.json())
+          .then((result) => setAktuellesData(result.data || []))
+          .catch((e) => console.error('Aktuelles load error:', e)),
+        // Google Bewertungen
+        fetch('/api/google-reviews')
+          .then((r) => r.json())
+          .then((data) => {
+            if (data.reviews && data.reviews.length > 0) {
+              setGoogleReviews(data.reviews);
+              setOverallRating(data.overallRating || 4.9);
+              setTotalReviews(data.totalReviews || 0);
+            }
+          })
+          .catch((e) => console.error('Reviews load error:', e)),
+      ];
+
+      await Promise.allSettled(tasks);
+      done();
     }
-    fetchGoogleReviews();
+
+    preloadAll();
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const navLinks = [
@@ -280,6 +281,7 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-white">
+      {isPreloading && <LoadingScreen />}
 
       {/* Header */}
       <header
@@ -546,7 +548,7 @@ useEffect(() => {
         </section>
 
         {/* Aktuelles Section */}
-        <Aktuelles />
+        <Aktuelles preloadedData={aktuellesData} />
 
         {/* Services Section */}
         <section id="leistungen" className="py-24 md:py-32 bg-gradient-to-b from-white to-[#FDF8F5]">

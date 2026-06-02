@@ -55,87 +55,67 @@ function MemberCard({ member, priority = false }: { member: TeamMember; priority
   );
 }
 
+const CARD_WIDTH = 224; // 200px card + 24px gap (gap-6)
+const SCROLL_SPEED = 0.5; // px per frame
+
 export default function TeamCarousel({ team }: TeamCarouselProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
   const [isPaused, setIsPaused] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const autoScrollRef = useRef<number | null>(null);
-  const scrollPositionRef = useRef(0);
-  const CARD_WIDTH = 224; // 200px card + 24px gap (gap-6)
-  const SCROLL_SPEED = 0.8; // px per frame
 
-  // Build display list: triple the team for seamless looping
-  const displayTeam = [...team, ...team, ...team];
+  // Duplicate the team so the marquee can loop seamlessly
+  const displayTeam = team.length > 0 ? [...team, ...team] : [];
+  const singleSetWidth = team.length * CARD_WIDTH;
+
+  const applyTransform = useCallback(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
+    }
+    if (team.length > 0) {
+      const idx = Math.floor(offsetRef.current / CARD_WIDTH) % team.length;
+      setCurrentIndex(((idx % team.length) + team.length) % team.length);
+    }
+  }, [team.length]);
 
   // Continuous auto-scroll using requestAnimationFrame
-  const startAutoScroll = useCallback(() => {
-    if (!scrollRef.current) return;
-    const el = scrollRef.current;
-    const totalWidth = team.length * CARD_WIDTH;
+  useEffect(() => {
+    if (team.length === 0) return;
 
     const tick = () => {
-      scrollPositionRef.current += SCROLL_SPEED;
-      // Loop back seamlessly
-      if (scrollPositionRef.current >= totalWidth * 2) {
-        scrollPositionRef.current -= totalWidth;
+      if (!pausedRef.current) {
+        offsetRef.current += SCROLL_SPEED;
+        if (offsetRef.current >= singleSetWidth) {
+          offsetRef.current -= singleSetWidth;
+        }
+        applyTransform();
       }
-      el.scrollLeft = scrollPositionRef.current;
-      // Update currentIndex based on scroll position
-      const idx = Math.round(scrollPositionRef.current / CARD_WIDTH) % team.length;
-      setCurrentIndex(idx);
-      autoScrollRef.current = requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(tick);
     };
-    autoScrollRef.current = requestAnimationFrame(tick);
-  }, [team.length]);
+    rafRef.current = requestAnimationFrame(tick);
 
-  const stopAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) {
-      cancelAnimationFrame(autoScrollRef.current);
-      autoScrollRef.current = null;
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [team.length, singleSetWidth, applyTransform]);
+
+  const pause = () => { pausedRef.current = true; setIsPaused(true); };
+  const resume = () => { pausedRef.current = false; setIsPaused(false); };
+
+  const step = (dir: number) => {
+    let next = offsetRef.current + dir * CARD_WIDTH;
+    if (next < 0) next += singleSetWidth;
+    if (next >= singleSetWidth) next -= singleSetWidth;
+    offsetRef.current = next;
+    if (trackRef.current) {
+      trackRef.current.style.transition = 'transform 0.4s ease';
+      applyTransform();
+      window.setTimeout(() => {
+        if (trackRef.current) trackRef.current.style.transition = '';
+      }, 400);
     }
-  }, []);
-
-  // Start/stop auto-scroll based on pause state
-  useEffect(() => {
-    if (!isPaused && team.length > 0) {
-      // Sync scroll position from current state
-      if (scrollRef.current) {
-        scrollPositionRef.current = scrollRef.current.scrollLeft;
-      }
-      startAutoScroll();
-    } else {
-      stopAutoScroll();
-      // Save current scroll position when pausing
-      if (scrollRef.current) {
-        scrollPositionRef.current = scrollRef.current.scrollLeft;
-      }
-    }
-    return () => stopAutoScroll();
-  }, [isPaused, team.length, startAutoScroll, stopAutoScroll]);
-
-  // Initialize scroll position to the middle set (so we can scroll back)
-  useEffect(() => {
-    if (scrollRef.current && team.length > 0) {
-      const initialPos = team.length * CARD_WIDTH;
-      scrollRef.current.scrollLeft = initialPos;
-      scrollPositionRef.current = initialPos;
-    }
-  }, [team.length]);
-
-  const handlePrevious = () => {
-    if (!scrollRef.current) return;
-    const newPos = scrollRef.current.scrollLeft - CARD_WIDTH;
-    scrollRef.current.scrollTo({ left: newPos, behavior: 'smooth' });
-    scrollPositionRef.current = newPos;
-    setCurrentIndex((prev) => (prev - 1 + team.length) % team.length);
-  };
-
-  const handleNext = () => {
-    if (!scrollRef.current) return;
-    const newPos = scrollRef.current.scrollLeft + CARD_WIDTH;
-    scrollRef.current.scrollTo({ left: newPos, behavior: 'smooth' });
-    scrollPositionRef.current = newPos;
-    setCurrentIndex((prev) => (prev + 1) % team.length);
   };
 
   if (team.length === 0) return null;
@@ -143,8 +123,8 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
   return (
     <div
       className="relative group"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
     >
       {/* Carousel Container */}
       <div className="relative overflow-hidden">
@@ -152,26 +132,27 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#FDF8F5] via-[#FDF8F5]/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#FDF8F5] via-[#FDF8F5]/80 to-transparent z-10 pointer-events-none" />
 
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden py-2"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {displayTeam.map((member, index) => (
-            <MemberCard
-              key={`${member.name}-${index}`}
-              member={member}
-              priority={index < 12}
-            />
-          ))}
+        <div className="overflow-hidden py-2">
+          <div
+            ref={trackRef}
+            className="flex gap-6 will-change-transform"
+          >
+            {displayTeam.map((member, index) => (
+              <MemberCard
+                key={`${member.name}-${index}`}
+                member={member}
+                priority={index < 12}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Navigation Arrows - Visible on hover */}
+      {/* Navigation Arrows */}
       <div className="flex justify-center items-center gap-4 mt-8">
         <button
-          onClick={() => { setIsPaused(true); handlePrevious(); }}
-          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg opacity-0 group-hover:opacity-100"
+          onClick={() => step(-1)}
+          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg"
           aria-label="Vorheriges Teammitglied"
         >
           <ChevronLeft size={24} />
@@ -192,8 +173,8 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         </div>
 
         <button
-          onClick={() => { setIsPaused(true); handleNext(); }}
-          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg opacity-0 group-hover:opacity-100"
+          onClick={() => step(1)}
+          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg"
           aria-label="Nächstes Teammitglied"
         >
           <ChevronRight size={24} />
