@@ -34,9 +34,11 @@ import content from "@/data/content.json";
 
 const LOGO_URL = "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png/v1/fill/w_209,h_205,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const PEXELS_IMAGES = {
   hero: "https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
-  heroVideo: "/4314408-hd_1920_1080_24fps (1).mp4",
+  heroVideo: `${BASE_PATH}/4314408-hd_1920_1080_24fps (1).mp4`,
   pregnancy1: "https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg?auto=compress&cs=tinysrgb&w=800",
   pregnancy2: "https://images.pexels.com/photos/3845456/pexels-photo-3845456.jpeg?auto=compress&cs=tinysrgb&w=800",
   newborn: "https://images.pexels.com/photos/3875090/pexels-photo-3875090.jpeg?auto=compress&cs=tinysrgb&w=800",

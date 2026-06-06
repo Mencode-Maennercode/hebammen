@@ -71,6 +71,7 @@ jobs:
         env:
           NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
           GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_BASE_PATH: '/hebammen'
         run: npm run build
 
       # ── 8. out/ auf GitHub Pages deployen (gh-pages Branch) ───────────────
