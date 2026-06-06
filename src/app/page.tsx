@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Menu,
@@ -107,6 +107,44 @@ export default function Home() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const ytPlayerRef = useRef<any>(null);
+
+  // YouTube IFrame Player API – setzt Mindestqualität auf 1080p wenn das Modal öffnet.
+  useEffect(() => {
+    if (!showVideoModal) return;
+
+    const initPlayer = () => {
+      if (ytPlayerRef.current) {
+        try { ytPlayerRef.current.destroy(); } catch (_) {}
+      }
+      ytPlayerRef.current = new (window as any).YT.Player('yt-modal-player', {
+        events: {
+          onReady: (event: any) => {
+            try { event.target.setPlaybackQualityRange('hd1080', 'hd2160'); } catch (_) {}
+          },
+        },
+      });
+    };
+
+    if ((window as any).YT?.Player) {
+      initPlayer();
+    } else {
+      (window as any).onYouTubeIframeAPIReady = initPlayer;
+      if (!document.getElementById('yt-iframe-api')) {
+        const script = document.createElement('script');
+        script.id = 'yt-iframe-api';
+        script.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(script);
+      }
+    }
+
+    return () => {
+      if (ytPlayerRef.current) {
+        try { ytPlayerRef.current.destroy(); } catch (_) {}
+        ytPlayerRef.current = null;
+      }
+    };
+  }, [showVideoModal]);
 
   // Inhalte werden beim Build eingebacken (siehe scripts/fetch-content.mjs).
   // Dadurch ist die Seite SOFORT da – kein Live-Abruf, kein Ladebalken.
@@ -1245,9 +1283,10 @@ useEffect(() => {
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900">
                 <iframe
+                  id="yt-modal-player"
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/H7R-qfjAkik?autoplay=1&vq=hd1080&hd=1&rel=0"
+                  src="https://www.youtube.com/embed/H7R-qfjAkik?autoplay=1&enablejsapi=1&vq=hd1080&hd=1&rel=0"
                   title="Einblick in unseren Kreißsaal"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

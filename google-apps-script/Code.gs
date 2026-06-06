@@ -29,32 +29,52 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('🚀 Website')
     .addItem('Jetzt deployen (Build starten)', 'triggerDeploy')
+    .addSeparator()
+    .addItem('Auto-Deploy aktivieren (' + DEPLOY_DELAY_MINUTES_ + '-Min-Fenster)', 'setupAutoDeploy')
+    .addItem('Auto-Deploy deaktivieren', 'disableAutoDeploy')
+    .addItem('Auto-Deploy Status', 'autoDeployStatus')
     .addToUi();
 }
 
 /**
- * Löst einen GitHub Actions Workflow-Run aus.
+ * Deploy-Button: Löst sofort einen GitHub-Actions-Build aus und zeigt das
+ * Ergebnis als Hinweis-Fenster an.
+ */
+function triggerDeploy() {
+  var ui = SpreadsheetApp.getUi();
+  var res = deployToGitHub_();
+  if (res.ok) {
+    ui.alert(
+      '✅ Deploy gestartet',
+      'Der Build läuft jetzt auf GitHub Actions.\n\nDie Website wird in ~2–3 Minuten aktualisiert.',
+      ui.ButtonSet.OK
+    );
+  } else {
+    ui.alert('❌ ' + res.title, res.message, ui.ButtonSet.OK);
+  }
+}
+
+/**
+ * Eigentlicher GitHub-Dispatch – OHNE UI, damit ihn sowohl der Button als auch
+ * die automatischen Trigger (ohne Fenster-Kontext) nutzen können.
+ * Gibt { ok: true } oder { ok: false, title, message } zurück.
  *
  * Voraussetzung: In den Script-Eigenschaften muss gesetzt sein:
  *   GITHUB_TOKEN  →  Personal Access Token mit "workflow"-Berechtigung
  *                    (GitHub → Settings → Developer settings → Personal access tokens)
  */
-function triggerDeploy() {
-  var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty('GITHUB_TOKEN');
-
+function deployToGitHub_() {
+  var token = PropertiesService.getScriptProperties().getProperty('GITHUB_TOKEN');
   if (!token) {
-    SpreadsheetApp.getUi().alert(
-      '⚠️ Kein GitHub-Token',
-      'Bitte trage in den Script-Eigenschaften einen "GITHUB_TOKEN" ein.\n\n' +
-      'Apps Script → Projekteinstellungen → Skripteigenschaften',
-      SpreadsheetApp.getUi().ButtonSet.OK
-    );
-    return;
+    return {
+      ok: false,
+      title: 'Kein GitHub-Token',
+      message: 'Bitte trage in den Script-Eigenschaften einen "GITHUB_TOKEN" ein.\n\n' +
+        'Apps Script → Projekteinstellungen → Skripteigenschaften',
+    };
   }
 
   var url = 'https://api.github.com/repos/Mencode-Maennercode/hebammen/actions/workflows/deploy.yml/dispatches';
-
   var options = {
     method: 'post',
     contentType: 'application/json',
@@ -70,26 +90,144 @@ function triggerDeploy() {
   try {
     var response = UrlFetchApp.fetch(url, options);
     var code = response.getResponseCode();
-
     if (code === 204) {
-      SpreadsheetApp.getUi().alert(
-        '✅ Deploy gestartet',
-        'Der Build läuft jetzt auf GitHub Actions.\n\nDie Website wird in ~2–3 Minuten aktualisiert.',
-        SpreadsheetApp.getUi().ButtonSet.OK
-      );
-    } else {
-      SpreadsheetApp.getUi().alert(
-        '❌ Fehler beim Deploy',
-        'GitHub antwortete mit Code ' + code + ':\n' + response.getContentText(),
-        SpreadsheetApp.getUi().ButtonSet.OK
-      );
+      Logger.log('Deploy ausgelöst (HTTP 204).');
+      return { ok: true };
     }
+    Logger.log('Deploy-Fehler ' + code + ': ' + response.getContentText());
+    return {
+      ok: false,
+      title: 'Fehler beim Deploy',
+      message: 'GitHub antwortete mit Code ' + code + ':\n' + response.getContentText(),
+    };
   } catch (err) {
-    SpreadsheetApp.getUi().alert(
-      '❌ Netzwerkfehler',
-      String(err),
-      SpreadsheetApp.getUi().ButtonSet.OK
-    );
+    Logger.log('Netzwerkfehler beim Deploy: ' + err);
+    return { ok: false, title: 'Netzwerkfehler', message: String(err) };
+  }
+}
+
+// ============================================================================
+//  AUTO-DEPLOY — 20-Minuten-Sammelfenster
+// ----------------------------------------------------------------------------
+//  Ablauf:
+//    1. Die ERSTE Änderung am Sheet startet einen Countdown (DEPLOY_DELAY_MINUTES_).
+//    2. Während dieses Fensters kannst du beliebig weiter ändern – es wird
+//       KEIN zusätzlicher Build gestartet.
+//    3. Nach Ablauf des Fensters wird GENAU EIN Deploy mit dem aktuellen Stand
+//       ausgelöst. Danach beginnt beim nächsten Edit ein frisches Fenster.
+//
+//  Einrichtung: einmalig "Auto-Deploy aktivieren" im Menü „🚀 Website"
+//  ausführen (legt einen installierbaren onChange-Trigger an und fragt einmalig
+//  nach Berechtigungen).
+// ============================================================================
+
+// Sammelfenster in Minuten – hier zentral änderbar.
+var DEPLOY_DELAY_MINUTES_ = 20;
+// Property-Schlüssel: merkt sich, dass bereits ein Deploy ansteht.
+var DEPLOY_FLAG_KEY_ = 'DEPLOY_PENDING';
+
+/**
+ * EINMALIG ausführen (Menü „🚀 Website" → „Auto-Deploy aktivieren").
+ * Legt den installierbaren onChange-Trigger an, der jede Sheet-Änderung bemerkt.
+ */
+function setupAutoDeploy() {
+  removeTriggersByHandler_('onSheetChange'); // keine Duplikate
+
+  var ss = SpreadsheetApp.getActiveSpreadsheet()
+    || (CONFIG_().SPREADSHEET_ID ? SpreadsheetApp.openById(CONFIG_().SPREADSHEET_ID) : null);
+  if (!ss) {
+    SpreadsheetApp.getUi().alert('❌ Kein Spreadsheet gefunden. SPREADSHEET_ID prüfen.');
+    return;
+  }
+
+  ScriptApp.newTrigger('onSheetChange').forSpreadsheet(ss).onChange().create();
+  PropertiesService.getScriptProperties().deleteProperty(DEPLOY_FLAG_KEY_);
+
+  SpreadsheetApp.getUi().alert(
+    '✅ Auto-Deploy aktiv',
+    'Ab jetzt wird nach einer Änderung automatisch in ' + DEPLOY_DELAY_MINUTES_ +
+    ' Minuten deployt.\n\nDu hast diese ' + DEPLOY_DELAY_MINUTES_ +
+    ' Minuten Zeit, weiter zu ändern – am Ende läuft GENAU EIN Build mit dem ' +
+    'dann aktuellen Stand. Der Deploy-Button funktioniert weiterhin jederzeit.',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * Schaltet die automatische Überwachung wieder ab (entfernt alle zugehörigen
+ * Trigger und den Pending-Status). Der Deploy-Button bleibt aktiv.
+ */
+function disableAutoDeploy() {
+  removeTriggersByHandler_('onSheetChange');
+  removeTriggersByHandler_('runScheduledDeploy');
+  PropertiesService.getScriptProperties().deleteProperty(DEPLOY_FLAG_KEY_);
+  SpreadsheetApp.getUi().alert('🛑 Auto-Deploy deaktiviert.',
+    'Es wird nicht mehr automatisch deployt. Nutze bei Bedarf den Deploy-Button.',
+    SpreadsheetApp.getUi().ButtonSet.OK);
+}
+
+/**
+ * Zeigt im Menü, ob Auto-Deploy aktiv ist und ob gerade ein Fenster läuft.
+ */
+function autoDeployStatus() {
+  var hasWatcher = false, pendingDeploy = false;
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    var h = triggers[i].getHandlerFunction();
+    if (h === 'onSheetChange') hasWatcher = true;
+    if (h === 'runScheduledDeploy') pendingDeploy = true;
+  }
+  SpreadsheetApp.getUi().alert(
+    'ℹ️ Auto-Deploy Status',
+    'Überwachung aktiv: ' + (hasWatcher ? 'JA ✅' : 'NEIN ❌') + '\n' +
+    'Deploy steht gerade an: ' + (pendingDeploy ? 'JA (Countdown läuft) ⏳' : 'NEIN') + '\n' +
+    'Fenster: ' + DEPLOY_DELAY_MINUTES_ + ' Minuten',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * Installierbarer onChange-Handler: läuft bei JEDER Sheet-Änderung.
+ * Startet den Countdown nur, wenn nicht schon ein Deploy ansteht – so bleibt
+ * es trotz vieler Änderungen bei genau EINEM Build.
+ */
+function onSheetChange(e) {
+  var lock = LockService.getScriptLock();
+  try { lock.waitLock(3000); } catch (err) { return; } // anderer Lauf war schneller
+  try {
+    var props = PropertiesService.getScriptProperties();
+    if (props.getProperty(DEPLOY_FLAG_KEY_) === '1') return; // Fenster läuft bereits
+
+    props.setProperty(DEPLOY_FLAG_KEY_, '1');
+    ScriptApp.newTrigger('runScheduledDeploy')
+      .timeBased()
+      .after(DEPLOY_DELAY_MINUTES_ * 60 * 1000)
+      .create();
+    Logger.log('Auto-Deploy: Countdown gestartet (' + DEPLOY_DELAY_MINUTES_ + ' Min).');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/**
+ * Wird ~DEPLOY_DELAY_MINUTES_ nach der ersten Änderung EINMAL ausgelöst:
+ * räumt den abgelaufenen Einmal-Trigger + das Flag auf und deployt den
+ * aktuellen Stand.
+ */
+function runScheduledDeploy() {
+  removeTriggersByHandler_('runScheduledDeploy'); // den abgelaufenen Trigger löschen
+  PropertiesService.getScriptProperties().deleteProperty(DEPLOY_FLAG_KEY_);
+  var res = deployToGitHub_();
+  Logger.log('Auto-Deploy ausgeführt: ' + (res.ok ? 'OK' : (res.title + ' – ' + res.message)));
+}
+
+/** Hilfsfunktion: alle Projekt-Trigger einer bestimmten Handler-Funktion löschen. */
+function removeTriggersByHandler_(handlerName) {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === handlerName) {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
   }
 }
 
@@ -364,6 +502,10 @@ function getSubFolder_(parentId, subFolderName) {
 }
 
 // Alle Bilddateien eines Ordners EINMAL einlesen (inkl. normalisiertem Namen).
+// WICHTIG: nicht nur nach MIME-Typ filtern – Google Drive meldet .avif (und
+// manche andere) oft als "application/octet-stream", nicht als "image/...".
+// Darum zählt auch die Datei-Endung als gültiges Bild.
+var IMAGE_EXT_RE_ = /\.(avif|jpe?g|png|webp|gif|bmp|tiff?|svg|heic|heif)$/i;
 var FILE_LIST_CACHE_ = {};
 function listImageFiles_(folder, key) {
   if (FILE_LIST_CACHE_[key]) return FILE_LIST_CACHE_[key];
@@ -371,9 +513,10 @@ function listImageFiles_(folder, key) {
   var it = folder.getFiles();
   while (it.hasNext()) {
     var f = it.next();
+    var name = f.getName();
     var mt = f.getMimeType() || '';
-    if (mt.indexOf('image/') === 0) {
-      list.push({ file: f, norm: normalizeName_(f.getName()) });
+    if (mt.indexOf('image/') === 0 || IMAGE_EXT_RE_.test(name)) {
+      list.push({ file: f, norm: normalizeName_(name) });
     }
   }
   FILE_LIST_CACHE_[key] = list;
@@ -503,5 +646,53 @@ function testPayload() {
   if (payload.errors.length) Logger.log('FEHLER: ' + JSON.stringify(payload.errors));
   if (payload.team[0]) Logger.log('Erstes Teammitglied: ' + JSON.stringify(payload.team[0]));
   return payload;
+}
+
+// ----------------------------------------------------------------------------
+//  DEBUG: zeigt pro Mitarbeiter, welche Datei mit welchem Score gematcht wurde.
+//  Im Apps-Script-Editor "debugTeamImages" auswählen -> Ausführen -> Logs.
+// ----------------------------------------------------------------------------
+function debugTeamImages() {
+  var cfg = CONFIG_();
+  var subFolderName = FOLDER_MAPPING_['Mitarbeiter'];
+  var folder = getSubFolder_(cfg.DRIVE_FOLDER_ID, subFolderName);
+  if (!folder) {
+    Logger.log('❌ Unterordner "' + subFolderName + '" nicht gefunden. DRIVE_FOLDER_ID prüfen!');
+    return;
+  }
+
+  var files = listImageFiles_(folder, subFolderName);
+  Logger.log('📁 Ordner "' + subFolderName + '" – ' + files.length + ' Bilddateien gefunden:');
+  for (var f = 0; f < files.length; f++) {
+    Logger.log('   • ' + files[f].file.getName() + '   [norm: ' + files[f].norm + ']');
+  }
+
+  var rows = readSheetRows_('Mitarbeiter', cfg);
+  Logger.log('\n👥 ' + rows.length + ' Mitarbeiter aus dem Sheet:\n');
+
+  for (var r = 0; r < rows.length; r++) {
+    var firstName = pick_(rows[r], ['vorname', 'first name']);
+    var lastName = pick_(rows[r], ['nachname', 'last name']);
+    var personName = (firstName + ' ' + lastName).trim();
+    var rawValue = pick_(rows[r], ['bildname', 'bild', 'image', 'image name']);
+
+    var queries = [];
+    if (rawValue) queries.push(normalizeName_(rawValue));
+    if (personName) queries.push(normalizeName_(personName));
+
+    var best = null, bestScore = 0;
+    for (var q = 0; q < queries.length; q++) {
+      if (!queries[q]) continue;
+      for (var i = 0; i < files.length; i++) {
+        var score = matchScore_(queries[q], files[i].norm);
+        if (score > bestScore) { bestScore = score; best = files[i]; }
+      }
+      if (bestScore >= 0.999) break;
+    }
+
+    var status = (best && bestScore >= 0.6) ? '✅' : '❌ KEIN BILD';
+    Logger.log(status + ' "' + personName + '"  (Bildname-Spalte: "' + rawValue + '")  ->  ' +
+      (best ? best.file.getName() : '—') + '  [Score: ' + bestScore.toFixed(2) + ']');
+  }
 }
   

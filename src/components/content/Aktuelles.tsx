@@ -7,6 +7,13 @@ import Image from 'next/image';
 import { AktuellesEntry } from '@/lib/content-types';
 import { fetchAktuellesData } from '@/lib/google-api-client';
 
+function formatDatum(datum: string): string {
+  if (!datum) return '';
+  const d = new Date(datum);
+  if (isNaN(d.getTime())) return datum;
+  return d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -105,7 +112,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
               )}
               <div className="p-6">
                 {entry.datum && (
-                  <p className="text-sm text-[#8B5A6B] font-medium mb-2">{entry.datum}</p>
+                  <p className="text-sm text-[#8B5A6B] font-medium mb-2">{formatDatum(entry.datum)}</p>
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#8B5A6B] transition-colors">
                   {entry.titel}
@@ -148,7 +155,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     {selectedPost.datum && (
-                      <p className="text-sm text-[#8B5A6B] font-medium mb-2">{selectedPost.datum}</p>
+                      <p className="text-sm text-[#8B5A6B] font-medium mb-2">{formatDatum(selectedPost.datum)}</p>
                     )}
                     {selectedPost.kategorie && (
                       <span className="inline-flex items-center gap-1 bg-[#F5E6E8] px-3 py-1.5 rounded-full text-[#8B5A6B] text-sm font-medium">

@@ -1,11 +1,14 @@
 name: Build & Deploy
 
-# Trigger 1: Jede halbe Stunde (Änderungserkennung via Content-Hash)
-# Trigger 2: Manuell – aus dem GitHub UI oder via Google-Sheets-Button
-# Trigger 3: Direkt beim Push auf master (z.B. Code-Änderungen)
+# Trigger 1: Manuell / automatisch – via Google-Sheets (workflow_dispatch).
+#            Der Sheet-Code löst ~20 Min nach einer Änderung genau EINEN Build aus
+#            (zuverlässiger Apps-Script-Trigger statt unzuverlässigem GitHub-Cron).
+# Trigger 2: Direkt beim Push auf master (z.B. Code-Änderungen).
+#
+# Hinweis: Der frühere 'schedule'-Cron (*/30) wurde entfernt – GitHub führt
+# geplante Workflows nur „best effort" aus und verzögert/überspringt sie oft
+# (besonders zur vollen/halben Stunde). Deshalb übernimmt jetzt Apps Script den Takt.
 on:
-  schedule:
-    - cron: '*/30 * * * *'
   workflow_dispatch:
   push:
     branches: [master]
