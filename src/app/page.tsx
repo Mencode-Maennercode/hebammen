@@ -122,11 +122,13 @@ export default function Home() {
 
   const languages = [
     { code: 'de', name: 'Deutsch', flag: '🇩🇪', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#000"/><rect y="0.666" width="3" height="0.666" fill="#DD0000"/><rect y="1.333" width="3" height="0.666" fill="#FFCE00"/></svg> },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#006C35"/><rect x="0.2" y="0.88" width="2.1" height="0.12" fill="#FFF"/><polygon points="0.2,1 0.2,1.25 0.42,1.12" fill="#FFF"/></svg> },
+    { code: 'pl', name: 'Polski', flag: '🇵🇱', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#DC143C"/><rect width="3" height="1" fill="#FFF"/></svg> },
     { code: 'en', name: 'English', flag: '🇬🇧', svgFlag: <svg viewBox="0 0 60 30" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg> },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#FFF"/><rect y="0.666" width="3" height="0.666" fill="#0039A6"/><rect y="1.333" width="3" height="0.666" fill="#D52B1E"/></svg> },
-    { code: 'es', name: 'Español', flag: '🇪🇸', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#AA151B"/><rect y="0.25" width="3" height="1.5" fill="#F1BF00"/><rect y="0.416" width="3" height="1.166" fill="#AA151B"/></svg> },
-    { code: 'tr', name: 'Türkçe', flag: '🇹🇷', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#E30A17"/><circle cx="1" cy="1" r="0.6" fill="#FFF"/><circle cx="1.2" cy="1" r="0.5" fill="#E30A17"/><path d="M1.8,1 L2.2,0.8 L2.2,1.2 Z" fill="#FFF"/></svg> },
     { code: 'fr', name: 'Français', flag: '🇫🇷', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#FFF"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg> },
+    { code: 'es', name: 'Español', flag: '🇪🇸', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#AA151B"/><rect y="0.25" width="3" height="1.5" fill="#F1BF00"/><rect y="0.416" width="3" height="1.166" fill="#AA151B"/></svg> },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#FFF"/><rect y="0.666" width="3" height="0.666" fill="#0039A6"/><rect y="1.333" width="3" height="0.666" fill="#D52B1E"/></svg> },
+    { code: 'tr', name: 'Türkçe', flag: '🇹🇷', svgFlag: <svg viewBox="0 0 3 2" className="w-7 h-4.5 rounded-sm overflow-hidden"><rect width="3" height="2" fill="#E30A17"/><circle cx="1" cy="1" r="0.6" fill="#FFF"/><circle cx="1.2" cy="1" r="0.5" fill="#E30A17"/><path d="M1.8,1 L2.2,0.8 L2.2,1.2 Z" fill="#FFF"/></svg> },
   ];
 
 useEffect(() => {
@@ -290,58 +292,6 @@ useEffect(() => {
                 <span>Anrufen</span>
               </a>
 
-              {/* Language Selector - far right, flag-based */}
-              <div className="relative ml-auto mr-0 language-selector">
-                <button
-                  onClick={(e) => { e.stopPropagation(); setShowLanguageDropdown(!showLanguageDropdown); }}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all border ${
-                    isScrolled
-                      ? "border-gray-200 hover:border-[#8B5A6B]/30 hover:bg-[#8B5A6B]/5"
-                      : "border-white/30 hover:border-white/60 hover:bg-white/10"
-                  }`}
-                  aria-label="Sprache auswählen"
-                >
-                  <div className="w-7 h-4.5 leading-none">
-                    {languages.find(l => l.code === selectedLanguage)?.svgFlag}
-                  </div>
-                  <ChevronDown size={16} className={`transition-transform ${
-                    isScrolled ? "text-gray-500" : "text-white/80"
-                  } ${showLanguageDropdown ? "rotate-180" : ""}`} />
-                </button>
-                {showLanguageDropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-full right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 min-w-[180px]"
-                  >
-                    <div className="py-1">
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => {
-                            setSelectedLanguage(lang.code);
-                            setShowLanguageDropdown(false);
-                          }}
-                          className={`w-full flex items-center gap-3 px-4 py-2.5 transition-colors text-left ${
-                            selectedLanguage === lang.code
-                              ? "bg-[#8B5A6B]/5 text-[#8B5A6B]"
-                              : "hover:bg-gray-50 text-gray-700"
-                          }`}
-                        >
-                          <div className="w-7 h-4.5">
-                            {lang.svgFlag}
-                          </div>
-                          <span className="text-sm font-medium">{lang.name}</span>
-                          {selectedLanguage === lang.code && (
-                            <Check size={14} className="ml-auto text-[#8B5A6B]" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -405,6 +355,61 @@ useEffect(() => {
             </motion.div>
           )}
         </nav>
+
+        {/* Language Selector - absolut rechtsbündig, nur Desktop */}
+        <div className="absolute right-4 top-0 bottom-0 hidden lg:flex items-center language-selector">
+          <div className="relative">
+            <button
+              onClick={(e) => { e.stopPropagation(); setShowLanguageDropdown(!showLanguageDropdown); }}
+              className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all border ${
+                isScrolled
+                  ? "border-gray-200 hover:border-[#8B5A6B]/30 hover:bg-[#8B5A6B]/5"
+                  : "border-white/30 hover:border-white/60 hover:bg-white/10"
+              }`}
+              aria-label="Sprache auswählen"
+            >
+              <div className="w-7 h-4.5 leading-none">
+                {languages.find(l => l.code === selectedLanguage)?.svgFlag}
+              </div>
+              <ChevronDown size={16} className={`transition-transform ${
+                isScrolled ? "text-gray-500" : "text-white/80"
+              } ${showLanguageDropdown ? "rotate-180" : ""}`} />
+            </button>
+            {showLanguageDropdown && (
+              <motion.div
+                initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-full right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 min-w-[180px]"
+              >
+                <div className="py-1">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setSelectedLanguage(lang.code);
+                        setShowLanguageDropdown(false);
+                      }}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 transition-colors text-left ${
+                        selectedLanguage === lang.code
+                          ? "bg-[#8B5A6B]/5 text-[#8B5A6B]"
+                          : "hover:bg-gray-50 text-gray-700"
+                      }`}
+                    >
+                      <div className="w-7 h-4.5">
+                        {lang.svgFlag}
+                      </div>
+                      <span className="text-sm font-medium">{lang.name}</span>
+                      {selectedLanguage === lang.code && (
+                        <Check size={14} className="ml-auto text-[#8B5A6B]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
       </header>
 
       <main id="main-content">

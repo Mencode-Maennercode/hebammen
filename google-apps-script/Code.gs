@@ -101,6 +101,8 @@ function triggerDeploy() {
 function CONFIG_() {
   const props = PropertiesService.getScriptProperties();
   return {
+    // ID des Google Sheets (aus der URL: /spreadsheets/d/HIER/edit)
+    SPREADSHEET_ID: props.getProperty('SPREADSHEET_ID') || '',
     // Ober-Ordner in Google Drive, der die Bild-Unterordner enthält.
     DRIVE_FOLDER_ID: props.getProperty('DRIVE_FOLDER_ID') || '14rO6u-bOI7R9q8BIXwWgzQ2e7W6U-T9M',
     // Google-Places-API-Key (für Bewertungen). Wenn leer -> keine Live-Reviews.
@@ -175,7 +177,7 @@ function buildPayload_(cfg) {
   try { result.aktuelles = readAktuelles_(cfg); }
   catch (err) { result.errors.push('Aktuelles: ' + err); }
 
-  try { result.faq = readFAQ_(); }
+  try { result.faq = readFAQ_(cfg); }
   catch (err) { result.errors.push('FAQ: ' + err); }
 
   try {
@@ -193,8 +195,11 @@ function buildPayload_(cfg) {
 // ----------------------------------------------------------------------------
 //  SHEET-HELFER: Tab als Liste von Objekten (Header = Schlüssel, kleingeschrieben)
 // ----------------------------------------------------------------------------
-function readSheetRows_(sheetName) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+function readSheetRows_(sheetName, cfg) {
+  const cfg_ = cfg || CONFIG_();
+  const ss = SpreadsheetApp.getActiveSpreadsheet()
+    || (cfg_.SPREADSHEET_ID ? SpreadsheetApp.openById(cfg_.SPREADSHEET_ID) : null);
+  if (!ss) throw new Error('Kein Spreadsheet gefunden. Bitte SPREADSHEET_ID in den Script-Eigenschaften setzen.');
   const sheet = ss.getSheetByName(sheetName);
   if (!sheet) throw new Error('Tab "' + sheetName + '" nicht gefunden');
 
@@ -231,7 +236,7 @@ function pick_(row, keys) {
 //  MITARBEITER  ->  { name, role, area, phone, email, image }
 // ----------------------------------------------------------------------------
 function readTeam_(cfg) {
-  const rows = readSheetRows_('Mitarbeiter');
+  const rows = readSheetRows_('Mitarbeiter', cfg);
   return rows.map(function (row) {
     var firstName = pick_(row, ['vorname', 'first name']);
     var lastName = pick_(row, ['nachname', 'last name']);
@@ -244,7 +249,9 @@ function readTeam_(cfg) {
       area: pick_(row, ['einzugsgebiet', 'area']),
       phone: pick_(row, ['telefonnummer', 'telefon', 'phone']),
       email: pick_(row, ['email-adresse', 'email', 'e-mail']),
-      image: resolveImage_(imageName, 'Mitarbeiter', cfg),
+      // Bildname UND Personenname werden zur Suche genutzt – so reicht es,
+      // wenn nur der Name der Person stimmt (Bildname optional / fehlertolerant).
+      image: resolveImage_(imageName, (firstName + ' ' + lastName).trim(), 'Mitarbeiter', cfg),
     };
   });
 }
@@ -254,7 +261,7 @@ function readTeam_(cfg) {
 //  (Feld "bildname" enthält die fertige Bild-URL – so erwartet es das Frontend)
 // ----------------------------------------------------------------------------
 function readAktuelles_(cfg) {
-  const rows = readSheetRows_('Aktuelles');
+  const rows = readSheetRows_('Aktuelles', cfg);
   return rows.map(function (row) {
     var imageName = pick_(row, ['bildname', 'bild', 'image', 'image name']);
     return {
@@ -262,7 +269,7 @@ function readAktuelles_(cfg) {
       text: pick_(row, ['beschreibung', 'text', 'inhalt', 'description']),
       datum: pick_(row, ['datum', 'date']),
       kategorie: pick_(row, ['kategorie', 'category']),
-      bildname: resolveImage_(imageName, 'Aktuelles', cfg),
+      bildname: resolveImage_(imageName, pick_(row, ['titel', 'title']), 'Aktuelles', cfg),
     };
   }).filter(function (e) { return e.titel || e.text; });
 }
@@ -270,8 +277,8 @@ function readAktuelles_(cfg) {
 // ----------------------------------------------------------------------------
 //  FAQ  ->  { frage, antwort, kategorie }
 // ----------------------------------------------------------------------------
-function readFAQ_() {
-  const rows = readSheetRows_('FAQ');
+function readFAQ_(cfg) {
+  const rows = readSheetRows_('FAQ', cfg);
   return rows.map(function (row) {
     return {
       frage: pick_(row, ['frage', 'question']),
@@ -282,41 +289,59 @@ function readFAQ_() {
 }
 
 // ----------------------------------------------------------------------------
-//  BILD-AUFLÖSUNG: Bildname (z.B. "Rebekka Sanne.avif") -> öffentliche Bild-URL
+//  BILD-AUFLÖSUNG
+//  Idee: Es reicht der NAME (entweder die Spalte "Bildname" ODER der
+//  Personen-/Titelname). Das Tool durchsucht den Drive-Ordner selbst und nimmt
+//  die best passende Datei – egal ob mit/ohne Pfad, mit/ohne Endung, und auch
+//  bei kleinen Tippfehlern oder abweichender Schreibweise (Fuzzy-Matching).
 // ----------------------------------------------------------------------------
-function resolveImage_(rawValue, sheetName, cfg) {
-  if (!rawValue) return '';
-
+function resolveImage_(rawValue, fallbackName, sheetName, cfg) {
   // Falls bereits eine vollständige URL eingetragen wurde -> direkt verwenden.
-  if (/^https?:\/\//i.test(rawValue)) return rawValue;
+  if (rawValue && /^https?:\/\//i.test(rawValue)) return rawValue;
 
   try {
-    // Nur den Dateinamen verwenden (evtl. Pfad-Bestandteile entfernen)
-    var parts = String(rawValue).replace(/\\/g, '/').split('/');
-    var fileName = parts[parts.length - 1].trim();
-    if (!fileName) return '';
-
     var subFolderName = FOLDER_MAPPING_[sheetName];
     if (!subFolderName) return '';
 
     var folder = getSubFolder_(cfg.DRIVE_FOLDER_ID, subFolderName);
     if (!folder) return '';
 
-    var lastDot = fileName.lastIndexOf('.');
-    var baseName = lastDot > 0 ? fileName.substring(0, lastDot) : fileName;
+    var files = listImageFiles_(folder, subFolderName);
+    if (!files.length) return '';
 
-    var file = findFileInFolder_(folder, fileName, baseName);
-    if (!file) return '';
+    // Suchbegriffe in Reihenfolge der Priorität: erst der eingetragene
+    // Bildname, dann der Personen-/Titelname als Rückfallebene.
+    var queries = [];
+    if (rawValue) queries.push(normalizeName_(rawValue));
+    if (fallbackName) queries.push(normalizeName_(fallbackName));
+
+    var best = null;
+    var bestScore = 0;
+    for (var q = 0; q < queries.length; q++) {
+      if (!queries[q]) continue;
+      for (var i = 0; i < files.length; i++) {
+        var score = matchScore_(queries[q], files[i].norm);
+        if (score > bestScore) {
+          bestScore = score;
+          best = files[i].file;
+        }
+      }
+      // Perfekter Treffer mit dem ersten (genaueren) Begriff -> fertig.
+      if (bestScore >= 0.999) break;
+    }
+
+    // Schwelle: unter 0.6 zu unsicher -> lieber nichts als ein falsches Bild.
+    if (!best || bestScore < 0.6) return '';
 
     // Bild öffentlich lesbar machen (damit lh3-URL ohne Login lädt).
     try {
-      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      best.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
     } catch (shareErr) {
       // Wenn schon freigegeben oder keine Rechte -> ignorieren.
     }
 
     // Zuverlässige Bild-CDN-URL von Google (funktioniert in <img>):
-    return 'https://lh3.googleusercontent.com/d/' + file.getId() + '=w1200';
+    return 'https://lh3.googleusercontent.com/d/' + best.getId() + '=w1200';
   } catch (err) {
     return '';
   }
@@ -338,30 +363,86 @@ function getSubFolder_(parentId, subFolderName) {
   return null;
 }
 
-// Datei im Ordner suchen: exakt -> Basisname+gängige Endungen -> enthält Basisname
-function findFileInFolder_(folder, fileName, baseName) {
-  // 1) Exakter Name
-  var it = folder.getFilesByName(fileName);
-  if (it.hasNext()) return it.next();
-
-  // 2) Basisname + gängige Bildendungen
-  var exts = ['avif', 'jpg', 'jpeg', 'png', 'webp', 'gif'];
-  for (var i = 0; i < exts.length; i++) {
-    var it2 = folder.getFilesByName(baseName + '.' + exts[i]);
-    if (it2.hasNext()) return it2.next();
-  }
-
-  // 3) Durchsuchen: Datei, deren Name den Basisnamen enthält (Bilddateien)
-  var all = folder.getFiles();
-  var lower = baseName.toLowerCase();
-  while (all.hasNext()) {
-    var file = all.next();
-    var mt = file.getMimeType() || '';
-    if (mt.indexOf('image/') === 0 && file.getName().toLowerCase().indexOf(lower) !== -1) {
-      return file;
+// Alle Bilddateien eines Ordners EINMAL einlesen (inkl. normalisiertem Namen).
+var FILE_LIST_CACHE_ = {};
+function listImageFiles_(folder, key) {
+  if (FILE_LIST_CACHE_[key]) return FILE_LIST_CACHE_[key];
+  var list = [];
+  var it = folder.getFiles();
+  while (it.hasNext()) {
+    var f = it.next();
+    var mt = f.getMimeType() || '';
+    if (mt.indexOf('image/') === 0) {
+      list.push({ file: f, norm: normalizeName_(f.getName()) });
     }
   }
-  return null;
+  FILE_LIST_CACHE_[key] = list;
+  return list;
+}
+
+// Name vereinheitlichen: Pfad + Endung weg, Umlaute/Akzente entfernen,
+// alles klein, nur Buchstaben/Ziffern als durch Leerzeichen getrennte Tokens.
+function normalizeName_(s) {
+  s = String(s || '').replace(/\\/g, '/');
+  s = s.substring(s.lastIndexOf('/') + 1);        // Pfad abschneiden
+  var dot = s.lastIndexOf('.');
+  if (dot > 0) s = s.substring(0, dot);           // Endung abschneiden
+  s = s.toLowerCase();
+  s = s.replace(/ß/g, 'ss').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u');
+  if (s.normalize) s = s.normalize('NFD').replace(/[̀-ͯ]/g, ''); // Akzente
+  s = s.replace(/[^a-z0-9]+/g, ' ').trim();        // Sonderzeichen -> Leerzeichen
+  return s;
+}
+
+// Ähnlichkeit zweier normalisierter Namen: 0 (verschieden) .. 1 (identisch).
+// Jeder Such-Token wird mit dem ähnlichsten Datei-Token verglichen; der
+// Durchschnitt ergibt die Abdeckung. So zählt jeder Namensteil.
+function matchScore_(query, candidate) {
+  if (!query || !candidate) return 0;
+  if (query === candidate) return 1;
+
+  var qt = query.split(' ');
+  var ct = candidate.split(' ');
+  var sum = 0;
+  var count = 0;
+  for (var i = 0; i < qt.length; i++) {
+    if (!qt[i]) continue;
+    var bestTok = 0;
+    for (var j = 0; j < ct.length; j++) {
+      if (!ct[j]) continue;
+      var r = ratio_(qt[i], ct[j]);
+      if (r > bestTok) bestTok = r;
+    }
+    sum += bestTok;
+    count++;
+  }
+  return count ? sum / count : 0;
+}
+
+// Ähnlichkeit zweier Wörter über die Levenshtein-Distanz (0..1).
+function ratio_(a, b) {
+  if (a === b) return 1;
+  var max = Math.max(a.length, b.length);
+  if (max === 0) return 0;
+  return 1 - levenshtein_(a, b) / max;
+}
+
+// Levenshtein-Distanz (Anzahl Änderungen, um a in b zu überführen).
+function levenshtein_(a, b) {
+  var m = a.length, n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  var prev = [], cur = [];
+  for (var j = 0; j <= n; j++) prev[j] = j;
+  for (var i = 1; i <= m; i++) {
+    cur[0] = i;
+    for (var k = 1; k <= n; k++) {
+      var cost = a.charAt(i - 1) === b.charAt(k - 1) ? 0 : 1;
+      cur[k] = Math.min(prev[k] + 1, cur[k - 1] + 1, prev[k - 1] + cost);
+    }
+    for (var p = 0; p <= n; p++) prev[p] = cur[p];
+  }
+  return prev[n];
 }
 
 // ----------------------------------------------------------------------------
@@ -423,3 +504,4 @@ function testPayload() {
   if (payload.team[0]) Logger.log('Erstes Teammitglied: ' + JSON.stringify(payload.team[0]));
   return payload;
 }
+  
