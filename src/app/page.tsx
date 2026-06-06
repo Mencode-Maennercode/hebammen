@@ -29,7 +29,8 @@ import {
 import Aktuelles from "@/components/content/Aktuelles";
 import FAQ from "@/components/content/FAQ";
 import TeamCarousel from "@/components/TeamCarousel";
-import LoadingScreen from "@/components/LoadingScreen";
+import LiveView from "@/components/LiveView";
+import content from "@/data/content.json";
 
 const LOGO_URL = "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png/v1/fill/w_209,h_205,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png";
 
@@ -101,16 +102,18 @@ export default function Home() {
   const [showJobModal, setShowJobModal] = useState(false);
   const [showFAQModal, setShowFAQModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState<any>(null);
-  const [faqData, setFaqData] = useState<any[]>([]);
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [googleReviews, setGoogleReviews] = useState<any[]>([]);
-  const [overallRating, setOverallRating] = useState(4.9);
-  const [totalReviews, setTotalReviews] = useState(0);
   const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const [team, setTeam] = useState<any[]>([]);
-  const [aktuellesData, setAktuellesData] = useState<any[]>([]);
-  const [isPreloading, setIsPreloading] = useState(true);
+
+  // Inhalte werden beim Build eingebacken (siehe scripts/fetch-content.mjs).
+  // Dadurch ist die Seite SOFORT da – kein Live-Abruf, kein Ladebalken.
+  const team = content.team as any[];
+  const aktuellesData = content.aktuelles as any[];
+  const faqData = content.faq as any[];
+  const googleReviews = content.reviews as any[];
+  const overallRating = content.overallRating || 4.9;
+  const totalReviews = content.totalReviews || 0;
   const [selectedLanguage, setSelectedLanguage] = useState('de');
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showHebammenListeModal, setShowHebammenListeModal] = useState(false);
@@ -158,62 +161,6 @@ useEffect(() => {
     };
   }, []);
 
-  // Alle Inhalte parallel vorladen (Team, FAQ, Aktuelles, Bewertungen).
-  // Der Ladescreen verschwindet wenn alles geladen ist ODER nach max. 4 Sekunden.
-  useEffect(() => {
-    let finished = false;
-    const done = () => {
-      if (!finished) {
-        finished = true;
-        setIsPreloading(false);
-      }
-    };
-
-    // Sicherheits-Timeout: spätestens nach 4s die Seite anzeigen
-    const timeout = setTimeout(done, 4000);
-
-    async function preloadAll() {
-      const tasks = [
-        // Team
-        fetch('/api/team')
-          .then((r) => r.json())
-          .then((result) => {
-            if (Array.isArray(result.data) && result.data.length > 0) {
-              setTeam(result.data);
-            }
-          })
-          .catch((e) => console.error('Team load error:', e)),
-        // FAQ
-        fetch('/api/content/faq')
-          .then((r) => r.json())
-          .then((result) => setFaqData(result.data || []))
-          .catch((e) => console.error('FAQ load error:', e)),
-        // Aktuelles
-        fetch('/api/content/aktuelles')
-          .then((r) => r.json())
-          .then((result) => setAktuellesData(result.data || []))
-          .catch((e) => console.error('Aktuelles load error:', e)),
-        // Google Bewertungen
-        fetch('/api/google-reviews')
-          .then((r) => r.json())
-          .then((data) => {
-            if (data.reviews && data.reviews.length > 0) {
-              setGoogleReviews(data.reviews);
-              setOverallRating(data.overallRating || 4.9);
-              setTotalReviews(data.totalReviews || 0);
-            }
-          })
-          .catch((e) => console.error('Reviews load error:', e)),
-      ];
-
-      await Promise.allSettled(tasks);
-      done();
-    }
-
-    preloadAll();
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   const navLinks = [
     { href: "#home", label: "Start" },
@@ -281,7 +228,6 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-white">
-      {isPreloading && <LoadingScreen />}
 
       {/* Header */}
       <header
@@ -1867,6 +1813,9 @@ useEffect(() => {
           </motion.div>
         </div>
       )}
+
+      {/* Kamera-LiveView (USB) – standardmäßig AUS, Schalter unten links */}
+      <LiveView />
     </div>
   );
 }

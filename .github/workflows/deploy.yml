@@ -1,0 +1,82 @@
+name: Build & Deploy
+
+# Trigger 1: Jede halbe Stunde (Änderungserkennung via Content-Hash)
+# Trigger 2: Manuell – aus dem GitHub UI oder via Google-Sheets-Button
+# Trigger 3: Direkt beim Push auf master (z.B. Code-Änderungen)
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write   # nötig für peaceiris/actions-gh-pages (gh-pages Branch push)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Code holen ───────────────────────────────────────────────────────
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ── 2. Node.js einrichten ───────────────────────────────────────────────
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # ── 3. Abhängigkeiten installieren ─────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Inhalte aus Google Sheets holen (für Hash-Vergleich) ───────────
+      - name: Fetch content from Google Sheets
+        env:
+          NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
+        run: node scripts/fetch-content.mjs
+
+      # ── 5. Prüfen ob sich Inhalte geändert haben ───────────────────────────
+      #       Beim Schedule-Trigger: Deploy nur wenn Hash != letzter Deploy-Hash
+      #       Bei push/workflow_dispatch: immer deployen
+      - name: Check for content changes
+        id: diff
+        run: |
+          NEW=$(sha256sum src/data/content.json | cut -d' ' -f1)
+          echo "hash=$NEW" >> $GITHUB_OUTPUT
+
+          OLD=$(curl -sf "https://mencode-maennercode.github.io/hebammen/content-hash.txt" 2>/dev/null || echo "none")
+          echo "Alter Hash:  $OLD"
+          echo "Neuer Hash:  $NEW"
+
+          if [ "$NEW" = "$OLD" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Inhalt unverändert – Deploy wird übersprungen."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      # ── 6. Hash-Datei in public/ schreiben (wird in out/ kopiert → deployed) ─
+      - name: Write content hash file
+        if: steps.diff.outputs.skip != 'true'
+        run: printf '%s' "${{ steps.diff.outputs.hash }}" > public/content-hash.txt
+
+      # ── 7. Next.js bauen ───────────────────────────────────────────────────
+      #       GITHUB_PAGES=true → next.config.ts setzt basePath=/hebammen
+      - name: Build
+        if: steps.diff.outputs.skip != 'true'
+        env:
+          NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
+          GITHUB_PAGES: 'true'
+        run: npm run build
+
+      # ── 8. out/ auf GitHub Pages deployen (gh-pages Branch) ───────────────
+      - name: Deploy to GitHub Pages
+        if: steps.diff.outputs.skip != 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out

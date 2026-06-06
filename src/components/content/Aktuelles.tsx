@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
 import { AktuellesEntry } from '@/lib/content-types';
+import { fetchAktuellesData } from '@/lib/google-api-client';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -24,18 +25,17 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
       return;
     }
 
-    async function fetchAktuelles() {
+    async function loadAktuelles() {
       try {
-        const response = await fetch('/api/content/aktuelles');
-        const result = await response.json();
-        setEntries(result.data || []);
+        const data = await fetchAktuellesData();
+        setEntries(data || []);
       } catch (error) {
         console.error('Error fetching Aktuelles:', error);
       } finally {
         setLoading(false);
       }
     }
-    fetchAktuelles();
+    loadAktuelles();
   }, [preloadedData]);
 
   if (loading) {

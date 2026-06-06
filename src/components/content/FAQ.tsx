@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HelpCircle, ChevronDown } from 'lucide-react';
 import { FAQEntry } from '@/lib/content-types';
+import { fetchFAQData } from '@/lib/google-api-client';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -23,18 +24,17 @@ export default function FAQ({ preloadedData }: { preloadedData?: FAQEntry[] }) {
       return;
     }
 
-    async function fetchFAQ() {
+    async function loadFAQ() {
       try {
-        const response = await fetch('/api/content/faq');
-        const result = await response.json();
-        setEntries(result.data || []);
+        const data = await fetchFAQData();
+        setEntries(data || []);
       } catch (error) {
         console.error('Error fetching FAQ:', error);
       } finally {
         setLoading(false);
       }
     }
-    fetchFAQ();
+    loadFAQ();
   }, [preloadedData]);
 
   const toggleOpen = (index: number) => {
