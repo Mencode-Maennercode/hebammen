@@ -47,7 +47,7 @@ const PEXELS_IMAGES = {
   team2: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=600",
   team3: "https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg?auto=compress&cs=tinysrgb&w=600",
   team4: "https://images.pexels.com/photos/5327921/pexels-photo-5327921.jpeg?auto=compress&cs=tinysrgb&w=600",
-  about: "/Hebammen Bilder/Gruppe.avif",
+  about: `${BASE_PATH}/Hebammen Bilder/Gruppe.avif`,
   delivery: "https://images.pexels.com/photos/3845455/pexels-photo-3845455.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
 
@@ -177,25 +177,25 @@ useEffect(() => {
       icon: Baby,
       title: "Geburtsvorbereitung",
       description: "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.",
-      image: "/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif",
+      image: `${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif`,
     },
     {
       icon: Heart,
       title: "Während der Geburt",
       description: "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.",
-      image: "/Hebammen Bilder/geburt/446934_ff804781dba14fbe9da38c9421ddb2f4~mv2.avif",
+      image: `${BASE_PATH}/Hebammen Bilder/geburt/446934_ff804781dba14fbe9da38c9421ddb2f4~mv2.avif`,
     },
     {
       icon: Users,
       title: "Wochenbettbetreuung & Stillberatung",
       description: "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.",
-      image: "/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif",
+      image: `${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif`,
     },
     {
       icon: Shield,
       title: "Hebammenliste",
       description: "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.",
-      image: "/Hebammen Bilder/nachgeburt/446934_119b62e081c947cba0d74697ac59705c~mv2.avif",
+      image: `${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_119b62e081c947cba0d74697ac59705c~mv2.avif`,
       isHebammenListe: true,
     },
   ];
@@ -1271,7 +1271,7 @@ useEffect(() => {
             {/* Hero Image */}
             <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
               <Image
-                src="/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif"
+                src={`${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif`}
                 alt="Vor der Geburt"
                 fill
                 className="object-cover"
@@ -1323,7 +1323,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                   <Image
-                    src="/Hebammen Bilder/vorgeburt/446934_ed88da43ae4044118c559a9112671a7e~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_ed88da43ae4044118c559a9112671a7e~mv2.avif`}
                     alt="Geburtsplanung"
                     fill
                     className="object-cover"
@@ -1338,7 +1338,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3] order-last md:order-first">
                   <Image
-                    src="/Hebammen Bilder/vorgeburt/446934_fdd46a13727f42d3878061231b435ff7~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_fdd46a13727f42d3878061231b435ff7~mv2.avif`}
                     alt="Geburtseinleitung"
                     fill
                     className="object-cover"
@@ -1378,7 +1378,7 @@ useEffect(() => {
                   </div>
                   <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                     <Image
-                      src="/Hebammen Bilder/vorgeburt/446934_4c7be112e02a4a9aac7700072e2c5bc3~mv2.avif"
+                      src={`${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_4c7be112e02a4a9aac7700072e2c5bc3~mv2.avif`}
                       alt="Weitere Angebote"
                       fill
                       className="object-cover"
@@ -1418,7 +1418,7 @@ useEffect(() => {
             {/* Hero Image */}
             <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
               <Image
-                src="/Hebammen Bilder/geburt/446934_ff804781dba14fbe9da38c9421ddb2f4~mv2.avif"
+                src={`${BASE_PATH}/Hebammen Bilder/geburt/446934_ff804781dba14fbe9da38c9421ddb2f4~mv2.avif`}
                 alt="Während der Geburt"
                 fill
                 className="object-cover"
@@ -1465,7 +1465,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                   <Image
-                    src="/Hebammen Bilder/geburt/446934_0604bb0f60274b0ab6373213a874746f~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/geburt/446934_0604bb0f60274b0ab6373213a874746f~mv2.avif`}
                     alt="Begleitung im Kreißsaal"
                     fill
                     className="object-cover"
@@ -1480,7 +1480,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3] order-last md:order-first">
                   <Image
-                    src="/Hebammen Bilder/geburt/446934_ca8d119777204ecf873fb13209019bb1~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/geburt/446934_ca8d119777204ecf873fb13209019bb1~mv2.avif`}
                     alt="Schmerzerleichterung"
                     fill
                     className="object-cover"
@@ -1549,7 +1549,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                   <Image
-                    src="/Hebammen Bilder/geburt/446934_9ed1417ac1634f54a8c4427c9cf3128f~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/geburt/446934_9ed1417ac1634f54a8c4427c9cf3128f~mv2.avif`}
                     alt="Besondere Geburtssituationen"
                     fill
                     className="object-cover"
@@ -1588,7 +1588,7 @@ useEffect(() => {
             {/* Hero Image */}
             <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
               <Image
-                src="/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif"
+                src={`${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif`}
                 alt="Nach der Geburt"
                 fill
                 className="object-cover"
@@ -1635,7 +1635,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                   <Image
-                    src="/Hebammen Bilder/nachgeburt/446934_119b62e081c947cba0d74697ac59705c~mv2.avif"
+                    src={`${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_119b62e081c947cba0d74697ac59705c~mv2.avif`}
                     alt="Bonding nach der Geburt"
                     fill
                     className="object-cover"
