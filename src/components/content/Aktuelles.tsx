@@ -117,7 +117,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#8B5A6B] transition-colors">
                   {entry.titel}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{entry.text}</p>
+                <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">{entry.text}</p>
                 <div className="flex items-center gap-2 text-[#8B5A6B] font-medium group-hover:gap-3 transition-all">
                   <span>Mehr erfahren</span>
                   <ChevronRight size={18} />
