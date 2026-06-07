@@ -1309,10 +1309,10 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
             {/* Hero Image */}
-            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
+            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden flex-shrink-0">
               <Image
                 src={`${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif`}
                 alt="Vor der Geburt"
@@ -1338,7 +1338,7 @@ useEffect(() => {
             </div>
 
             {/* Article Body */}
-            <div className="px-8 md:px-12 py-10 space-y-10">
+            <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
               <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
@@ -1456,10 +1456,10 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
             {/* Hero Image */}
-            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
+            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden flex-shrink-0">
               <Image
                 src={`${BASE_PATH}/Hebammen Bilder/geburt/446934_ff804781dba14fbe9da38c9421ddb2f4~mv2.avif`}
                 alt="Während der Geburt"
@@ -1485,7 +1485,7 @@ useEffect(() => {
             </div>
 
             {/* Article Body */}
-            <div className="px-8 md:px-12 py-10 space-y-10">
+            <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
               <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
@@ -1626,10 +1626,10 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
             {/* Hero Image */}
-            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden">
+            <div className="relative h-72 md:h-96 rounded-t-3xl overflow-hidden flex-shrink-0">
               <Image
                 src={`${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif`}
                 alt="Nach der Geburt"
@@ -1655,7 +1655,7 @@ useEffect(() => {
             </div>
 
             {/* Article Body */}
-            <div className="px-8 md:px-12 py-10 space-y-10">
+            <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
               <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
