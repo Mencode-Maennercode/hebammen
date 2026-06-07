@@ -1159,23 +1159,22 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
-            <div className="p-8 md:p-12">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Häufig gestellte Fragen
-                </h2>
-                <button
-                  onClick={() => setShowFAQModal(false)}
-                  className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-                  aria-label="Schließen"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-
-              <FAQ preloadedData={faqData} />
+            <div className="flex-shrink-0 px-8 md:px-12 pt-8 md:pt-10 pb-6 flex items-center justify-between border-b border-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Häufig gestellte Fragen
+              </h2>
+              <button
+                onClick={() => setShowFAQModal(false)}
+                className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors flex-shrink-0"
+                aria-label="Schließen"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="flex-1 min-h-0 overflow-y-auto px-8 md:px-12 py-8">
+              <FAQ preloadedData={faqData} compact />
             </div>
           </motion.div>
         </div>
@@ -1192,21 +1191,21 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
-            <div className="p-8 md:p-12">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Werde Teil unseres Teams!
-                </h2>
-                <button
-                  onClick={() => setShowJobModal(false)}
-                  className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-                  aria-label="Schließen"
-                >
-                  <X size={20} />
-                </button>
-              </div>
+            <div className="flex-shrink-0 px-8 md:px-12 pt-8 md:pt-10 pb-6 flex items-center justify-between border-b border-gray-100">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Werde Teil unseres Teams!
+              </h2>
+              <button
+                onClick={() => setShowJobModal(false)}
+                className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors flex-shrink-0"
+                aria-label="Schließen"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="flex-1 min-h-0 overflow-y-auto px-8 md:px-12 py-8">
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">

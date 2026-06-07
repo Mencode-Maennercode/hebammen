@@ -12,11 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const LOGO_URL =
+  "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png/v1/fill/w_209,h_205,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png";
+
 export const metadata: Metadata = {
   title: "Hebammen am Marienhospital Bonn | Sanne, Wald & Partnerinnen",
   description: "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir, die Hebammen am Marienhospital Bonn, stehen Ihnen mit unserer Expertise unterstützend und beratend zur Seite.",
   keywords: "Hebammen, Bonn, Marienhospital, Geburt, Schwangerschaft, Wochenbett, Geburtshilfe",
   authors: [{ name: "Hebammen am Marienhospital Bonn" }],
+  icons: {
+    icon: LOGO_URL,
+    apple: LOGO_URL,
+  },
   openGraph: {
     title: "Hebammen am Marienhospital Bonn | Sanne, Wald & Partnerinnen",
     description: "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise unterstützend zur Seite.",

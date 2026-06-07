@@ -164,18 +164,7 @@ export default function LiveView() {
   const urlEnabled =
     typeof window !== 'undefined' && window.location.search.includes('liveview');
   const showGear = enabled || urlEnabled || panelOpen;
-  if (!showGear) {
-    // Unauffälliger Aktivierungs-Hotspot unten links (nur für dich)
-    return (
-      <button
-        onClick={() => setPanelOpen(true)}
-        aria-label="LiveView-Einstellungen"
-        className="fixed bottom-3 left-3 z-[60] h-8 w-8 rounded-full bg-black/20 text-white/70 opacity-30 hover:opacity-100 transition-opacity flex items-center justify-center"
-      >
-        <Settings size={16} />
-      </button>
-    );
-  }
+  if (!showGear) return null;
 
   return (
     <>

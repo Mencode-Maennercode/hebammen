@@ -12,7 +12,7 @@ const fadeInUp = {
   transition: { duration: 0.6 },
 };
 
-export default function FAQ({ preloadedData }: { preloadedData?: FAQEntry[] }) {
+export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEntry[]; compact?: boolean }) {
   const [entries, setEntries] = useState<FAQEntry[]>(preloadedData || []);
   const [loading, setLoading] = useState(!preloadedData);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -68,27 +68,29 @@ export default function FAQ({ preloadedData }: { preloadedData?: FAQEntry[] }) {
   }, {} as Record<string, FAQEntry[]>);
 
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
-            <HelpCircle size={20} />
-            <span>FAQ</span>
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Häufige Fragen
-          </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600">
-            Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.
-          </p>
-        </motion.div>
+    <section className={compact ? "" : "py-24 md:py-32 bg-white"}>
+      <div className={compact ? "" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+        {!compact && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+              <HelpCircle size={20} />
+              <span>FAQ</span>
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+              Häufige Fragen
+            </h2>
+            <p className="max-w-2xl mx-auto text-lg text-gray-600">
+              Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.
+            </p>
+          </motion.div>
+        )}
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className={compact ? "space-y-8" : "max-w-4xl mx-auto space-y-8"}>
           {Object.entries(groupedEntries).map(([category, categoryEntries], groupIndex) => (
             <motion.div
               key={category}
