@@ -6,7 +6,7 @@ const LOGO_URL = "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b
 
 export default function LoadingScreen() {
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#FDF8F5]">
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-b from-white to-brand-cream">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -22,11 +22,11 @@ export default function LoadingScreen() {
 
         {/* Animated spinner */}
         <div className="relative h-12 w-12 mb-6">
-          <div className="absolute inset-0 rounded-full border-4 border-[#8B5A6B]/20" />
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#8B5A6B] animate-spin" />
+          <div className="absolute inset-0 rounded-full border-4 border-brand/20" />
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-brand animate-spin" />
         </div>
 
-        <p className="text-[#8B5A6B] font-medium text-lg">
+        <p className="text-brand font-medium text-lg">
           Inhalte werden geladen ...
         </p>
         <p className="text-gray-400 text-sm mt-2">

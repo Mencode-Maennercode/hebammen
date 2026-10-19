@@ -36,13 +36,13 @@ function MemberCard({ member, priority = false }: { member: TeamMember; priority
         ) : null}
         {/* Placeholder while loading or on error */}
         {(!imgLoaded || imgError) && (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#8B5A6B]/20 to-[#8B5A6B]/40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand/20 to-brand/40 flex items-center justify-center">
             <span className="text-4xl text-white/60 font-bold">
               {member.name.split(' ').map(n => n[0]).join('')}
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#8B5A6B]/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
         {/* Glassmorphism name overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/10 backdrop-blur-md border-t border-white/20">
           <h3 className="text-lg font-bold text-white drop-shadow-lg leading-tight">
@@ -129,8 +129,8 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
       {/* Carousel Container */}
       <div className="relative overflow-hidden">
         {/* Edge blur overlays for smooth fade effect */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#FDF8F5] via-[#FDF8F5]/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#FDF8F5] via-[#FDF8F5]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-brand-cream via-brand-cream/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-brand-cream via-brand-cream/80 to-transparent z-10 pointer-events-none" />
 
         <div className="overflow-hidden py-2">
           <div
@@ -152,7 +152,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
       <div className="flex justify-center items-center gap-4 mt-8">
         <button
           onClick={() => step(-1)}
-          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg"
+          className="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-dark transition-all hover:scale-110 shadow-lg"
           aria-label="Vorheriges Teammitglied"
         >
           <ChevronLeft size={24} />
@@ -165,7 +165,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
           </span>
           <div className="w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-[#8B5A6B]"
+              className="h-full bg-brand"
               animate={{ width: `${((currentIndex + 1) / team.length) * 100}%` }}
               transition={{ duration: 0.3 }}
             />
@@ -174,7 +174,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
 
         <button
           onClick={() => step(1)}
-          className="w-12 h-12 rounded-full bg-[#8B5A6B] text-white flex items-center justify-center hover:bg-[#6B4453] transition-all hover:scale-110 shadow-lg"
+          className="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-dark transition-all hover:scale-110 shadow-lg"
           aria-label="Nächstes Teammitglied"
         >
           <ChevronRight size={24} />

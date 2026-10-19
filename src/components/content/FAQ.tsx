@@ -46,7 +46,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#8B5A6B] border-r-transparent"></div>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
           </div>
         </div>
       </section>
@@ -77,7 +77,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+            <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
               <HelpCircle size={20} />
               <span>FAQ</span>
             </span>
@@ -99,7 +99,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1 }}
             >
-              <h3 className="text-2xl font-bold text-[#8B5A6B] mb-6">{category}</h3>
+              <h3 className="text-2xl font-bold text-brand mb-6">{category}</h3>
               <div className="space-y-4">
                 {categoryEntries.map((entry, index) => (
                   <motion.div
@@ -108,11 +108,11 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: groupIndex * 0.1 + index * 0.05 }}
-                    className="bg-[#FDF8F5] rounded-2xl overflow-hidden"
+                    className="bg-brand-cream rounded-2xl overflow-hidden"
                   >
                     <button
                       onClick={() => toggleOpen(groupIndex * 100 + index)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#F5E6E8] transition-colors"
+                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-brand-soft transition-colors"
                       aria-expanded={openIndex === groupIndex * 100 + index}
                     >
                       <span className="font-semibold text-gray-900 pr-4">{entry.frage}</span>
@@ -120,7 +120,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
                         animate={{ rotate: openIndex === groupIndex * 100 + index ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown size={20} className="text-[#8B5A6B] flex-shrink-0" />
+                        <ChevronDown size={20} className="text-brand flex-shrink-0" />
                       </motion.div>
                     </button>
                     <AnimatePresence>

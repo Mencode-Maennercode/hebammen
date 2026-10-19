@@ -72,10 +72,10 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
 
   if (loading) {
     return (
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-[#FDF8F5]">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#8B5A6B] border-r-transparent"></div>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
           </div>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
   }
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-white to-[#FDF8F5]">
+    <section className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -95,7 +95,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+          <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
             <Calendar size={20} />
             <span>Aktuelles</span>
           </span>
@@ -111,7 +111,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
           {canScrollLeft && (
             <button
               onClick={() => scrollBy('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-[#8B5A6B] hover:bg-[#F5E6E8] hover:scale-110 transition-all duration-200"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand hover:bg-brand-soft hover:scale-110 transition-all duration-200"
               aria-label="Nach links scrollen"
             >
               <ChevronLeft size={20} />
@@ -151,19 +151,19 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 )}
                 <div className="p-6">
                   {!entry.bildname && entry.kategorie && (
-                    <span className="inline-flex items-center gap-1 bg-[#F5E6E8] px-3 py-1.5 rounded-full text-[#8B5A6B] text-sm font-medium mb-3 block w-fit">
+                    <span className="inline-flex items-center gap-1 bg-brand-soft px-3 py-1.5 rounded-full text-brand text-sm font-medium mb-3 block w-fit">
                       <Clock size={14} />
                       {entry.kategorie}
                     </span>
                   )}
                   {entry.datum && (
-                    <p className="text-sm text-[#8B5A6B] font-medium mb-2">{formatDatum(entry.datum)}</p>
+                    <p className="text-sm text-brand font-medium mb-2">{formatDatum(entry.datum)}</p>
                   )}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#8B5A6B] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand transition-colors">
                     {entry.titel}
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">{entry.text}</p>
-                  <div className="flex items-center gap-2 text-[#8B5A6B] font-medium group-hover:gap-3 transition-all">
+                  <div className="flex items-center gap-2 text-brand font-medium group-hover:gap-3 transition-all">
                     <span>Mehr erfahren</span>
                     <ChevronRight size={18} />
                   </div>
@@ -175,7 +175,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
           {canScrollRight && (
             <button
               onClick={() => scrollBy('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-[#8B5A6B] hover:bg-[#F5E6E8] hover:scale-110 transition-all duration-200"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand hover:bg-brand-soft hover:scale-110 transition-all duration-200"
               aria-label="Nach rechts scrollen"
             >
               <ChevronRight size={20} />
@@ -194,7 +194,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {selectedPost.bildname && (
                 <div className="aspect-[16/9] relative">
@@ -211,10 +211,10 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     {selectedPost.datum && (
-                      <p className="text-sm text-[#8B5A6B] font-medium mb-2">{formatDatum(selectedPost.datum)}</p>
+                      <p className="text-sm text-brand font-medium mb-2">{formatDatum(selectedPost.datum)}</p>
                     )}
                     {selectedPost.kategorie && (
-                      <span className="inline-flex items-center gap-1 bg-[#F5E6E8] px-3 py-1.5 rounded-full text-[#8B5A6B] text-sm font-medium">
+                      <span className="inline-flex items-center gap-1 bg-brand-soft px-3 py-1.5 rounded-full text-brand text-sm font-medium">
                         <Clock size={14} />
                         {selectedPost.kategorie}
                       </span>

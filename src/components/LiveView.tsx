@@ -204,7 +204,7 @@ export default function LiveView() {
       <button
         onClick={() => setPanelOpen((o) => !o)}
         aria-label="LiveView-Einstellungen"
-        className="fixed bottom-3 left-3 z-[61] h-10 w-10 rounded-full bg-[#8B5A6B] text-white shadow-lg hover:bg-[#6B4453] transition-colors flex items-center justify-center"
+        className="fixed bottom-3 left-3 z-[61] h-10 w-10 rounded-full bg-brand text-white shadow-lg hover:bg-brand-dark transition-colors flex items-center justify-center"
       >
         {panelOpen ? <X size={18} /> : <Settings size={18} />}
       </button>
@@ -213,7 +213,7 @@ export default function LiveView() {
       {panelOpen && (
         <div className="fixed bottom-16 left-3 z-[61] w-[320px] max-w-[80vw] rounded-2xl bg-white shadow-2xl border border-gray-200 p-4 space-y-4">
           <div className="flex items-center gap-2 text-gray-900">
-            <Camera size={18} className="text-[#8B5A6B]" />
+            <Camera size={18} className="text-brand" />
             <h3 className="font-semibold">Kamera-LiveView</h3>
           </div>
 
@@ -229,7 +229,7 @@ export default function LiveView() {
                 persist(LS_ENABLED, next ? '1' : '0');
               }}
               className={`relative h-6 w-11 rounded-full transition-colors ${
-                enabled ? 'bg-[#8B5A6B]' : 'bg-gray-300'
+                enabled ? 'bg-brand' : 'bg-gray-300'
               }`}
             >
               <span
@@ -246,7 +246,7 @@ export default function LiveView() {
               <span className="text-xs font-medium text-gray-500">Videoquelle</span>
               <button
                 onClick={refreshDevices}
-                className="inline-flex items-center gap-1 text-xs text-[#8B5A6B] hover:text-[#6B4453]"
+                className="inline-flex items-center gap-1 text-xs text-brand hover:text-brand-dark"
               >
                 <RefreshCw size={12} /> neu laden
               </button>
@@ -278,7 +278,7 @@ export default function LiveView() {
                 setMirror(e.target.checked);
                 persist(LS_MIRROR, e.target.checked ? '1' : '0');
               }}
-              className="h-4 w-4 accent-[#8B5A6B]"
+              className="h-4 w-4 accent-brand"
             />
           </label>
 

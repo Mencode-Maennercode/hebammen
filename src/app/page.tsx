@@ -269,7 +269,7 @@ useEffect(() => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-clip">
 
       {/* Header */}
       <header
@@ -294,10 +294,10 @@ useEffect(() => {
                 />
               </div>
               <div className={`hidden sm:block transition-all duration-700 ${isScrolled ? "opacity-100" : "opacity-0"}`}>
-                <p className={`font-semibold text-lg transition-colors ${isScrolled ? "text-[#8B5A6B]" : "text-white"}`}>
+                <p className={`font-semibold text-lg transition-colors ${isScrolled ? "text-brand" : "text-white"}`}>
                   Hebammen am Marienhospital
                 </p>
-                <p className={`text-sm transition-colors ${isScrolled ? "text-[#6B4453]" : "text-white/80"}`}>
+                <p className={`text-sm transition-colors ${isScrolled ? "text-brand-dark" : "text-white/80"}`}>
                   Sanne, Wald & Partnerinnen
                 </p>
               </div>
@@ -309,22 +309,22 @@ useEffect(() => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative font-medium transition-colors hover:text-[#8B5A6B] ${
+                  className={`relative font-medium transition-colors hover:text-brand ${
                     isScrolled ? "text-gray-700" : "text-white"
-                  } ${activeSection === link.href.slice(1) ? "text-[#8B5A6B]" : ""}`}
+                  } ${activeSection === link.href.slice(1) ? "text-brand" : ""}`}
                 >
                   {link.label}
                   {activeSection === link.href.slice(1) && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#8B5A6B]"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand"
                     />
                   )}
                 </a>
               ))}
               <a
                 href="tel:+492285052205"
-                className="flex items-center gap-2 bg-[#8B5A6B] text-white px-5 py-2.5 rounded-full font-medium hover:bg-[#6B4453] transition-all hover:shadow-lg hover:scale-105"
+                className="flex items-center gap-2 bg-brand text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-dark transition-all hover:shadow-lg hover:scale-105"
               >
                 <Phone size={18} />
                 <span>Anrufen</span>
@@ -336,7 +336,7 @@ useEffect(() => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled ? "text-[#8B5A6B]" : "text-white"
+                isScrolled ? "text-brand" : "text-white"
               }`}
               aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
               aria-expanded={isMobileMenuOpen}
@@ -359,14 +359,14 @@ useEffect(() => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-gray-700 font-medium py-2 hover:text-[#8B5A6B] transition-colors"
+                    className="text-gray-700 font-medium py-2 hover:text-brand transition-colors"
                   >
                     {link.label}
                   </a>
                 ))}
                 <a
                   href="tel:+492285052205"
-                  className="flex items-center justify-center gap-2 bg-[#8B5A6B] text-white px-5 py-3 rounded-full font-medium hover:bg-[#6B4453] transition-colors"
+                  className="flex items-center justify-center gap-2 bg-brand text-white px-5 py-3 rounded-full font-medium hover:bg-brand-dark transition-colors"
                 >
                   <Phone size={18} />
                   <span>0228 - 505 2205</span>
@@ -379,7 +379,7 @@ useEffect(() => {
                       onClick={() => setSelectedLanguage(lang.code)}
                       className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-sm transition-all ${
                         selectedLanguage === lang.code
-                          ? "bg-[#8B5A6B]/10 border border-[#8B5A6B]/30"
+                          ? "bg-brand/10 border border-brand/30"
                           : "hover:bg-gray-100"
                       }`}
                     >
@@ -401,7 +401,7 @@ useEffect(() => {
               onClick={(e) => { e.stopPropagation(); setShowLanguageDropdown(!showLanguageDropdown); }}
               className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all border ${
                 isScrolled
-                  ? "border-gray-200 hover:border-[#8B5A6B]/30 hover:bg-[#8B5A6B]/5"
+                  ? "border-gray-200 hover:border-brand/30 hover:bg-brand/5"
                   : "border-white/30 hover:border-white/60 hover:bg-white/10"
               }`}
               aria-label="Sprache auswählen"
@@ -430,7 +430,7 @@ useEffect(() => {
                       }}
                       className={`w-full flex items-center gap-3 px-4 py-2.5 transition-colors text-left ${
                         selectedLanguage === lang.code
-                          ? "bg-[#8B5A6B]/5 text-[#8B5A6B]"
+                          ? "bg-brand/5 text-brand"
                           : "hover:bg-gray-50 text-gray-700"
                       }`}
                     >
@@ -439,7 +439,7 @@ useEffect(() => {
                       </div>
                       <span className="text-sm font-medium">{lang.name}</span>
                       {selectedLanguage === lang.code && (
-                        <Check size={14} className="ml-auto text-[#8B5A6B]" />
+                        <Check size={14} className="ml-auto text-brand" />
                       )}
                     </button>
                   ))}
@@ -483,7 +483,7 @@ useEffect(() => {
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
                 Ihre Hebammen in
-                <span className="block text-[#F5E6E8]">Bonn</span>
+                <span className="block text-brand-soft">Bonn</span>
               </h1>
 
               <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 leading-relaxed">
@@ -494,7 +494,7 @@ useEffect(() => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <a
                   href="#kontakt"
-                  className="group inline-flex items-center justify-center gap-2 bg-[#8B5A6B] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#6B4453] transition-all hover:shadow-2xl hover:scale-105"
+                  className="group inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-dark transition-all hover:shadow-2xl hover:scale-105"
                 >
                   <span>Kontakt aufnehmen</span>
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -530,7 +530,7 @@ useEffect(() => {
                   transition={{ delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <p className="text-3xl md:text-4xl font-bold text-[#8B5A6B]">{stat.number}</p>
+                  <p className="text-3xl md:text-4xl font-bold text-brand">{stat.number}</p>
                   <p className="text-gray-600 mt-1 text-sm md:text-base">{stat.label}</p>
                 </motion.div>
               ))}
@@ -542,7 +542,7 @@ useEffect(() => {
         <Aktuelles preloadedData={aktuellesData} />
 
         {/* Services Section */}
-        <section id="leistungen" className="py-24 md:py-32 bg-gradient-to-b from-white to-[#FDF8F5]">
+        <section id="leistungen" className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -550,7 +550,7 @@ useEffect(() => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+              <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <Heart size={20} />
                 <span>Unsere Leistungen</span>
               </span>
@@ -614,7 +614,7 @@ useEffect(() => {
             >
               <button
                 onClick={() => setShowFAQModal(true)}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#8B5A6B] text-white rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-lg"
               >
                 <HelpCircle size={20} />
                 Oft gestellte Fragen
@@ -624,7 +624,7 @@ useEffect(() => {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="py-24 md:py-32 bg-[#FDF8F5]">
+        <section id="team" className="py-24 md:py-32 bg-brand-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -632,7 +632,7 @@ useEffect(() => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+              <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <Users size={20} />
                 <span>Unser Team</span>
               </span>
@@ -655,7 +655,7 @@ useEffect(() => {
             >
               <button
                 onClick={() => setShowJobModal(true)}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#8B5A6B] text-white rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-lg"
               >
                 <Users size={20} />
                 Werde Teil unseres Teams
@@ -685,8 +685,8 @@ useEffect(() => {
                     />
                   </div>
                 </div>
-                <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[#F5E6E8] rounded-full -z-10" />
-                <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#8B5A6B]/10 rounded-full -z-10" />
+                <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-brand-soft rounded-full -z-10" />
+                <div className="absolute -top-8 -left-8 w-32 h-32 bg-brand/10 rounded-full -z-10" />
               </motion.div>
 
               <motion.div
@@ -695,7 +695,7 @@ useEffect(() => {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium">
+                <span className="inline-flex items-center gap-2 text-brand font-medium">
                   <Sparkles size={20} />
                   <span>Über uns</span>
                 </span>
@@ -714,8 +714,8 @@ useEffect(() => {
 
                 <div className="grid sm:grid-cols-2 gap-6 pt-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F5E6E8] flex items-center justify-center flex-shrink-0">
-                      <Clock size={24} className="text-[#8B5A6B]" />
+                    <div className="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center flex-shrink-0">
+                      <Clock size={24} className="text-brand" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">24/7 Erreichbar</h4>
@@ -723,8 +723,8 @@ useEffect(() => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F5E6E8] flex items-center justify-center flex-shrink-0">
-                      <Shield size={24} className="text-[#8B5A6B]" />
+                    <div className="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center flex-shrink-0">
+                      <Shield size={24} className="text-brand" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Geprüfte Qualität</h4>
@@ -735,7 +735,7 @@ useEffect(() => {
 
                 <button
                   onClick={() => setShowVideoModal(true)}
-                  className="inline-flex items-center gap-2 bg-[#8B5A6B] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-lg mt-4"
+                  className="inline-flex items-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-lg mt-4"
                 >
                   <Film size={20} />
                   Einblick in unseren Kreißsaal
@@ -746,7 +746,7 @@ useEffect(() => {
         </section>
 
         {/* Reviews Section */}
-        <section className="py-24 md:py-32 bg-gradient-to-b from-[#FDF8F5] to-white">
+        <section className="py-24 md:py-32 bg-gradient-to-b from-brand-cream to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -754,8 +754,8 @@ useEffect(() => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
-                <Star size={20} fill="#8B5A6B" />
+              <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
+                <Star size={20} fill="currentColor" />
                 <span>Bewertungen</span>
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -763,7 +763,7 @@ useEffect(() => {
               </h2>
               <div className="flex items-center justify-center gap-2 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={28} className="text-[#D4B896]" fill="#D4B896" />
+                  <Star key={i} size={28} className="text-brand-gold" fill="currentColor" />
                 ))}
               </div>
               <p className="text-lg text-gray-600">{overallRating} von 5 Sternen auf Google ({totalReviews} Bewertungen)</p>
@@ -787,7 +787,7 @@ useEffect(() => {
                   >
                     <div className="flex gap-1 mb-4">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} size={20} className="text-[#D4B896]" fill="#D4B896" />
+                        <Star key={i} size={20} className="text-brand-gold" fill="currentColor" />
                       ))}
                     </div>
                     <p className="text-gray-700 mb-4 leading-relaxed">&ldquo;{displayText}&rdquo;</p>
@@ -802,7 +802,7 @@ useEffect(() => {
                           }
                           setExpandedReviews(newExpanded);
                         }}
-                        className="text-[#8B5A6B] font-semibold text-sm hover:text-[#6B4453] transition-colors mb-4"
+                        className="text-brand font-semibold text-sm hover:text-brand-dark transition-colors mb-4"
                       >
                         {isExpanded ? 'Weniger anzeigen' : 'Mehr lesen'}
                       </button>
@@ -826,7 +826,7 @@ useEffect(() => {
                 href="https://www.google.com/maps"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white border-2 border-[#8B5A6B] text-[#8B5A6B] px-6 py-3 rounded-full font-semibold hover:bg-[#8B5A6B] hover:text-white transition-all"
+                className="inline-flex items-center gap-2 bg-white border-2 border-brand text-brand px-6 py-3 rounded-full font-semibold hover:bg-brand hover:text-white transition-all"
               >
                 <span>Alle Bewertungen auf Google</span>
                 <ArrowRight size={18} />
@@ -845,7 +845,7 @@ useEffect(() => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="inline-flex items-center gap-2 text-[#8B5A6B] font-medium mb-4">
+              <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <MapPin size={20} />
                 <span>Kontakt</span>
               </span>
@@ -857,14 +857,14 @@ useEffect(() => {
               </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="space-y-8"
               >
-                <div className="bg-[#FDF8F5] rounded-3xl p-8">
+                <div className="bg-brand-cream rounded-3xl p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Kontaktdaten</h3>
 
                   <div className="space-y-6">
@@ -872,12 +872,12 @@ useEffect(() => {
                       href="tel:+492285052205"
                       className="flex items-center gap-4 group"
                     >
-                      <div className="w-14 h-14 rounded-2xl bg-[#8B5A6B] flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Phone size={24} className="text-white" />
                       </div>
                       <div>
                         <p className="text-sm text-gray-500">Kreißsaal</p>
-                        <p className="text-xl font-semibold text-gray-900 group-hover:text-[#8B5A6B] transition-colors">
+                        <p className="text-xl font-semibold text-gray-900 group-hover:text-brand transition-colors">
                           0228 - 505 2205
                         </p>
                       </div>
@@ -887,19 +887,19 @@ useEffect(() => {
                       href="mailto:info@hebammen-marienhospital-bonn.de"
                       className="flex items-center gap-4 group"
                     >
-                      <div className="w-14 h-14 rounded-2xl bg-[#8B5A6B] flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Mail size={24} className="text-white" />
                       </div>
                       <div>
                         <p className="text-sm text-gray-500">E-Mail</p>
-                        <p className="text-lg font-semibold text-gray-900 group-hover:text-[#8B5A6B] transition-colors break-all">
+                        <p className="text-lg font-semibold text-gray-900 group-hover:text-brand transition-colors break-all">
                           info@hebammen-marienhospital-bonn.de
                         </p>
                       </div>
                     </a>
 
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-[#8B5A6B] flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center">
                         <MapPin size={24} className="text-white" />
                       </div>
                       <div>
@@ -913,7 +913,7 @@ useEffect(() => {
                 </div>
 
                 {/* Social Media */}
-                <div className="bg-gradient-to-br from-[#8B5A6B] to-[#6B4453] rounded-3xl p-8 text-white">
+                <div className="bg-gradient-to-br from-brand to-brand-dark rounded-3xl p-8 text-white">
                   <h3 className="text-xl font-bold mb-4">Folgen Sie uns</h3>
                   <p className="text-white/80 mb-6">
                     Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!
@@ -1030,7 +1030,7 @@ useEffect(() => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-[#8B5A6B] via-[#8B5A6B] to-[#6B4453] relative overflow-hidden">
+        <section className="py-24 bg-gradient-to-br from-brand via-brand to-brand-dark relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
@@ -1053,7 +1053,7 @@ useEffect(() => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <a
                   href="tel:+492285052205"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-[#8B5A6B] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#F5E6E8] transition-all hover:shadow-xl hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-brand px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-soft transition-all hover:shadow-xl hover:scale-105"
                 >
                   <Phone size={20} />
                   <span>Jetzt anrufen</span>
@@ -1215,14 +1215,14 @@ useEffect(() => {
                   Dann bist du bei uns genau richtig.
                 </p>
 
-                <div className="bg-[#F5E6E8] rounded-2xl p-6 my-8">
+                <div className="bg-brand-soft rounded-2xl p-6 my-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Heart size={24} className="text-[#8B5A6B]" />
+                    <Heart size={24} className="text-brand" />
                     Wir suchen Verstärkung:
                   </h3>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-gray-900 font-semibold">
-                      <div className="w-2 h-2 rounded-full bg-[#8B5A6B]" />
+                      <div className="w-2 h-2 rounded-full bg-brand" />
                       Dienstbeleghebamme (m/w/d)
                     </div>
                   </div>
@@ -1230,7 +1230,7 @@ useEffect(() => {
 
                 <div className="border-t border-gray-200 pt-6">
                   <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    <Mail size={20} className="text-[#8B5A6B]" />
+                    <Mail size={20} className="text-brand" />
                     Bewerbung einreichen
                   </h4>
                   <p className="text-gray-700 mb-4">
@@ -1238,7 +1238,7 @@ useEffect(() => {
                   </p>
                   <a
                     href="mailto:bewerbung@hebammen-marienhospital-bonn.de"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B5A6B] text-white rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-lg"
                   >
                     <Mail size={20} />
                     bewerbung@hebammen-marienhospital-bonn.de
@@ -1341,7 +1341,7 @@ useEffect(() => {
             <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
-              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
+              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-brand pl-5">
                 Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.
               </p>
 
@@ -1349,7 +1349,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Calendar size={20} className="text-[#8B5A6B]" />
+                    <Calendar size={20} className="text-brand" />
                     Geburtsplanung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1361,7 +1361,7 @@ useEffect(() => {
                   <p className="text-sm text-gray-500">Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.</p>
                   <p className="font-semibold text-gray-900">
                     Für einen Termin:{" "}
-                    <a href="tel:+492285052201" className="text-[#8B5A6B] hover:underline">0228 / 505 2201</a>
+                    <a href="tel:+492285052201" className="text-brand hover:underline">0228 / 505 2201</a>
                   </p>
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
@@ -1390,7 +1390,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-3 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Clock size={20} className="text-[#8B5A6B]" />
+                    <Clock size={20} className="text-brand" />
                     Geburtseinleitung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1407,7 +1407,7 @@ useEffect(() => {
               {/* Weitere Angebote — with small inline image */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Sparkles size={20} className="text-[#8B5A6B]" />
+                  <Sparkles size={20} className="text-brand" />
                   Stationärer Aufenthalt &amp; weitere Angebote
                 </h3>
                 <div className="grid md:grid-cols-5 gap-6 items-start">
@@ -1435,7 +1435,7 @@ useEffect(() => {
               <div className="pt-2 pb-2">
                 <a
                   href="tel:+492285052205"
-                  className="inline-flex items-center gap-2 bg-[#8B5A6B] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-md"
+                  className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
                 >
                   <Phone size={18} />
                   Jetzt anrufen
@@ -1488,7 +1488,7 @@ useEffect(() => {
             <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
-              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
+              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-brand pl-5">
                 Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.
               </p>
 
@@ -1496,7 +1496,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Users size={20} className="text-[#8B5A6B]" />
+                    <Users size={20} className="text-brand" />
                     Ihre Begleitung im Kreißsaal
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1532,7 +1532,7 @@ useEffect(() => {
                 </div>
                 <div className="md:col-span-3 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Shield size={20} className="text-[#8B5A6B]" />
+                    <Shield size={20} className="text-brand" />
                     Schmerzerleichterung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1549,7 +1549,7 @@ useEffect(() => {
               {/* Unser Team */}
               <div className="space-y-3">
                 <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Heart size={20} className="text-[#8B5A6B]" />
+                  <Heart size={20} className="text-brand" />
                   Unser Team für Sie
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1566,7 +1566,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-4">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Sparkles size={20} className="text-[#8B5A6B]" />
+                    <Sparkles size={20} className="text-brand" />
                     Besondere Geburtssituationen
                   </h3>
                   <div className="space-y-3">
@@ -1605,7 +1605,7 @@ useEffect(() => {
               <div className="pt-2 pb-2">
                 <a
                   href="tel:+492285052205"
-                  className="inline-flex items-center gap-2 bg-[#8B5A6B] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-md"
+                  className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
                 >
                   <Phone size={18} />
                   Jetzt anrufen
@@ -1658,7 +1658,7 @@ useEffect(() => {
             <div className="px-8 md:px-12 py-10 space-y-10 overflow-y-auto flex-1 min-h-0">
 
               {/* Intro */}
-              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-[#8B5A6B] pl-5">
+              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-brand pl-5">
                 Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal bis hin zur Wochenbettstation.
               </p>
 
@@ -1666,7 +1666,7 @@ useEffect(() => {
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Heart size={20} className="text-[#8B5A6B]" />
+                    <Heart size={20} className="text-brand" />
                     Die ersten Stunden
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1692,7 +1692,7 @@ useEffect(() => {
               {/* Stillen & U1 */}
               <div className="space-y-3">
                 <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Baby size={20} className="text-[#8B5A6B]" />
+                  <Baby size={20} className="text-brand" />
                   Stillen &amp; Erstuntersuchung
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1708,7 +1708,7 @@ useEffect(() => {
               {/* Wochenbettstation */}
               <div className="space-y-3">
                 <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Shield size={20} className="text-[#8B5A6B]" />
+                  <Shield size={20} className="text-brand" />
                   Wochenbettstation
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1723,7 +1723,7 @@ useEffect(() => {
               <div className="pt-2 pb-2">
                 <a
                   href="tel:+492285052205"
-                  className="inline-flex items-center gap-2 bg-[#8B5A6B] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#6B4453] transition-all hover:scale-105 shadow-md"
+                  className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
                 >
                   <Phone size={18} />
                   Jetzt anrufen
@@ -1747,7 +1747,7 @@ useEffect(() => {
             className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
           >
             <div className="relative">
-              <div className="bg-gradient-to-r from-[#8B5A6B] to-[#6B4453] p-8 text-white">
+              <div className="bg-gradient-to-r from-brand to-brand-dark p-8 text-white">
                 <button
                   onClick={() => setShowHebammenListeModal(false)}
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 flex items-center justify-center transition-colors text-white"
@@ -1801,7 +1801,7 @@ useEffect(() => {
                                   {member.role.split(',').map((activity: string, i: number) => (
                                     <span
                                       key={i}
-                                      className="inline-flex items-center gap-1 px-3 py-1 bg-[#8B5A6B]/10 text-[#8B5A6B] rounded-full text-sm font-medium"
+                                      className="inline-flex items-center gap-1 px-3 py-1 bg-brand/10 text-brand rounded-full text-sm font-medium"
                                     >
                                       <Heart size={14} />
                                       {activity.trim()}
@@ -1813,7 +1813,7 @@ useEffect(() => {
                               {/* Einzugsgebiet */}
                               {member.area && (
                                 <div className="flex items-start gap-2 text-gray-600">
-                                  <MapPin size={18} className="flex-shrink-0 mt-0.5 text-[#8B5A6B]" />
+                                  <MapPin size={18} className="flex-shrink-0 mt-0.5 text-brand" />
                                   <span className="text-sm">{member.area}</span>
                                 </div>
                               )}
@@ -1823,7 +1823,7 @@ useEffect(() => {
                                 {member.phone && (
                                   <a
                                     href={`tel:${member.phone.replace(/[^0-9+]/g, '')}`}
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#8B5A6B] text-white rounded-full text-sm font-medium hover:bg-[#6B4453] transition-all hover:scale-105"
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-brand text-white rounded-full text-sm font-medium hover:bg-brand-dark transition-all hover:scale-105"
                                   >
                                     <Phone size={16} />
                                     {formatPhoneNumber(member.phone)}
