@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[39756,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+3:I[37457,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+:HL["/hebammen/_next/static/chunks/c626b32b0a019d69.css","style"]
+0:{"buildId":"bHh-d3z4LEKZQrXgCwnyh","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/hebammen/_next/static/chunks/c626b32b0a019d69.css","precedence":"next"}]],["$","div",null,{"className":"night outfit_55ba7950-module__VpKl0q__variable dm_sans_32b7406f-module__3C5OcW__variable","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}],"loading":null,"isPartial":false}

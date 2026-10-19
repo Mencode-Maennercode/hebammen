@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[39756,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+3:I[37457,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+:HL["/hebammen/_next/static/chunks/d8619d2f0a5c9810.css","style"]
+0:{"buildId":"bHh-d3z4LEKZQrXgCwnyh","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/hebammen/_next/static/chunks/d8619d2f0a5c9810.css","precedence":"next"}]],["$","div",null,{"className":"mag cormorant_garamond_c799a2aa-module__pppjLG__variable schibsted_grotesk_32847d0d-module__aolQ7q__variable","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}],"loading":null,"isPartial":false}

@@ -1,0 +1,8 @@
+:HL["/hebammen/_next/static/chunks/5d8ea4ebbf057a38.css","style"]
+:HL["/hebammen/_next/static/chunks/68065ceb125323a1.css","style"]
+:HL["/hebammen/_next/static/media/67af958a78cfd7ea-s.p.6e61e244.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/hebammen/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/hebammen/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/hebammen/_next/static/media/f7aa21714c1c53f8-s.p.e3544bb0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/hebammen/_next/static/chunks/43a967efdc8eee98.css","style"]
+0:{"buildId":"bHh-d3z4LEKZQrXgCwnyh","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"sanft","paramType":null,"paramKey":"sanft","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
