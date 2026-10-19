@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[39756,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+3:I[37457,["/hebammen/_next/static/chunks/ff1a16fafef87110.js","/hebammen/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+:HL["/hebammen/_next/static/chunks/4f1d0d1041df20b6.css","style"]
+0:{"buildId":"NnoRNy950C6PLabeimfbP","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/hebammen/_next/static/chunks/4f1d0d1041df20b6.css","precedence":"next"}]],["$","div",null,{"className":"neu bricolage_grotesque_519171cd-module__4MrjKW__variable hanken_grotesk_65efa4b9-module__MWI1_a__variable","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}],"loading":null,"isPartial":false}
