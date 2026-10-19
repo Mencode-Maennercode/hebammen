@@ -44,7 +44,7 @@ export default function RootLayout({
         {/* Gespeichertes Farbschema vor dem ersten Paint setzen (kein Aufblitzen) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var p=new URLSearchParams(location.search).get("theme");var t=p||localStorage.getItem("hebammen-theme");if(t==="logo"||t==="glanz")document.documentElement.setAttribute("data-theme",t)}catch(e){}`,
+            __html: `try{var p=new URLSearchParams(location.search).get("theme");var t=p||localStorage.getItem("hebammen-theme");if(["logo","glanz","salbei","aprikose","lavendel"].indexOf(t)>-1)document.documentElement.setAttribute("data-theme",t)}catch(e){}`,
           }}
         />
       </head>

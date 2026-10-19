@@ -49,6 +49,45 @@
            linear-gradient(135deg, #1CA9D4 0%, #0B7099 46%, #05485F 100%);
 }
 
+/* Farbschema "Salbei": ruhiges Grün, natürlich und beruhigend */
+[data-theme="salbei"] {
+  --brand: #4F7A62;
+  --brand-dark: #365746;
+  --brand-light: #A9C4B3;
+  --brand-soft: #E4EEE7;
+  --brand-cream: #F6F9F6;
+  --brand-gold: #D9B96A;
+  --brand-rgb: 79 122 98;
+  --brand-dark-rgb: 54 87 70;
+  --foreground: #14241b;
+}
+
+/* Farbschema "Aprikose": warmes Terrakotta mit Pfirsich, herzlich und einladend */
+[data-theme="aprikose"] {
+  --brand: #B8573A;
+  --brand-dark: #8F3F28;
+  --brand-light: #E5A98F;
+  --brand-soft: #FBE8DE;
+  --brand-cream: #FFF8F3;
+  --brand-gold: #E3B04B;
+  --brand-rgb: 184 87 58;
+  --brand-dark-rgb: 143 63 40;
+  --foreground: #2a1710;
+}
+
+/* Farbschema "Lavendel": gedämpftes Violett mit Pfirsich-Champagner, sanft und edel */
+[data-theme="lavendel"] {
+  --brand: #6E5F8E;
+  --brand-dark: #4D4068;
+  --brand-light: #BDB3D3;
+  --brand-soft: #ECE8F4;
+  --brand-cream: #F8F6FB;
+  --brand-gold: #D9B38C;
+  --brand-rgb: 110 95 142;
+  --brand-dark-rgb: 77 64 104;
+  --foreground: #1d1830;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

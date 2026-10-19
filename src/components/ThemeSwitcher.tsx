@@ -10,25 +10,21 @@ const LONG_PRESS_MS = 550;
 const MOVE_TOLERANCE = 10;
 
 export const THEMES = [
-  {
-    id: 'rose',
-    name: 'Aktuell',
-    hint: 'Rosé, wie bisher',
-    swatch: ['#8B5A6B', '#C9A2AD', '#F5E6E8'],
-  },
-  {
-    id: 'logo',
-    name: 'Logo-Farben',
-    hint: 'Petrol aus dem Logo',
-    swatch: ['#086183', '#98BDCB', '#DCEBF1'],
-  },
-  {
-    id: 'glanz',
-    name: 'Logo Glanz',
-    hint: 'Petrol mit Glanz und Champagner',
-    swatch: ['linear-gradient(135deg,#1CA9D4,#0B7099 50%,#05485F)', '#7FD0EA', '#D9B877'],
-  },
+  { id: 'rose', name: 'Aktuell', swatch: ['#8B5A6B', '#C9A2AD', '#F5E6E8'] },
+  { id: 'logo', name: 'Logo-Farben', swatch: ['#086183', '#98BDCB', '#DCEBF1'] },
+  { id: 'glanz', name: 'Logo Glanz', swatch: ['linear-gradient(135deg,#1CA9D4,#0B7099 50%,#05485F)', '#7FD0EA', '#D9B877'] },
+  { id: 'salbei', name: 'Salbei', swatch: ['#4F7A62', '#A9C4B3', '#D9B96A'] },
+  { id: 'aprikose', name: 'Aprikose', swatch: ['#B8573A', '#E5A98F', '#E3B04B'] },
+  { id: 'lavendel', name: 'Lavendel', swatch: ['#6E5F8E', '#BDB3D3', '#D9B38C'] },
 ] as const;
+
+const DESIGNS = [
+  { href: '/', name: 'Aktuell', hint: 'Das bisherige Design, mit Farbschemata' },
+  { href: '/neu/', name: 'Waldgrün & Mohn', hint: 'Bögen, seitliches Scrollen' },
+  { href: '/magazin/', name: 'Magazin', hint: 'Editorial mit Serifen, Schwarz und Blau' },
+  { href: '/sanft/', name: 'Sanft', hint: 'Kacheln in Navy, Butter und Himmel' },
+  { href: '/nacht/', name: 'Tag & Nacht', hint: 'Hintergrund wandert vom Morgen zur Nacht' },
+];
 
 type ThemeId = (typeof THEMES)[number]['id'];
 
@@ -57,7 +53,7 @@ function readTheme(): ThemeId {
 
 export default function ThemeSwitcher() {
   const pathname = usePathname() || '/';
-  const onVariant = pathname.startsWith('/neu');
+  const onVariant = pathname.replace(/\/$/, '') !== '';
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [theme, setTheme] = useState<ThemeId>('rose');
@@ -187,7 +183,7 @@ export default function ThemeSwitcher() {
   const [style, setStyle] = useState<React.CSSProperties>({});
   useEffect(() => {
     if (!open) return;
-    const w = Math.min(300, window.innerWidth - 24);
+    const w = Math.min(340, window.innerWidth - 24);
     if (window.innerWidth < 640) {
       setStyle({ left: 12, right: 12, bottom: 12, width: 'auto' });
       return;
@@ -232,7 +228,7 @@ export default function ThemeSwitcher() {
         >
           <div className="flex items-center justify-between px-3 pb-1 pt-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              {onVariant ? 'Design' : 'Farbschema'}
+              {onVariant ? 'Design wechseln' : 'Farbschema'}
             </p>
             <button
               type="button"
@@ -244,61 +240,58 @@ export default function ThemeSwitcher() {
             </button>
           </div>
 
-          {!onVariant &&
-            THEMES.map((t) => {
-              const active = theme === t.id;
+          {!onVariant && (
+            <div className="grid grid-cols-2 gap-1.5 px-1 pb-1">
+              {THEMES.map((t) => {
+                const active = theme === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked={active}
+                    onClick={() => choose(t.id)}
+                    className={`flex items-center gap-2.5 rounded-2xl px-2.5 py-2.5 text-left transition-colors ${
+                      active ? 'bg-gray-100 ring-1 ring-gray-300' : 'hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="flex shrink-0 -space-x-2">
+                      {t.swatch.map((c, i) => (
+                        <span key={i} className="h-6 w-6 rounded-full border-2 border-white shadow" style={{ background: c }} />
+                      ))}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-tight">{t.name}</span>
+                    {active && <Check size={16} className="shrink-0 text-gray-900" />}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          <div className={onVariant ? '' : 'mt-1 border-t border-gray-100 pt-1'}>
+            <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Komplett andere Designs
+            </p>
+            {DESIGNS.map((d) => {
+              const active = d.href === '/' ? !onVariant : pathname.startsWith(d.href.replace(/\/$/, ''));
               return (
-                <button
-                  key={t.id}
-                  type="button"
-                  role="menuitemradio"
-                  aria-checked={active}
-                  onClick={() => choose(t.id)}
-                  className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left transition-colors ${
-                    active ? 'bg-gray-100' : 'hover:bg-gray-50'
+                <Link
+                  key={d.href}
+                  href={d.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? 'page' : undefined}
+                  className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors ${
+                    active ? 'bg-gray-900 text-white' : 'hover:bg-gray-50'
                   }`}
                 >
-                  <span className="flex -space-x-2">
-                    {t.swatch.map((c, i) => (
-                      <span
-                        key={i}
-                        className="h-7 w-7 rounded-full border-2 border-white shadow"
-                        style={{ background: c }}
-                      />
-                    ))}
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold leading-tight">{d.name}</span>
+                    <span className={`block truncate text-xs ${active ? 'text-white/70' : 'text-gray-500'}`}>{d.hint}</span>
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold leading-tight">{t.name}</span>
-                    <span className="block truncate text-xs text-gray-500">{t.hint}</span>
-                  </span>
-                  {active && <Check size={18} className="shrink-0 text-gray-900" />}
-                </button>
+                  {active ? <Check size={16} className="shrink-0" /> : <span aria-hidden>→</span>}
+                </Link>
               );
             })}
-
-          <div className={`${onVariant ? '' : 'mt-1 border-t border-gray-100 pt-1'}`}>
-            <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              {onVariant ? 'Wechseln' : 'Komplett anderes Design'}
-            </p>
-            {onVariant ? (
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-between rounded-2xl px-3 py-3 text-sm font-semibold hover:bg-gray-50"
-              >
-                Zurück zum aktuellen Design
-                <span aria-hidden>←</span>
-              </Link>
-            ) : (
-              <Link
-                href="/neu/"
-                onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-between rounded-2xl bg-gray-900 px-3 py-3 text-sm font-semibold text-white hover:bg-gray-800"
-              >
-                Neues Design ansehen
-                <span aria-hidden>→</span>
-              </Link>
-            )}
           </div>
         </div>
       )}

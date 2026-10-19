@@ -1,0 +1,64 @@
+/* Gemeinsame Detail-Fenster. Jedes Design setzt auf seinem Wurzelelement diese Variablen:
+   --sc-paper, --sc-ink, --sc-muted, --sc-line, --sc-accent, --sc-on-accent, --sc-soft,
+   --sc-r (Flächenradius), --sc-img-r (Bildradius), --sc-pill (Button-Radius),
+   --sc-display (Schrift für Überschriften), --sc-display-weight, --sc-display-ls */
+
+.sc-sheet { position: fixed; inset: 0; z-index: 90; display: flex; justify-content: flex-end; visibility: hidden; transition: visibility 0s 0.6s; font-family: inherit; }
+.sc-sheet[data-open="true"] { visibility: visible; transition: visibility 0s; }
+.sc-sheet__bg { position: absolute; inset: 0; background: rgb(0 0 0 / 0.55); backdrop-filter: blur(3px); opacity: 0; transition: opacity 0.5s; }
+.sc-sheet[data-open="true"] .sc-sheet__bg { opacity: 1; }
+.sc-sheet__panel { position: relative; width: min(100%, 760px); height: 100%; background: var(--sc-paper); color: var(--sc-ink); overflow-y: auto; transform: translateX(102%); transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1); border-radius: var(--sc-r) 0 0 var(--sc-r); font-size: 1.0625rem; line-height: 1.6; }
+.sc-sheet[data-open="true"] .sc-sheet__panel { transform: none; }
+.sc-sheet[data-wide="true"] .sc-sheet__panel { width: min(100%, 1000px); }
+.sc-sheet[data-center="true"] { justify-content: center; align-items: center; padding: 1.25rem; }
+.sc-sheet[data-center="true"] .sc-sheet__panel { height: auto; max-height: 100%; width: min(100%, 980px); transform: translateY(40px) scale(0.97); opacity: 0; border-radius: var(--sc-r); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s; }
+.sc-sheet[data-center="true"][data-open="true"] .sc-sheet__panel { transform: none; opacity: 1; }
+.sc-sheet__x { position: sticky; top: 1rem; float: right; margin: 1rem 1rem 0 0; z-index: 3; width: 48px; height: 48px; border-radius: var(--sc-pill); background: var(--sc-ink); color: var(--sc-paper); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border: 0; transition: background 0.3s, color 0.3s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.sc-sheet__x:hover { background: var(--sc-accent); color: var(--sc-on-accent); transform: rotate(90deg); }
+.sc-sheet :focus-visible { outline: 3px solid var(--sc-accent); outline-offset: 3px; }
+.sc-sheet__body { padding: clamp(1.5rem, 4vw, 3.5rem); clear: both; }
+.sc-sheet h2, .sc-sheet h3, .sc-sheet h4 { font-family: var(--sc-display), system-ui, sans-serif; font-weight: var(--sc-display-weight, 600); letter-spacing: var(--sc-display-ls, -0.03em); line-height: 1.05; margin: 0; }
+.sc-sheet p { margin: 0; }
+.sc-sheet h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 1.4rem; padding-right: 3rem; text-wrap: balance; }
+.sc-hero { position: relative; aspect-ratio: 16 / 9; border-radius: var(--sc-r); overflow: hidden; margin-bottom: 2rem; }
+.sc-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sc-intro { font-size: clamp(1.1rem, 1.5vw, 1.3rem); border-left: 4px solid var(--sc-accent); padding-left: 1.2rem; color: var(--sc-muted); }
+.sc-sec { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 1.5rem 2rem; padding-block: 2rem; margin-top: 2rem; border-top: 1.5px solid var(--sc-line); }
+.sc-sec--solo { grid-template-columns: 1fr; }
+.sc-sec h3 { font-size: clamp(1.4rem, 2.2vw, 1.9rem); margin-bottom: 0.9rem; }
+.sc-sec p { color: var(--sc-muted); }
+.sc-sec p + p { margin-top: 0.8rem; }
+.sc-note { font-size: 0.95rem; margin-top: 0.8rem; color: var(--sc-muted); }
+.sc-note strong { color: var(--sc-ink); }
+.sc-link { text-decoration: underline; text-underline-offset: 4px; }
+.sc-sec__img { aspect-ratio: 4 / 3; border-radius: var(--sc-img-r); overflow: hidden; position: relative; align-self: start; }
+.sc-sec__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sc-list { display: grid; gap: 1.1rem; margin-top: 0.4rem; }
+.sc-list h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.sc-cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.sc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; height: 52px; padding: 0 1.5rem; border-radius: var(--sc-pill); font-weight: 600; text-decoration: none; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, color 0.3s; max-width: 100%; text-align: center; }
+.sc-btn:active { transform: scale(0.97); }
+.sc-btn--accent { background: var(--sc-accent); color: var(--sc-on-accent); }
+.sc-btn--accent:hover { background: var(--sc-ink); color: var(--sc-paper); }
+.sc-btn--ink { background: var(--sc-ink); color: var(--sc-paper); }
+.sc-btn--ink:hover { background: var(--sc-accent); color: var(--sc-on-accent); }
+.sc-box { background: var(--sc-soft); border-radius: var(--sc-r); padding: 1.6rem; margin: 1.8rem 0; }
+.sc-box h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.sc-video { aspect-ratio: 16 / 9; border-radius: var(--sc-img-r); overflow: hidden; background: #000; }
+.sc-video iframe { width: 100%; height: 100%; border: 0; }
+.sc-person { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 2rem; align-items: start; }
+.sc-person__img { position: relative; overflow: hidden; border-radius: var(--sc-img-r); aspect-ratio: 3 / 4.1; background: var(--sc-soft); }
+.sc-person__img img, .sc-ini + img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.sc-ini { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--sc-display), system-ui; font-size: 3.5rem; opacity: 0.45; color: var(--sc-ink); }
+.sc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.sc-tags span { padding: 0.4rem 0.9rem; border-radius: var(--sc-pill); background: var(--sc-soft); font-size: 0.92rem; font-weight: 500; }
+@media (max-width: 760px) {
+  .sc-sheet__panel { width: 100%; height: 94%; margin-top: auto; transform: translateY(102%); border-radius: var(--sc-r) var(--sc-r) 0 0; }
+  .sc-sheet[data-open="true"] .sc-sheet__panel { transform: none; }
+  .sc-sheet { align-items: flex-end; }
+  .sc-sec, .sc-person { grid-template-columns: 1fr; }
+  .sc-person__img { max-width: 280px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-sheet__panel, .sc-sheet__bg { transition-duration: 0.01s !important; }
+}
