@@ -1,8 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Check, Palette, X } from 'lucide-react';
 
 const STORAGE_KEY = 'hebammen-theme';
@@ -12,19 +10,8 @@ const MOVE_TOLERANCE = 10;
 export const THEMES = [
   { id: 'rose', name: 'Aktuell', swatch: ['#8B5A6B', '#C9A2AD', '#F5E6E8'] },
   { id: 'logo', name: 'Logo-Farben', swatch: ['#086183', '#98BDCB', '#DCEBF1'] },
-  { id: 'glanz', name: 'Logo Glanz', swatch: ['linear-gradient(135deg,#1CA9D4,#0B7099 50%,#05485F)', '#7FD0EA', '#D9B877'] },
-  { id: 'salbei', name: 'Salbei', swatch: ['#4F7A62', '#A9C4B3', '#D9B96A'] },
-  { id: 'aprikose', name: 'Aprikose', swatch: ['#B8573A', '#E5A98F', '#E3B04B'] },
-  { id: 'lavendel', name: 'Lavendel', swatch: ['#6E5F8E', '#BDB3D3', '#D9B38C'] },
+  { id: 'sand', name: 'Sand', swatch: ['#7F6D5E', '#C9BDB0', '#F0EBE4'] },
 ] as const;
-
-const DESIGNS = [
-  { href: '/', name: 'Aktuell', hint: 'Das bisherige Design, mit Farbschemata' },
-  { href: '/neu/', name: 'Waldgrün & Mohn', hint: 'Bögen, seitliches Scrollen' },
-  { href: '/magazin/', name: 'Magazin', hint: 'Editorial mit Serifen, Schwarz und Blau' },
-  { href: '/sanft/', name: 'Sanft', hint: 'Kacheln in Navy, Butter und Himmel' },
-  { href: '/nacht/', name: 'Tag & Nacht', hint: 'Hintergrund wandert vom Morgen zur Nacht' },
-];
 
 type ThemeId = (typeof THEMES)[number]['id'];
 
@@ -52,8 +39,6 @@ function readTheme(): ThemeId {
 }
 
 export default function ThemeSwitcher() {
-  const pathname = usePathname() || '/';
-  const onVariant = pathname.replace(/\/$/, '') !== '';
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [theme, setTheme] = useState<ThemeId>('rose');
@@ -205,14 +190,12 @@ export default function ThemeSwitcher() {
         <button
           type="button"
           onClick={() => setShowHint(false)}
-          className={`fixed z-[70] left-1/2 -translate-x-1/2 bottom-5 w-max max-w-[calc(100vw-2rem)] text-left flex items-center gap-3 rounded-full px-5 py-3 text-sm font-medium shadow-2xl animate-fade-in-up ${
-            onVariant ? 'bg-[#12302A] text-[#F4F6F1]' : 'bg-gray-900 text-white'
-          }`}
+          className="fixed z-[70] left-1/2 -translate-x-1/2 bottom-5 w-max max-w-[calc(100vw-2rem)] text-left flex items-center gap-3 rounded-full px-5 py-3 text-sm font-medium shadow-2xl animate-fade-in-up bg-gray-900 text-white"
         >
           <Palette size={18} className="shrink-0" />
           <span>
             {isTouch ? 'Finger lange auf den Bildschirm legen' : 'Rechte Maustaste irgendwo auf der Seite'}
-            {onVariant ? ': Designs wechseln' : ': Farbschema ändern'}
+            : Farbschema ändern
           </span>
         </button>
       )}
@@ -221,14 +204,14 @@ export default function ThemeSwitcher() {
         <div
           ref={menuRef}
           role="menu"
-          aria-label="Design und Farbschema"
+          aria-label="Farbschema"
           data-no-theme-menu
           style={style}
           className="fixed z-[80] rounded-3xl border border-black/10 bg-white/95 p-2 text-gray-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.45)] backdrop-blur-xl animate-fade-in-up"
         >
           <div className="flex items-center justify-between px-3 pb-1 pt-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              {onVariant ? 'Design wechseln' : 'Farbschema'}
+              Farbschema
             </p>
             <button
               type="button"
@@ -240,8 +223,7 @@ export default function ThemeSwitcher() {
             </button>
           </div>
 
-          {!onVariant && (
-            <div className="grid grid-cols-2 gap-1.5 px-1 pb-1">
+          <div className="grid grid-cols-2 gap-1.5 px-1 pb-1">
               {THEMES.map((t) => {
                 const active = theme === t.id;
                 return (
@@ -265,33 +247,6 @@ export default function ThemeSwitcher() {
                   </button>
                 );
               })}
-            </div>
-          )}
-
-          <div className={onVariant ? '' : 'mt-1 border-t border-gray-100 pt-1'}>
-            <p className="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Komplett andere Designs
-            </p>
-            {DESIGNS.map((d) => {
-              const active = d.href === '/' ? !onVariant : pathname.startsWith(d.href.replace(/\/$/, ''));
-              return (
-                <Link
-                  key={d.href}
-                  href={d.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={active ? 'page' : undefined}
-                  className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors ${
-                    active ? 'bg-gray-900 text-white' : 'hover:bg-gray-50'
-                  }`}
-                >
-                  <span className="min-w-0">
-                    <span className="block text-sm font-semibold leading-tight">{d.name}</span>
-                    <span className={`block truncate text-xs ${active ? 'text-white/70' : 'text-gray-500'}`}>{d.hint}</span>
-                  </span>
-                  {active ? <Check size={16} className="shrink-0" /> : <span aria-hidden>→</span>}
-                </Link>
-              );
-            })}
           </div>
         </div>
       )}
