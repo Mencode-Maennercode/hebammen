@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const PARTNERINNEN = [
   'Al Arroudi, Chaymae', 'Bauch, Susanne', 'Becker, Manuela', 'Bijaleh, Lea', 'Brenner, Silke',
-  'Fenske, Leonie', 'Henke, Jill', 'Karkos, Rahel', 'Leydecker, Vivien', 'Lichtenthal, Anna',
+  'Fenske, Leonie', 'Hehnke, Jill', 'Karkos, Rahel', 'Leydecker, Vivien', 'Lichtenthal, Anna',
   'Marc, Annika', 'Micha, Christiane', 'Raes, Ana', 'Reis, Jolanta', 'Sanne, Rebekka',
   'Schmellekamp, Stefanie', 'Thielmann, Katharina', 'Wald, Franziska', 'Walter, Valentina',
   'Werner, Laura', 'Zerwas, Heike',
@@ -26,7 +26,7 @@ export default function ImpressumSeite() {
         </p>
       </Abschnitt>
 
-      <Abschnitt titel="Angaben gemäß § 5 DDG">
+      <Abschnitt titel="Angaben gemäß § 5 TMG">
         <p>
           {kontakt.rechtsform}
           <br />
@@ -47,7 +47,7 @@ export default function ImpressumSeite() {
 
       <Abschnitt titel="Kontakt">
         <p>
-          Telefon: <a href={`tel:${kontakt.termine.tel}`}>{kontakt.termine.anzeige}</a>
+          Telefon: <a href="tel:+492285052205">+49 (0) 2285052205</a>
           <br />
           E-Mail: <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>
         </p>
@@ -113,7 +113,7 @@ export default function ImpressumSeite() {
         <p>Geltungsraum der Versicherung: Deutschland</p>
       </Abschnitt>
 
-      <Abschnitt titel="Redaktionell verantwortlich (§ 18 Abs. 2 MStV)">
+      <Abschnitt titel="Redaktionell verantwortlich">
         <p>
           Verantwortlich für die redaktionellen Inhalte dieser Website und unseres Instagram-Profils:
         </p>
@@ -124,20 +124,16 @@ export default function ImpressumSeite() {
         </p>
       </Abschnitt>
 
-      <Abschnitt titel="Verbraucherstreitbeilegung">
+      <Abschnitt titel="Verbraucherstreitbeilegung/Universalschlichtungsstelle">
         <p>
           Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
           Verbraucherschlichtungsstelle teilzunehmen.
         </p>
       </Abschnitt>
 
-      <Abschnitt titel="Bildnachweise">
-        <p>
-          Fotos des Teams und aus dem Kreißsaal: Hebammen am Marienhospital Bonn. Einzelne Stimmungsbilder und
-          das Video auf der Startseite stammen von <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>{' '}
-          (lizenzfrei nutzbar).
-        </p>
-      </Abschnitt>
+      <p className="text-sm text-gray-500">
+        Quelle: <a href="https://www.e-recht24.de/impressum-generator.html" target="_blank" rel="noopener noreferrer">e-recht24.de</a>
+      </p>
     </Rechtsseite>
   );
 }
