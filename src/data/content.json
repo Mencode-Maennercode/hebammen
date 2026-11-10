@@ -275,7 +275,7 @@
     {
       "titel": "Neue Website",
       "text": "Wie eine Geburt, dauert auch manchmal der Bau einer Website seine Zeit! Doch hier ist sie, wir schauen mal wie lang dieser text wird und wie die formatierung ist. es sollte irgendwann abgekürzt werden und dann nurnoch im popup auftauchen, sonst wäre das sehr doof. asdasdsdjfhgdkjhfkjsdkjahsdkjfgkjshdkjfhskdhglkdhfglkshdlskgflkshdglkhdslkhglkdnfknsldflksdlgksldkgflksdhglkshdlgkhsdlkghslkdhglksdhglkhdslkghsdlkghlskdf wie weit? sdffhglkdsfglkhdfkghdlfg",
-      "datum": "Thu May 28 2026 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)",
+      "datum": "Thu May 28 2026 00:00:00 GMT+0200 (Central European Summer Time)",
       "kategorie": "Organisatorisch",
       "bildname": "/aktuelles/1-neue-website.webp"
     },
@@ -428,5 +428,5 @@
   ],
   "overallRating": 5,
   "totalReviews": 13,
-  "generatedAt": "2026-11-10T11:56:33.862Z"
+  "generatedAt": "2026-11-10T14:30:38.141Z"
 }
