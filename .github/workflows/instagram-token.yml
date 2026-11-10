@@ -1,0 +1,27 @@
+name: Instagram-Token verlaengern
+
+# Ein Long-Lived-Token der Instagram API laeuft nach 60 Tagen ab, wenn er
+# nicht verlaengert wird. Jeder Website-Build verlaengert ihn bereits; dieser
+# Lauf stellt sicher, dass das auch in Monaten ohne Build passiert.
+on:
+  schedule:
+    - cron: '17 4 1 * *' # am 1. jedes Monats
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Token verlaengern
+        env:
+          TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "Kein Token hinterlegt."; exit 0; fi
+          RES=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$TOKEN")
+          if echo "$RES" | grep -q '"expires_in"'; then
+            echo "Token verlaengert."
+          else
+            echo "Verlaengerung fehlgeschlagen:"
+            echo "$RES" | sed -E 's/"access_token":"[^"]*"/"access_token":"***"/'
+            exit 1
+          fi

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, Palette, X } from 'lucide-react';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const STORAGE_KEY = 'hebammen-theme';
 const LONG_PRESS_MS = 550;
@@ -41,6 +42,7 @@ function readTheme(): ThemeId {
 }
 
 export default function ThemeSwitcher() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [theme, setTheme] = useState<ThemeId>('rose');
@@ -61,7 +63,7 @@ export default function ThemeSwitcher() {
     const touch = window.matchMedia('(pointer: coarse)').matches;
     setIsTouch(touch);
     const q = new URLSearchParams(window.location.search).get('theme');
-    if (q && THEMES.some((t) => t.id === q)) {
+    if (q && THEMES.some((th) => th.id === q)) {
       applyTheme(q as ThemeId);
     }
     setTheme(readTheme());
@@ -196,8 +198,8 @@ export default function ThemeSwitcher() {
         >
           <Palette size={18} className="shrink-0" />
           <span>
-            {isTouch ? 'Finger lange auf den Bildschirm legen' : 'Rechte Maustaste irgendwo auf der Seite'}
-            : Farbschema ändern
+            {isTouch ? t("Finger lange auf den Bildschirm legen") : t("Rechte Maustaste irgendwo auf der Seite")}
+            {": "}{t("Farbschema ändern")}
           </span>
         </button>
       )}
@@ -206,19 +208,19 @@ export default function ThemeSwitcher() {
         <div
           ref={menuRef}
           role="menu"
-          aria-label="Farbschema"
+          aria-label={t("Farbschema")}
           data-no-theme-menu
           style={style}
           className="fixed z-[80] rounded-3xl border border-black/10 bg-white/95 p-2 text-gray-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.45)] backdrop-blur-xl animate-fade-in-up"
         >
           <div className="flex items-center justify-between px-3 pb-1 pt-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Farbschema
+              {t("Farbschema")}
             </p>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Menü schließen"
+              aria-label={t("Menü schließen")}
               className="flex h-7 w-7 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100"
             >
               <X size={16} />
@@ -226,25 +228,25 @@ export default function ThemeSwitcher() {
           </div>
 
           <div className="grid grid-cols-2 gap-1.5 px-1 pb-1">
-              {THEMES.map((t) => {
-                const active = theme === t.id;
+              {THEMES.map((th) => {
+                const active = theme === th.id;
                 return (
                   <button
-                    key={t.id}
+                    key={th.id}
                     type="button"
                     role="menuitemradio"
                     aria-checked={active}
-                    onClick={() => choose(t.id)}
+                    onClick={() => choose(th.id)}
                     className={`flex items-center gap-2.5 rounded-2xl px-2.5 py-2.5 text-left transition-colors ${
                       active ? 'bg-gray-100 ring-1 ring-gray-300' : 'hover:bg-gray-50'
                     }`}
                   >
                     <span className="flex shrink-0 -space-x-2">
-                      {t.swatch.map((c, i) => (
+                      {th.swatch.map((c, i) => (
                         <span key={i} className="h-6 w-6 rounded-full border-2 border-white shadow" style={{ background: c }} />
                       ))}
                     </span>
-                    <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-tight">{t.name}</span>
+                    <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-tight">{t(th.name)}</span>
                     {active && <Check size={16} className="shrink-0 text-gray-900" />}
                   </button>
                 );

@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Inicio",
+  "Leistungen": "Servicios",
+  "Team": "Equipo",
+  "Über uns": "Sobre nosotras",
+  "Kontakt": "Contacto",
+  "Anrufen": "Llamar",
+  "Hauptnavigation": "Navegación principal",
+  "Sprache auswählen": "Elegir idioma",
+  "Schließen": "Cerrar",
+  "Menü schließen": "Cerrar menú",
+  "Mehr erfahren": "Más información",
+  "Mehr dazu": "Más información",
+  "Zur Startseite": "Volver al inicio",
+  "Hebammen am Marienhospital Bonn": "Matronas del Marienhospital de Bonn",
+  "Hebammen am Marienhospital Bonn Logo": "Logotipo de las matronas del Marienhospital de Bonn",
+  "Navigation": "Navegación",
+  "Rechtliches": "Información legal",
+  "Impressum": "Aviso legal",
+  "Datenschutz": "Protección de datos",
+  "Alle Rechte vorbehalten.": "Todos los derechos reservados.",
+  "Instagram öffnen": "Abrir Instagram",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "Te damos la bienvenida",
+  "Ihre Hebammen in": "Tus matronas en",
+  "Bonn": "Bonn",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "El parto es una experiencia personal e inolvidable. Te acompañamos con cariño y profesionalidad en este camino tan especial.",
+  "Kontakt aufnehmen": "Contactar",
+  "Geburten jährlich": "partos al año",
+  "Hingabe": "dedicación",
+  "Erreichbarkeit": "disponibilidad",
+
+  // Aktuelles
+  "Aktuelles": "Novedades",
+  "Neuigkeiten von uns": "Nuestras novedades",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Mantente informada sobre la actualidad y la información importante.",
+  "Nach links scrollen": "Desplazar a la izquierda",
+  "Nach rechts scrollen": "Desplazar a la derecha",
+
+  // Leistungen
+  "Unsere Leistungen": "Nuestros servicios",
+  "Rundum gut betreut": "Atención integral",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "Desde el embarazo hasta el posparto: te acompañamos en cada etapa con conocimiento y corazón.",
+  "Vor der Geburt": "Antes del parto",
+  "Während der Geburt": "Durante el parto",
+  "Nach der Geburt": "Después del parto",
+  "Hebammenliste": "Lista de matronas",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Preparación a fondo para el parto con métodos probados y un acompañamiento cercano.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "El parto es una experiencia personal e inolvidable. Estamos a tu lado con nuestra experiencia.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Acompañamiento profesional y cercano para empezar bien la nueva vida en familia.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Encuentra la matrona adecuada de nuestro equipo, con todos sus datos de contacto y áreas de trabajo.",
+  "Oft gestellte Fragen": "Preguntas frecuentes",
+  "Häufig gestellte Fragen": "Preguntas frecuentes",
+  "Häufige Fragen": "Preguntas frecuentes",
+  "FAQ": "Preguntas frecuentes",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Aquí encontrarás respuestas a las preguntas más frecuentes sobre nuestros servicios.",
+
+  // Team
+  "Unser Team": "Nuestro equipo",
+  "Lernen Sie uns kennen": "Conócenos",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Matronas con experiencia, corazón y pasión por su profesión.",
+  "Werde Teil unseres Teams": "Únete a nuestro equipo",
+  "Werde Teil unseres Teams!": "¡Únete a nuestro equipo!",
+  "Vorheriges Teammitglied": "Compañera anterior",
+  "Nächstes Teammitglied": "Siguiente compañera",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "A tu lado con corazón y profesionalidad",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "Somos matronas que trabajamos en el St. Marien Hospital de Bonn en un sistema de guardias por contrato. Nuestro equipo une muchos años de experiencia con los métodos obstétricos más modernos.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Cada parto es único y nuestra misión es acompañarte de forma personal y cercana en esta etapa tan especial. Tu bienestar y el de tu bebé son siempre lo primero.",
+  "24/7 Erreichbar": "Disponibles 24/7",
+  "Rund um die Uhr für Sie da": "A tu lado las 24 horas",
+  "Geprüfte Qualität": "Calidad acreditada",
+  "Höchste Standards": "Los más altos estándares",
+  "Einblick in unseren Kreißsaal": "Conoce nuestra sala de partos",
+
+  // Bewertungen
+  "Bewertungen": "opiniones",
+  "Was Familien sagen": "Lo que dicen las familias",
+  "von 5 Sternen auf Google": "de 5 estrellas en Google",
+  "Mehr lesen": "Leer más",
+  "Weniger anzeigen": "Mostrar menos",
+  "Alle Bewertungen auf Google": "Todas las opiniones en Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "Te esperamos",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "¿Tienes preguntas o quieres pedir cita? ¡Ponte en contacto con nosotras!",
+  "Kontaktdaten": "Datos de contacto",
+  "Termine Sprechstunde / Geburtsplanung": "Citas: consulta / planificación del parto",
+  "Zentrale (Pforte)": "Centralita (recepción)",
+  "E-Mail": "Correo electrónico",
+  "Adresse": "Dirección",
+  "Folgen Sie uns": "Síguenos",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "¡Mantente al día y síguenos en Instagram!",
+  "Beitrag auf Instagram öffnen": "Abrir publicación en Instagram",
+  "Standort Marienhospital Bonn": "Ubicación del Marienhospital de Bonn",
+  "Karte laden": "Cargar mapa",
+  "Route planen": "Cómo llegar",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "Al cargar el mapa se transmiten datos a Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "¿Lista para el siguiente paso?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Pide cita para inscribirte para el parto, llama al 0228 / 505 2201 para una consulta de planificación del parto o envíanos tus preguntas por correo electrónico.",
+  "Zur Geburtsanmeldung": "Inscribirse para el parto",
+  "Geburtsplanung": "Planificación del parto",
+  "E-Mail schreiben": "Escribir un correo",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "Si el embarazo transcurre con normalidad, tu ginecólogo/a y tu matrona son tus principales contactos. Si empiezan las contracciones, rompes aguas o necesitas ayuda urgente por otro motivo, llama a la sala de partos.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "Si surgen riesgos durante el embarazo, nuestro equipo médico planifica el parto contigo en nuestra consulta prenatal. Además del asesoramiento, hablamos de tus ideas y necesidades.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "Todo ello nos da una visión completa de la situación. Así estamos preparadas y podemos atenderte a ti y a tu bebé de la mejor manera.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Por favor, trae un volante de derivación de tu especialista.",
+  "Für einen Termin:": "Para pedir cita:",
+  "Geburtseinleitung": "Inducción del parto",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "Cuando hay una indicación médica, inducimos el parto en nuestra sala de partos. El método se adapta a ti, a tu cuerpo y a tu bebé.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "Para la inducción quedas ingresada, de modo que estás conectada en todo momento con la sala de partos para los controles de monitorización (CTG).",
+  "Stationärer Aufenthalt & weitere Angebote": "Ingreso hospitalario y otros servicios",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "Durante el ingreso realizamos a diario monitorizaciones según sea necesario y estamos a tu disposición para dudas y asesoramiento.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Algunas compañeras ofrecen terapias alternativas como acupuntura, vendaje neuromuscular (taping) y láser, para favorecer el bienestar de las futuras mamás.",
+  "Weitere Angebote": "Otros servicios",
+  "Geburtsanmeldung": "Inscripción para el parto",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "Puedes pedir cita para la inscripción cómodamente en línea a través del portal de pacientes de las clínicas GFO.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "El parto es una experiencia personal e inolvidable. Nos importa crear para vosotros, futuros padres, un ambiente tranquilo y agradable, con profesionalidad y cercanía humana.",
+  "Ihre Begleitung im Kreißsaal": "Tu acompañamiento en la sala de partos",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "Nuestras 5 salas de partos ofrecen espacio suficiente para adoptar distintas posturas durante las contracciones. Con palabras de ánimo y pautas de respiración te acompañamos durante todo el parto.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "La comunicación es muy importante para nosotras. Te explicamos con detalle cualquier medida médica necesaria según tu situación, para que te sientas siempre segura e informada.",
+  "Begleitung im Kreißsaal": "Acompañamiento en la sala de partos",
+  "Schmerzerleichterung": "Alivio del dolor",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "Si deseas aliviar el dolor, te ofrecemos distintos métodos: desde calor, masaje, aromaterapia y homeopatía hasta analgésicos y anestesia epidural. Puedes traer tus propios aceites aromáticos.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "Te asesoramos con gusto y elegimos juntas la opción adecuada para tu situación y la fase del parto.",
+  "Unser Team für Sie": "Nuestro equipo para ti",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "Nuestro equipo de matronas es el principal responsable de tu atención. Nos apoyan nuestras asistentes médicas y el equipo de médicos. Además, formamos a estudiantes de matrona.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "Como centro perinatal de nivel 1 colaboramos estrechamente con los pediatras, que están en el propio hospital y acuden a la sala de partos lo antes posible cuando se les necesita.",
+  "Besondere Geburtssituationen": "Situaciones especiales de parto",
+  "Frühgeburtlichkeit": "Parto prematuro",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "Como centro perinatal de nivel 1 ofrecemos el máximo nivel de atención en cualquier semana de embarazo. Estamos a tu lado ya ante contracciones prematuras, insuficiencia cervical o monitorizaciones alteradas.",
+  "Beckenendlagen & Zwillinge": "Presentación de nalgas y gemelos",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "Con presentación de nalgas o gemelos es posible un parto natural con nosotras. Además ofrecemos la versión cefálica externa a partir de la semana 37.",
+  "Zustand nach Kaiserschnitt / VBAC": "Cesárea previa / PVDC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "Hacemos lo posible para que puedas tener un parto vaginal. Si fuera necesaria una cesárea, tu acompañante puede estar presente.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "Con presentación de nalgas, gemelos o cesárea previa es necesaria una consulta de planificación del parto. Citas en el",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "Las primeras horas y días tras el parto son especiales. Te acompañamos con cariño desde el primer momento en la sala de partos y en la planta de maternidad.",
+  "Die ersten Stunden": "Las primeras horas",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "Después del parto seguimos atendiéndote en la sala de partos durante unas 2 horas y cuidamos de tu bienestar y el de tu bebé.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "El contacto piel con piel entre tú y tu bebé es muy importante para nosotras. Garantizamos el vínculo (bonding) justo después del parto: ese primer momento juntos es insustituible.",
+  "Bonding nach der Geburt": "Vínculo tras el parto",
+  "Stillen & Erstuntersuchung": "Lactancia y primera exploración",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "La primera toma al pecho tiene lugar en la sala de partos: te ayudamos a manejar al bebé y respondemos a todas tus preguntas.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "Las matronas realizamos la primera exploración del recién nacido (U1) junto contigo. Un momento íntimo en el que puedes verlo todo y preguntar lo que quieras.",
+  "Wochenbettstation": "Planta de maternidad",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Después te trasladamos a la planta de maternidad, donde te recibirán con cariño. Allí te atenderán principalmente nuestras compañeras de cuidados posparto y neonatales, así como las asesoras de lactancia.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "Con nuestra visita diaria seguimos apoyándote y asesorándote en tu recuperación, la lactancia y todo lo relacionado con tu recién nacido.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Nuestras matronas",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Encuentra la matrona adecuada con todos sus datos de contacto",
+  "Lade Hebammenliste...": "Cargando la lista de matronas...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "Actualmente no hay matronas con servicios específicos.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "¿Buscas un lugar donde se valore tu trabajo y puedas acompañar pequeños milagros cada día?",
+  "Dann bist du bei uns genau richtig.": "Entonces este es tu sitio.",
+  "Wir suchen Verstärkung:": "Buscamos:",
+  "Dienstbeleghebamme (m/w/d)": "Matrona de guardia por contrato (h/m/d)",
+  "Bewerbung einreichen": "Enviar candidatura",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Envía tu candidatura a esta dirección de correo:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "¡Tenemos muchas ganas de conocerte!",
+
+  // Film
+  "Film abspielen": "Reproducir vídeo",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "El vídeo se carga desde YouTube. Al hacerlo se transmiten datos a Google.",
+
+  // Farbschema
+  "Farbschema": "Combinación de colores",
+  "Farbschema ändern": "cambiar colores",
+  "Finger lange auf den Bildschirm legen": "Mantén pulsada la pantalla",
+  "Rechte Maustaste irgendwo auf der Seite": "Clic derecho en cualquier parte",
+  "Aktuell": "Actual",
+  "Logo-Farben": "Colores del logo",
+  "Sand": "Arena",
+  "Beige": "Beis",
+  "Champagner": "Champán",
+};
+
+export default dict;

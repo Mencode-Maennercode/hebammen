@@ -6,15 +6,18 @@ import { Calendar, Clock, ChevronRight, ChevronLeft, X } from 'lucide-react';
 import Image from 'next/image';
 import { AktuellesEntry } from '@/lib/content-types';
 import { fetchAktuellesData } from '@/lib/google-api-client';
+import { asset } from '@/lib/site';
+import { useI18n, LOCALES } from '@/i18n/I18nProvider';
 
-function formatDatum(datum: string): string {
+function formatDatum(datum: string, locale = 'de-DE'): string {
   if (!datum) return '';
   const d = new Date(datum);
   if (isNaN(d.getTime())) return datum;
-  return d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+  return d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 export default function Aktuelles({ preloadedData }: { preloadedData?: AktuellesEntry[] }) {
+  const { t, lang } = useI18n();
   const [entries, setEntries] = useState<AktuellesEntry[]>(preloadedData || []);
   const [loading, setLoading] = useState(!preloadedData);
   const [selectedPost, setSelectedPost] = useState<AktuellesEntry | null>(null);
@@ -97,22 +100,22 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
         >
           <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
             <Calendar size={20} />
-            <span>Aktuelles</span>
+            <span>{t("Aktuelles")}</span>
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Neuigkeiten von uns
+            {t("Neuigkeiten von uns")}
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-gray-600">
-            Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.
+            {t("Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.")}
           </p>
         </motion.div>
 
-        <div className="relative">
+        <div className="relative" dir="ltr">
           {canScrollLeft && (
             <button
               onClick={() => scrollBy('left')}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand hover:bg-brand-soft hover:scale-110 transition-all duration-200"
-              aria-label="Nach links scrollen"
+              aria-label={t("Nach links scrollen")}
             >
               <ChevronLeft size={20} />
             </button>
@@ -135,7 +138,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 {entry.bildname && (
                   <div className="aspect-[16/10] relative overflow-hidden">
                     <Image
-                      src={entry.bildname}
+                      src={asset(entry.bildname)}
                       alt={entry.titel}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -157,14 +160,14 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                     </span>
                   )}
                   {entry.datum && (
-                    <p className="text-sm text-brand font-medium mb-2">{formatDatum(entry.datum)}</p>
+                    <p className="text-sm text-brand font-medium mb-2">{formatDatum(entry.datum, LOCALES[lang])}</p>
                   )}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand transition-colors">
                     {entry.titel}
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">{entry.text}</p>
                   <div className="flex items-center gap-2 text-brand font-medium group-hover:gap-3 transition-all">
-                    <span>Mehr erfahren</span>
+                    <span>{t("Mehr erfahren")}</span>
                     <ChevronRight size={18} />
                   </div>
                 </div>
@@ -176,7 +179,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
             <button
               onClick={() => scrollBy('right')}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-brand hover:bg-brand-soft hover:scale-110 transition-all duration-200"
-              aria-label="Nach rechts scrollen"
+              aria-label={t("Nach rechts scrollen")}
             >
               <ChevronRight size={20} />
             </button>
@@ -199,7 +202,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
               {selectedPost.bildname && (
                 <div className="aspect-[16/9] relative">
                   <Image
-                    src={selectedPost.bildname}
+                    src={asset(selectedPost.bildname)}
                     alt={selectedPost.titel}
                     fill
                     className="object-cover"
@@ -211,7 +214,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     {selectedPost.datum && (
-                      <p className="text-sm text-brand font-medium mb-2">{formatDatum(selectedPost.datum)}</p>
+                      <p className="text-sm text-brand font-medium mb-2">{formatDatum(selectedPost.datum, LOCALES[lang])}</p>
                     )}
                     {selectedPost.kategorie && (
                       <span className="inline-flex items-center gap-1 bg-brand-soft px-3 py-1.5 rounded-full text-brand text-sm font-medium">
@@ -223,7 +226,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                   <button
                     onClick={() => setSelectedPost(null)}
                     className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-                    aria-label="Schließen"
+                    aria-label={t("Schließen")}
                   >
                     <X size={20} />
                   </button>

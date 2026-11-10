@@ -44,6 +44,57 @@ const EMPTY = {
   generatedAt: null,
 };
 
+// --- Bilder lokal ablegen -------------------------------------
+//  Team- und Aktuelles-Bilder liegen in Google Drive (lh3.googleusercontent.com).
+//  Direkt eingebunden scheitern sie im Browser regelmaessig (Google drosselt
+//  bzw. blockt Hotlinks, v. a. bei angemeldeten Google-Konten) und jeder
+//  Besuch wuerde Daten an Google senden. Deshalb: beim Build herunterladen,
+//  verkleinern und als WebP unter public/ ausliefern. Schlaegt ein Download
+//  fehl, bleibt die alte lokale Datei bzw. die Original-URL stehen.
+const slug = (s) =>
+  String(s || 'bild')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '') || 'bild';
+
+async function downloadImage(url, dir, name, width) {
+  if (!url || !/^https?:\/\//.test(url)) return url;
+  const rel = `/${dir}/${name}.webp`;
+  const file = join(ROOT, 'public', dir, `${name}.webp`);
+  try {
+    const res = await fetch(url, { redirect: 'follow' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const buf = Buffer.from(await res.arrayBuffer());
+    const sharp = (await import('sharp')).default;
+    mkdirSync(dirname(file), { recursive: true });
+    await sharp(buf).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 80 }).toFile(file);
+    return rel;
+  } catch (err) {
+    console.warn(`[content] Bild nicht geladen (${name}): ${err.message}`);
+    return existsSync(file) ? rel : url;
+  }
+}
+
+async function localizeImages(payload) {
+  await Promise.all(
+    payload.team.map(async (m) => {
+      m.image = await downloadImage(m.image, 'team', slug(m.name), 640);
+      // Leere bzw. unsichtbare Zeichen (z. B. Zero-Width-Space) aus Kontaktfeldern entfernen
+      for (const k of ['email', 'phone', 'area', 'role']) {
+        if (typeof m[k] === 'string') m[k] = m[k].replace(/[​-‍﻿]/g, '').trim();
+      }
+    })
+  );
+  await Promise.all(
+    payload.aktuelles.map(async (a, i) => {
+      a.bildname = await downloadImage(a.bildname, 'aktuelles', `${i + 1}-${slug(a.titel)}`, 1400);
+    })
+  );
+}
+
 async function main() {
   loadEnv();
   const base = process.env.NEXT_PUBLIC_CONTENT_API_URL;
@@ -76,6 +127,7 @@ async function main() {
       generatedAt: new Date().toISOString(),
     };
 
+    await localizeImages(payload);
     writeFileSync(OUT_FILE, JSON.stringify(payload, null, 2));
     console.log(
       `[content] OK – Team: ${payload.team.length}, Aktuelles: ${payload.aktuelles.length}, ` +

@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Strona główna",
+  "Leistungen": "Usługi",
+  "Team": "Zespół",
+  "Über uns": "O nas",
+  "Kontakt": "Kontakt",
+  "Anrufen": "Zadzwoń",
+  "Hauptnavigation": "Menu główne",
+  "Sprache auswählen": "Wybierz język",
+  "Schließen": "Zamknij",
+  "Menü schließen": "Zamknij menu",
+  "Mehr erfahren": "Dowiedz się więcej",
+  "Mehr dazu": "Więcej informacji",
+  "Zur Startseite": "Do strony głównej",
+  "Hebammen am Marienhospital Bonn": "Położne w szpitalu Marienhospital w Bonn",
+  "Hebammen am Marienhospital Bonn Logo": "Logo położnych w szpitalu Marienhospital w Bonn",
+  "Navigation": "Nawigacja",
+  "Rechtliches": "Informacje prawne",
+  "Impressum": "Nota prawna",
+  "Datenschutz": "Ochrona danych",
+  "Alle Rechte vorbehalten.": "Wszelkie prawa zastrzeżone.",
+  "Instagram öffnen": "Otwórz Instagram",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "Serdecznie witamy",
+  "Ihre Hebammen in": "Wasze położne w",
+  "Bonn": "Bonn",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "Poród to indywidualne i niezapomniane przeżycie. Towarzyszymy Pani na tej wyjątkowej drodze z empatią i kompetencją.",
+  "Kontakt aufnehmen": "Skontaktuj się z nami",
+  "Geburten jährlich": "porodów rocznie",
+  "Hingabe": "zaangażowania",
+  "Erreichbarkeit": "dostępności",
+
+  // Aktuelles
+  "Aktuelles": "Aktualności",
+  "Neuigkeiten von uns": "Nasze nowości",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Bądź na bieżąco z aktualnymi wydarzeniami i ważnymi informacjami.",
+  "Nach links scrollen": "Przewiń w lewo",
+  "Nach rechts scrollen": "Przewiń w prawo",
+
+  // Leistungen
+  "Unsere Leistungen": "Nasze usługi",
+  "Rundum gut betreut": "Kompleksowa opieka",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "Od ciąży po opiekę poporodową – towarzyszymy Pani na każdym etapie z wiedzą i sercem.",
+  "Vor der Geburt": "Przed porodem",
+  "Während der Geburt": "Podczas porodu",
+  "Nach der Geburt": "Po porodzie",
+  "Hebammenliste": "Lista położnych",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Gruntowne przygotowanie do porodu sprawdzonymi metodami i z troskliwym wsparciem.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "Poród to indywidualne i niezapomniane przeżycie. Wspieramy Panią naszym doświadczeniem.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Kompetentne i troskliwe wsparcie na dobry początek nowego życia rodzinnego.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Znajdź odpowiednią położną z naszego zespołu – ze wszystkimi danymi kontaktowymi i zakresem pracy.",
+  "Oft gestellte Fragen": "Najczęstsze pytania",
+  "Häufig gestellte Fragen": "Najczęściej zadawane pytania",
+  "Häufige Fragen": "Najczęstsze pytania",
+  "FAQ": "FAQ",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Tutaj znajdziesz odpowiedzi na najczęstsze pytania dotyczące naszych usług.",
+
+  // Team
+  "Unser Team": "Nasz zespół",
+  "Lernen Sie uns kennen": "Poznaj nas",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Doświadczone położne z sercem i pasją do swojego zawodu.",
+  "Werde Teil unseres Teams": "Dołącz do naszego zespołu",
+  "Werde Teil unseres Teams!": "Dołącz do naszego zespołu!",
+  "Vorheriges Teammitglied": "Poprzednia osoba",
+  "Nächstes Teammitglied": "Następna osoba",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "Z sercem i kompetencją u Pani boku",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "Jako położne pracujemy w szpitalu St. Marien w Bonn w systemie dyżurów kontraktowych. Nasz zespół łączy wieloletnie doświadczenie z najnowocześniejszymi metodami położnictwa.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Każdy poród jest wyjątkowy, a naszym zadaniem jest indywidualnie i z empatią prowadzić Panią przez ten szczególny czas. Dobro Pani i dziecka jest zawsze najważniejsze.",
+  "24/7 Erreichbar": "Dostępne 24/7",
+  "Rund um die Uhr für Sie da": "Jesteśmy dla Pani przez całą dobę",
+  "Geprüfte Qualität": "Sprawdzona jakość",
+  "Höchste Standards": "Najwyższe standardy",
+  "Einblick in unseren Kreißsaal": "Zajrzyj do naszej sali porodowej",
+
+  // Bewertungen
+  "Bewertungen": "opinii",
+  "Was Familien sagen": "Co mówią rodziny",
+  "von 5 Sternen auf Google": "na 5 gwiazdek w Google",
+  "Mehr lesen": "Czytaj więcej",
+  "Weniger anzeigen": "Pokaż mniej",
+  "Alle Bewertungen auf Google": "Wszystkie opinie w Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "Czekamy na Panią",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "Ma Pani pytania lub chce umówić wizytę? Prosimy o kontakt!",
+  "Kontaktdaten": "Dane kontaktowe",
+  "Termine Sprechstunde / Geburtsplanung": "Terminy: konsultacje / planowanie porodu",
+  "Zentrale (Pforte)": "Centrala (portiernia)",
+  "E-Mail": "E-mail",
+  "Adresse": "Adres",
+  "Folgen Sie uns": "Obserwuj nas",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "Bądź na bieżąco i obserwuj nas na Instagramie!",
+  "Beitrag auf Instagram öffnen": "Otwórz post na Instagramie",
+  "Standort Marienhospital Bonn": "Lokalizacja Marienhospital w Bonn",
+  "Karte laden": "Załaduj mapę",
+  "Route planen": "Wyznacz trasę",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "Po załadowaniu mapy dane są przesyłane do Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "Gotowa na kolejny krok?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Umów termin rejestracji porodu, zadzwoń pod numer 0228 / 505 2201 w sprawie rozmowy o planie porodu lub wyślij nam swoje pytania e-mailem.",
+  "Zur Geburtsanmeldung": "Rejestracja porodu",
+  "Geburtsplanung": "Planowanie porodu",
+  "E-Mail schreiben": "Napisz e-mail",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "Przy prawidłowo przebiegającej ciąży głównymi osobami kontaktowymi są Pani ginekolog i położna. W razie skurczów, odejścia wód płodowych lub innej pilnej potrzeby prosimy zadzwonić na salę porodową.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "Jeśli w ciąży pojawią się czynniki ryzyka, nasz zespół lekarzy zaplanuje z Panią poród w naszej poradni dla kobiet w ciąży. Oprócz porady rozmawiamy też o Pani myślach i potrzebach.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "Dzięki temu mamy pełny obraz sytuacji, jesteśmy przygotowani i możemy jak najlepiej zadbać o Panią i dziecko.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Prosimy o zabranie skierowania od lekarza specjalisty.",
+  "Für einen Termin:": "Umówienie wizyty:",
+  "Geburtseinleitung": "Indukcja porodu",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "Przy wskazaniach medycznych przeprowadzamy indukcję porodu na naszej sali porodowej. Metodę dobieramy indywidualnie do Pani, Pani ciała i dziecka.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "Na czas indukcji zostaje Pani przyjęta do szpitala, dzięki czemu w każdej chwili ma Pani dostęp do sali porodowej na kontrole KTG.",
+  "Stationärer Aufenthalt & weitere Angebote": "Pobyt w szpitalu i inne usługi",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "Podczas pobytu w szpitalu codziennie, w razie potrzeby, wykonujemy KTG i służymy odpowiedziami oraz poradą.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Niektóre z naszych koleżanek oferują alternatywne metody terapeutyczne, m.in. akupunkturę, kinesiotaping i terapię laserową – wspierające dobre samopoczucie przyszłych mam.",
+  "Weitere Angebote": "Inne usługi",
+  "Geburtsanmeldung": "Rejestracja porodu",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "Termin rejestracji porodu można wygodnie umówić online przez portal pacjenta klinik GFO.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "Poród to indywidualne i niezapomniane przeżycie. Zależy nam na tym, by stworzyć przyszłym rodzicom spokojną i przyjemną atmosferę – profesjonalnie i z ludzką bliskością.",
+  "Ihre Begleitung im Kreißsaal": "Wsparcie na sali porodowej",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "Nasze 5 sal porodowych daje dość miejsca, by podczas skurczów przyjmować różne pozycje. Słowami otuchy i wskazówkami do oddychania troskliwie prowadzimy Panią przez cały poród.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "Komunikacja jest dla nas bardzo ważna. Każde konieczne działanie medyczne dokładnie wyjaśniamy w odniesieniu do Pani sytuacji – aby zawsze czuła się Pani bezpiecznie i dobrze poinformowana.",
+  "Begleitung im Kreißsaal": "Wsparcie na sali porodowej",
+  "Schmerzerleichterung": "Łagodzenie bólu",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "Jeśli chce Pani złagodzić ból, oferujemy różne metody: od ciepła, masażu, aromaterapii i homeopatii po leki przeciwbólowe i znieczulenie zewnątrzoponowe. Może Pani przynieść własne olejki zapachowe.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "Chętnie doradzimy i razem wybierzemy metodę odpowiednią do Pani sytuacji i fazy porodu.",
+  "Unser Team für Sie": "Nasz zespół dla Pani",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "To my, zespół położnych, odpowiadamy przede wszystkim za opiekę nad Panią. Wspierają nas asystentki medyczne i lekarze. Kształcimy też studentki położnictwa.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "Jako ośrodek perinatalny I stopnia (Level 1) ściśle współpracujemy z pediatrami, którzy są na miejscu w szpitalu i na wezwanie jak najszybciej docierają na salę porodową.",
+  "Besondere Geburtssituationen": "Szczególne sytuacje porodowe",
+  "Frühgeburtlichkeit": "Poród przedwczesny",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "Jako ośrodek perinatalny Level 1 zapewniamy najwyższy poziom opieki w każdym tygodniu ciąży. Jesteśmy przy Pani już przy przedwczesnych skurczach, niewydolności szyjki macicy czy nieprawidłowym KTG.",
+  "Beckenendlagen & Zwillinge": "Położenie miednicowe i bliźnięta",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "Przy położeniu miednicowym lub ciąży bliźniaczej poród naturalny jest u nas możliwy. Od 37. tygodnia ciąży oferujemy też obrót zewnętrzny.",
+  "Zustand nach Kaiserschnitt / VBAC": "Po cesarskim cięciu / VBAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "Staramy się, by w miarę możliwości mogła Pani urodzić naturalnie. Jeśli konieczne będzie cesarskie cięcie, osoba towarzysząca może być obecna.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "Przy położeniu miednicowym, bliźniętach lub po cesarskim cięciu konieczna jest rozmowa o planie porodu. Terminy pod numerem",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "Pierwsze godziny i dni po porodzie są wyjątkowe. Troskliwie Pani towarzyszymy – od pierwszej chwili na sali porodowej i na oddziale położniczym.",
+  "Die ersten Stunden": "Pierwsze godziny",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "Po porodzie przez około 2 godziny opiekujemy się Panią dalej na sali porodowej i dbamy o samopoczucie Pani i dziecka.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "Kontakt skóra do skóry między Panią a dzieckiem jest dla nas bardzo ważny. Zaraz po porodzie zapewniamy bonding – ta pierwsza wspólna chwila jest bezcenna.",
+  "Bonding nach der Geburt": "Bonding po porodzie",
+  "Stillen & Erstuntersuchung": "Karmienie piersią i pierwsze badanie",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "Pierwsze przystawienie do piersi odbywa się na sali porodowej – chętnie pomożemy w obchodzeniu się z dzieckiem i odpowiemy na wszystkie pytania.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "Pierwsze badanie noworodka (U1) wykonujemy, my położne, razem z Panią. To bliski moment, w którym może Pani wszystko zobaczyć i o wszystko zapytać.",
+  "Wochenbettstation": "Oddział położniczy",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Następnie przenosimy Panią na oddział położniczy, gdzie zostanie Pani serdecznie przyjęta. Tam opiekują się Panią głównie nasze koleżanki z opieki poporodowej i nad noworodkami oraz doradczynie laktacyjne.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "Podczas codziennego obchodu nadal wspieramy Panią i doradzamy – w powrocie do zdrowia, karmieniu piersią i we wszystkim, co dotyczy noworodka.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Nasze położne",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Znajdź odpowiednią położną ze wszystkimi danymi kontaktowymi",
+  "Lade Hebammenliste...": "Ładowanie listy położnych...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "Obecnie brak położnych z określonym zakresem usług.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "Szukasz miejsca, gdzie Twoje umiejętności są doceniane i gdzie każdego dnia towarzyszysz małym cudom?",
+  "Dann bist du bei uns genau richtig.": "W takim razie jesteś we właściwym miejscu.",
+  "Wir suchen Verstärkung:": "Szukamy:",
+  "Dienstbeleghebamme (m/w/d)": "Położna dyżurna na kontrakcie (k/m/d)",
+  "Bewerbung einreichen": "Wyślij zgłoszenie",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Wyślij swoje zgłoszenie na adres:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "Cieszymy się na poznanie Ciebie!",
+
+  // Film
+  "Film abspielen": "Odtwórz film",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "Film jest ładowany z YouTube. Dane są przy tym przesyłane do Google.",
+
+  // Farbschema
+  "Farbschema": "Kolorystyka",
+  "Farbschema ändern": "zmień kolorystykę",
+  "Finger lange auf den Bildschirm legen": "Przytrzymaj palec na ekranie",
+  "Rechte Maustaste irgendwo auf der Seite": "Kliknij prawym przyciskiem w dowolnym miejscu",
+  "Aktuell": "Obecna",
+  "Logo-Farben": "Kolory logo",
+  "Sand": "Piaskowa",
+  "Beige": "Beżowa",
+  "Champagner": "Szampańska",
+};
+
+export default dict;

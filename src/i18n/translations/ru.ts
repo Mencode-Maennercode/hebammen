@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Главная",
+  "Leistungen": "Услуги",
+  "Team": "Команда",
+  "Über uns": "О нас",
+  "Kontakt": "Контакты",
+  "Anrufen": "Позвонить",
+  "Hauptnavigation": "Главное меню",
+  "Sprache auswählen": "Выбрать язык",
+  "Schließen": "Закрыть",
+  "Menü schließen": "Закрыть меню",
+  "Mehr erfahren": "Подробнее",
+  "Mehr dazu": "Подробнее",
+  "Zur Startseite": "На главную",
+  "Hebammen am Marienhospital Bonn": "Акушерки больницы Мариенхоспиталь в Бонне",
+  "Hebammen am Marienhospital Bonn Logo": "Логотип акушерок больницы Мариенхоспиталь в Бонне",
+  "Navigation": "Навигация",
+  "Rechtliches": "Правовая информация",
+  "Impressum": "Выходные данные",
+  "Datenschutz": "Защита данных",
+  "Alle Rechte vorbehalten.": "Все права защищены.",
+  "Instagram öffnen": "Открыть Instagram",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "Добро пожаловать",
+  "Ihre Hebammen in": "Ваши акушерки в",
+  "Bonn": "Бонне",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "Роды — это личное и незабываемое событие. Мы бережно и профессионально сопровождаем вас на этом особенном пути.",
+  "Kontakt aufnehmen": "Связаться с нами",
+  "Geburten jährlich": "родов в год",
+  "Hingabe": "самоотдача",
+  "Erreichbarkeit": "на связи",
+
+  // Aktuelles
+  "Aktuelles": "Новости",
+  "Neuigkeiten von uns": "Наши новости",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Будьте в курсе текущих событий и важной информации.",
+  "Nach links scrollen": "Прокрутить влево",
+  "Nach rechts scrollen": "Прокрутить вправо",
+
+  // Leistungen
+  "Unsere Leistungen": "Наши услуги",
+  "Rundum gut betreut": "Забота во всём",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "От беременности до послеродового периода — мы сопровождаем вас на каждом этапе со знанием дела и душой.",
+  "Vor der Geburt": "До родов",
+  "Während der Geburt": "Во время родов",
+  "Nach der Geburt": "После родов",
+  "Hebammenliste": "Список акушерок",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Основательная подготовка к родам проверенными методами и с чутким сопровождением.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "Роды — это личное и незабываемое событие. Мы поддерживаем вас своим опытом.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Профессиональная и чуткая поддержка для хорошего начала новой семейной жизни.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Найдите подходящую акушерку из нашей команды — со всеми контактами и направлениями работы.",
+  "Oft gestellte Fragen": "Частые вопросы",
+  "Häufig gestellte Fragen": "Часто задаваемые вопросы",
+  "Häufige Fragen": "Частые вопросы",
+  "FAQ": "Вопросы и ответы",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Здесь вы найдёте ответы на частые вопросы о наших услугах.",
+
+  // Team
+  "Unser Team": "Наша команда",
+  "Lernen Sie uns kennen": "Познакомьтесь с нами",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Опытные акушерки, преданные своему делу.",
+  "Werde Teil unseres Teams": "Присоединяйся к нашей команде",
+  "Werde Teil unseres Teams!": "Присоединяйся к нашей команде!",
+  "Vorheriges Teammitglied": "Предыдущая сотрудница",
+  "Nächstes Teammitglied": "Следующая сотрудница",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "С душой и профессионализмом рядом с вами",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "Мы, акушерки, работаем в больнице Св. Марии (St. Marien Hospital) в Бонне по системе дежурных договорных акушерок. Наша команда сочетает многолетний опыт с самыми современными методами акушерства.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Каждые роды уникальны, и наша задача — индивидуально и бережно сопровождать вас в это особенное время. Ваше благополучие и благополучие вашего ребёнка всегда на первом месте.",
+  "24/7 Erreichbar": "На связи 24/7",
+  "Rund um die Uhr für Sie da": "Рядом с вами круглосуточно",
+  "Geprüfte Qualität": "Проверенное качество",
+  "Höchste Standards": "Высочайшие стандарты",
+  "Einblick in unseren Kreißsaal": "Взгляд в наш родильный зал",
+
+  // Bewertungen
+  "Bewertungen": "отзывов",
+  "Was Familien sagen": "Что говорят семьи",
+  "von 5 Sternen auf Google": "из 5 звёзд в Google",
+  "Mehr lesen": "Читать дальше",
+  "Weniger anzeigen": "Свернуть",
+  "Alle Bewertungen auf Google": "Все отзывы в Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "Будем рады вас видеть",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "Есть вопросы или хотите записаться на приём? Свяжитесь с нами!",
+  "Kontaktdaten": "Контактные данные",
+  "Termine Sprechstunde / Geburtsplanung": "Запись: консультация / планирование родов",
+  "Zentrale (Pforte)": "Коммутатор (регистратура)",
+  "E-Mail": "Эл. почта",
+  "Adresse": "Адрес",
+  "Folgen Sie uns": "Подписывайтесь на нас",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "Будьте в курсе и подписывайтесь на нас в Instagram!",
+  "Beitrag auf Instagram öffnen": "Открыть публикацию в Instagram",
+  "Standort Marienhospital Bonn": "Расположение Мариенхоспиталь в Бонне",
+  "Karte laden": "Загрузить карту",
+  "Route planen": "Построить маршрут",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "При загрузке карты данные передаются в Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "Готовы к следующему шагу?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Запишитесь на регистрацию для родов, позвоните по номеру 0228 / 505 2201, чтобы договориться о планировании родов, или пришлите нам свои вопросы по электронной почте.",
+  "Zur Geburtsanmeldung": "Записаться на роды",
+  "Geburtsplanung": "Планирование родов",
+  "E-Mail schreiben": "Написать письмо",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "При нормально протекающей беременности вашими главными контактами остаются ваш гинеколог и ваша акушерка. Если начались схватки, отошли воды или возникла другая срочная ситуация, позвоните в родильное отделение.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "Если во время беременности возникают риски, наши врачи планируют роды вместе с вами в нашей консультации для беременных. Помимо медицинского совета, мы обсуждаем ваши мысли и потребности.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "Всё это даёт нам полное представление о текущей ситуации. Так мы подготовлены и можем наилучшим образом позаботиться о вас и вашем ребёнке.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Пожалуйста, возьмите с собой направление от вашего врача.",
+  "Für einen Termin:": "Запись на приём:",
+  "Geburtseinleitung": "Стимуляция родов",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "При наличии медицинских показаний мы проводим стимуляцию родов в нашем родильном отделении. Метод подбирается индивидуально для вас, вашего тела и вашего ребёнка.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "Для стимуляции вас госпитализируют, поэтому для контроля КТГ вы в любое время на связи с родильным отделением.",
+  "Stationärer Aufenthalt & weitere Angebote": "Пребывание в стационаре и другие услуги",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "Во время пребывания в стационаре мы ежедневно проводим КТГ по необходимости и готовы ответить на ваши вопросы и проконсультировать.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Некоторые наши коллеги предлагают альтернативные методы — иглоукалывание, тейпирование и лазерную терапию — для хорошего самочувствия будущих мам.",
+  "Weitere Angebote": "Другие услуги",
+  "Geburtsanmeldung": "Регистрация на роды",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "Записаться на регистрацию для родов можно онлайн через пациентский портал клиник GFO.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "Роды — это личное и незабываемое событие. Нам важно создать для вас, будущих родителей, спокойную и приятную атмосферу — профессионально и по-человечески тепло.",
+  "Ihre Begleitung im Kreißsaal": "Сопровождение в родильном зале",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "В наших 5 родильных залах достаточно места, чтобы во время схваток принимать разные положения. Словами поддержки и подсказками по дыханию мы бережно сопровождаем вас на протяжении всех родов.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "Общение для нас очень важно. Все необходимые медицинские меры мы подробно объясняем с учётом вашей ситуации — чтобы вы всегда чувствовали себя в безопасности и были хорошо информированы.",
+  "Begleitung im Kreißsaal": "Сопровождение в родильном зале",
+  "Schmerzerleichterung": "Обезболивание",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "Если вы хотите облегчить боль, мы предлагаем разные методы: от тепла, массажа, ароматерапии и гомеопатии до обезболивающих препаратов и эпидуральной анестезии. Можете взять с собой свои ароматические масла.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "Мы охотно проконсультируем вас и вместе выберем подходящее средство для вашей ситуации и этапа родов.",
+  "Unser Team für Sie": "Наша команда для вас",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "За вашу помощь в первую очередь отвечаем мы, команда акушерок. Нас поддерживают медицинские ассистенты и врачи. Кроме того, мы обучаем студенток-акушерок.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "Как перинатальный центр 1-го уровня мы тесно работаем с педиатрами, которые находятся прямо в больнице и по вызову как можно скорее приходят в родильный зал.",
+  "Besondere Geburtssituationen": "Особые ситуации при родах",
+  "Frühgeburtlichkeit": "Преждевременные роды",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "Как перинатальный центр 1-го уровня мы обеспечиваем наивысший уровень помощи на любой неделе беременности. Мы рядом уже при преждевременных схватках, истмико-цервикальной недостаточности или отклонениях на КТГ.",
+  "Beckenendlagen & Zwillinge": "Тазовое предлежание и двойня",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "При тазовом предлежании или двойне у нас возможны естественные роды. Кроме того, с 37-й недели беременности мы предлагаем наружный поворот плода.",
+  "Zustand nach Kaiserschnitt / VBAC": "После кесарева сечения / VBAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "Мы стараемся, чтобы вы по возможности могли родить естественным путём. Если понадобится кесарево сечение, ваш сопровождающий может присутствовать.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "При тазовом предлежании, двойне или кесаревом сечении в прошлом необходима консультация по планированию родов. Запись по телефону",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "Первые часы и дни после родов — особенные. Мы бережно сопровождаем вас — с первой минуты в родильном зале и в послеродовом отделении.",
+  "Die ersten Stunden": "Первые часы",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "После родов мы продолжаем наблюдать за вами в родильном зале около 2 часов и следим за вашим самочувствием и самочувствием ребёнка.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "Телесный контакт между вами и ребёнком очень важен для нас. Сразу после родов мы обеспечиваем бондинг — этот первый совместный момент незаменим.",
+  "Bonding nach der Geburt": "Бондинг после родов",
+  "Stillen & Erstuntersuchung": "Грудное вскармливание и первый осмотр",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "Первое прикладывание к груди происходит в родильном зале — мы поможем вам обращаться с малышом и ответим на все вопросы.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "Первый осмотр новорождённого (U1) мы, акушерки, проводим вместе с вами. Это доверительный момент, когда вы всё видите и можете задать вопросы.",
+  "Wochenbettstation": "Послеродовое отделение",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Затем мы переводим вас в послеродовое отделение, где вас тепло встретят. Там о вас в основном заботятся наши коллеги по уходу за родильницами и младенцами, а также консультанты по грудному вскармливанию.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "Во время ежедневного обхода мы продолжаем поддерживать и консультировать вас — по вопросам восстановления, кормления грудью и всему, что касается новорождённого.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Наши акушерки",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Найдите подходящую акушерку со всеми контактами",
+  "Lade Hebammenliste...": "Загрузка списка акушерок...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "Сейчас нет акушерок с указанными направлениями работы.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "Ищешь место, где ценят твоё мастерство и где ты каждый день сопровождаешь маленькие чудеса?",
+  "Dann bist du bei uns genau richtig.": "Тогда тебе к нам.",
+  "Wir suchen Verstärkung:": "Мы ищем:",
+  "Dienstbeleghebamme (m/w/d)": "Дежурная договорная акушерка (м/ж/д)",
+  "Bewerbung einreichen": "Отправить заявку",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Отправь заявку на этот адрес:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "Будем рады познакомиться!",
+
+  // Film
+  "Film abspielen": "Смотреть фильм",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "Фильм загружается с YouTube. При этом данные передаются в Google.",
+
+  // Farbschema
+  "Farbschema": "Цветовая схема",
+  "Farbschema ändern": "изменить цветовую схему",
+  "Finger lange auf den Bildschirm legen": "Удерживайте палец на экране",
+  "Rechte Maustaste irgendwo auf der Seite": "Правый клик в любом месте страницы",
+  "Aktuell": "Текущая",
+  "Logo-Farben": "Цвета логотипа",
+  "Sand": "Песок",
+  "Beige": "Бежевый",
+  "Champagner": "Шампань",
+};
+
+export default dict;

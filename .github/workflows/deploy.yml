@@ -42,6 +42,12 @@ jobs:
           NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
         run: node scripts/fetch-content.mjs
 
+      # ── 4b. Instagram-Feed holen (Bilder werden lokal abgelegt) ───────────
+      - name: Fetch Instagram feed
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: node scripts/fetch-instagram.mjs
+
       # ── 5. Prüfen ob sich Inhalte geändert haben ───────────────────────────
       #       Beim Schedule-Trigger: Deploy nur wenn Hash != letzter Deploy-Hash
       #       Bei push/workflow_dispatch: immer deployen
@@ -75,7 +81,9 @@ jobs:
           NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_BASE_PATH: '/hebammen'
-        run: npm run build
+        # next build direkt (nicht npm run build): Inhalte und Instagram
+        # wurden oben schon geholt, prebuild wuerde alles doppelt laden.
+        run: npx next build
 
       # ── 8. out/ auf GitHub Pages deployen (gh-pages Branch) ───────────────
       - name: Deploy to GitHub Pages

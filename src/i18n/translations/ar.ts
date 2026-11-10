@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "الرئيسية",
+  "Leistungen": "خدماتنا",
+  "Team": "الفريق",
+  "Über uns": "من نحن",
+  "Kontakt": "تواصل معنا",
+  "Anrufen": "اتصال",
+  "Hauptnavigation": "القائمة الرئيسية",
+  "Sprache auswählen": "اختر اللغة",
+  "Schließen": "إغلاق",
+  "Menü schließen": "إغلاق القائمة",
+  "Mehr erfahren": "اعرف المزيد",
+  "Mehr dazu": "المزيد",
+  "Zur Startseite": "العودة إلى الصفحة الرئيسية",
+  "Hebammen am Marienhospital Bonn": "قابلات مستشفى ماريين في بون",
+  "Hebammen am Marienhospital Bonn Logo": "شعار قابلات مستشفى ماريين في بون",
+  "Navigation": "التنقل",
+  "Rechtliches": "معلومات قانونية",
+  "Impressum": "بيانات الناشر",
+  "Datenschutz": "سياسة الخصوصية",
+  "Alle Rechte vorbehalten.": "جميع الحقوق محفوظة.",
+  "Instagram öffnen": "فتح إنستغرام",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "أهلاً وسهلاً بكم",
+  "Ihre Hebammen in": "قابلاتكِ في",
+  "Bonn": "بون",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "الولادة تجربة شخصية لا تُنسى. نرافقكِ بحنان وكفاءة في هذه الرحلة المميزة.",
+  "Kontakt aufnehmen": "تواصلي معنا",
+  "Geburten jährlich": "ولادة سنوياً",
+  "Hingabe": "تفانٍ",
+  "Erreichbarkeit": "متاحون دائماً",
+
+  // Aktuelles
+  "Aktuelles": "الأخبار",
+  "Neuigkeiten von uns": "آخر أخبارنا",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "ابقي على اطلاع بالمستجدات والمعلومات المهمة.",
+  "Nach links scrollen": "التمرير لليسار",
+  "Nach rechts scrollen": "التمرير لليمين",
+
+  // Leistungen
+  "Unsere Leistungen": "خدماتنا",
+  "Rundum gut betreut": "رعاية متكاملة",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "من الحمل حتى الرعاية بعد الولادة – نرافقكِ في كل مرحلة بخبرة وقلب.",
+  "Vor der Geburt": "قبل الولادة",
+  "Während der Geburt": "أثناء الولادة",
+  "Nach der Geburt": "بعد الولادة",
+  "Hebammenliste": "قائمة القابلات",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "تحضير شامل للولادة بأساليب مجرّبة ومرافقة حانية.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "الولادة تجربة شخصية لا تُنسى. نقف إلى جانبكِ بخبرتنا.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "مرافقة كفؤة وحانية لبداية جيدة في حياتكم العائلية الجديدة.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "اعثري على القابلة المناسبة من فريقنا مع جميع بيانات التواصل ومجالات العمل.",
+  "Oft gestellte Fragen": "الأسئلة الشائعة",
+  "Häufig gestellte Fragen": "الأسئلة الشائعة",
+  "Häufige Fragen": "الأسئلة الشائعة",
+  "FAQ": "الأسئلة الشائعة",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "هنا تجدين إجابات عن الأسئلة الشائعة حول خدماتنا.",
+
+  // Team
+  "Unser Team": "فريقنا",
+  "Lernen Sie uns kennen": "تعرّفي علينا",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "قابلات ذوات خبرة يعملن بقلب وشغف لمهنتهن.",
+  "Werde Teil unseres Teams": "انضمي إلى فريقنا",
+  "Werde Teil unseres Teams!": "انضمي إلى فريقنا!",
+  "Vorheriges Teammitglied": "العضوة السابقة",
+  "Nächstes Teammitglied": "العضوة التالية",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "إلى جانبكِ بقلب وكفاءة",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "نعمل نحن القابلات في مستشفى سانت ماريين في بون ضمن نظام المناوبات التعاقدية. يجمع فريقنا بين خبرة طويلة وأحدث أساليب التوليد.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "كل ولادة فريدة، ونرى مهمتنا في مرافقتكِ بشكل شخصي وحانٍ خلال هذه الفترة المميزة. راحتكِ وصحة طفلكِ في مقدمة اهتمامنا دائماً.",
+  "24/7 Erreichbar": "متاحون على مدار الساعة",
+  "Rund um die Uhr für Sie da": "في خدمتكِ ليلاً ونهاراً",
+  "Geprüfte Qualität": "جودة موثوقة",
+  "Höchste Standards": "أعلى المعايير",
+  "Einblick in unseren Kreißsaal": "نظرة على غرفة الولادة لدينا",
+
+  // Bewertungen
+  "Bewertungen": "تقييمات",
+  "Was Familien sagen": "ماذا تقول العائلات",
+  "von 5 Sternen auf Google": "من 5 نجوم على Google",
+  "Mehr lesen": "اقرئي المزيد",
+  "Weniger anzeigen": "عرض أقل",
+  "Alle Bewertungen auf Google": "جميع التقييمات على Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "يسعدنا لقاؤكِ",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "هل لديكِ أسئلة أو ترغبين في حجز موعد؟ تواصلي معنا!",
+  "Kontaktdaten": "بيانات التواصل",
+  "Termine Sprechstunde / Geburtsplanung": "مواعيد الاستشارة / التخطيط للولادة",
+  "Zentrale (Pforte)": "المقسم الرئيسي (الاستقبال)",
+  "E-Mail": "البريد الإلكتروني",
+  "Adresse": "العنوان",
+  "Folgen Sie uns": "تابعونا",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "ابقي على اطلاع وتابعينا على إنستغرام!",
+  "Beitrag auf Instagram öffnen": "فتح المنشور على إنستغرام",
+  "Standort Marienhospital Bonn": "موقع مستشفى ماريين في بون",
+  "Karte laden": "تحميل الخريطة",
+  "Route planen": "تخطيط الطريق",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "عند تحميل الخريطة تُرسل بيانات إلى Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "هل أنتِ مستعدة للخطوة التالية؟",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "احجزي موعد تسجيل الولادة، أو اتصلي على 2201 505 / 0228 لموعد التخطيط للولادة، أو أرسلي لنا أسئلتكِ عبر البريد الإلكتروني.",
+  "Zur Geburtsanmeldung": "تسجيل الولادة",
+  "Geburtsplanung": "التخطيط للولادة",
+  "E-Mail schreiben": "إرسال بريد إلكتروني",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "في الحمل الطبيعي يبقى طبيبكِ المختص وقابلتكِ جهة التواصل الأولى. إذا بدأت الانقباضات أو انفجر كيس الماء أو احتجتِ إلى مساعدة عاجلة لسبب آخر، فاتصلي بغرفة الولادة.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "إذا ظهرت مخاطر أثناء الحمل، يخطط فريق الأطباء لدينا للولادة معكِ في عيادة الحوامل. وإلى جانب الاستشارة نتحدث عن أفكاركِ واحتياجاتكِ.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "كل ذلك يمنحنا صورة شاملة عن الوضع الحالي، فنكون مستعدين ونستطيع الاهتمام بكِ وبطفلكِ على أفضل وجه.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "يرجى إحضار تحويل من طبيبكِ المختص.",
+  "Für einen Termin:": "لحجز موعد:",
+  "Geburtseinleitung": "تحريض الولادة",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "عند وجود سبب طبي نقوم بتحريض الولادة في غرفة الولادة لدينا. تُختار الطريقة بما يناسبكِ ويناسب جسمكِ وطفلكِ.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "لتحريض الولادة يتم إدخالكِ إلى المستشفى، وبذلك تكونين متصلة بغرفة الولادة في أي وقت لمراقبة تخطيط القلب (CTG).",
+  "Stationärer Aufenthalt & weitere Angebote": "الإقامة في المستشفى وخدمات أخرى",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "أثناء إقامتكِ في المستشفى نجري فحوصات CTG يومياً حسب الحاجة، ونكون إلى جانبكِ للإجابة عن أسئلتكِ وتقديم المشورة.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "تقدّم بعض زميلاتنا علاجات بديلة مثل الوخز بالإبر والشريط اللاصق العلاجي والعلاج بالليزر – بهدف تعزيز راحة الأمهات الحوامل.",
+  "Weitere Angebote": "خدمات أخرى",
+  "Geburtsanmeldung": "تسجيل الولادة",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "يمكنكِ حجز موعد تسجيل الولادة بسهولة عبر الإنترنت من خلال بوابة المرضى لمستشفيات GFO.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "الولادة تجربة شخصية لا تُنسى. يهمنا أن نوفر لكم كوالدين أجواءً هادئة ومريحة – بكفاءة مهنية وقرب إنساني.",
+  "Ihre Begleitung im Kreißsaal": "مرافقتكِ في غرفة الولادة",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "توفر غرف الولادة الخمس لدينا مساحة كافية لاتخاذ أوضاع مختلفة أثناء المخاض. نرافقكِ بحنان طوال الولادة بالتشجيع وإرشادات التنفس.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "التواصل مهم جداً بالنسبة لنا. نشرح لكِ أي إجراء طبي ضروري بالتفصيل حسب حالتكِ – لتشعري دائماً بالأمان وبأنكِ على اطلاع.",
+  "Begleitung im Kreißsaal": "المرافقة في غرفة الولادة",
+  "Schmerzerleichterung": "تخفيف الألم",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "إذا رغبتِ في تخفيف الألم نقدم لكِ طرقاً مختلفة: من الدفء والتدليك والعلاج بالروائح والمعالجة المثلية إلى المسكنات الدوائية والتخدير فوق الجافية. يمكنكِ إحضار زيوتكِ العطرية الخاصة.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "يسعدنا تقديم المشورة واختيار الوسيلة المناسبة معاً حسب حالتكِ ومرحلة الولادة.",
+  "Unser Team für Sie": "فريقنا من أجلكِ",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "نحن فريق القابلات المسؤول الأول عن رعايتكِ، ويدعمنا المساعدون الطبيون وفريق الأطباء. كما نقوم بتدريب طالبات القبالة.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "بصفتنا مركزاً من المستوى الأول لرعاية الأم والوليد نعمل عن قرب مع أطباء الأطفال الموجودين في المستشفى، والذين يصلون إلى غرفة الولادة بأسرع وقت عند الطلب.",
+  "Besondere Geburtssituationen": "حالات ولادة خاصة",
+  "Frühgeburtlichkeit": "الولادة المبكرة",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "بصفتنا مركزاً من المستوى الأول نقدم أعلى مستوى من الرعاية في كل أسبوع من الحمل. ونكون إلى جانبكِ منذ ظهور انقباضات مبكرة أو قصور عنق الرحم أو نتائج غير طبيعية في تخطيط القلب.",
+  "Beckenendlagen & Zwillinge": "المجيء المقعدي والتوائم",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "الولادة الطبيعية ممكنة لدينا في حالة المجيء المقعدي أو التوائم. كما نقدم التحويل الخارجي لوضع الجنين ابتداءً من الأسبوع 37 من الحمل.",
+  "Zustand nach Kaiserschnitt / VBAC": "ولادة قيصرية سابقة / VBAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "نسعى لتمكينكِ من الولادة الطبيعية قدر الإمكان. وإذا لزمت ولادة قيصرية يمكن لمرافقكِ أن يكون حاضراً.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "في حالة المجيء المقعدي أو التوائم أو الولادة القيصرية السابقة يلزم موعد للتخطيط للولادة. للمواعيد:",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "الساعات والأيام الأولى بعد الولادة مميزة. نرافقكِ بحنان – منذ اللحظة الأولى في غرفة الولادة وفي قسم ما بعد الولادة.",
+  "Die ersten Stunden": "الساعات الأولى",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "بعد الولادة نواصل رعايتكِ في غرفة الولادة لمدة ساعتين تقريباً، ونطمئن على صحتكِ وصحة طفلكِ.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "نهتم كثيراً بالتلامس الجسدي بينكِ وبين طفلكِ، ونحرص على التواصل الأول مباشرة بعد الولادة – فهذه اللحظة الأولى معاً لا تُعوَّض.",
+  "Bonding nach der Geburt": "التواصل الأول بعد الولادة",
+  "Stillen & Erstuntersuchung": "الرضاعة والفحص الأول",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "تتم الرضاعة الأولى في غرفة الولادة – نساعدكِ في حمل الطفل والتعامل معه ونجيب عن جميع أسئلتكِ.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "نجري نحن القابلات الفحص الأول (U1) معكِ. لحظة حميمة تشاهدين فيها كل شيء ويمكنكِ طرح الأسئلة.",
+  "Wochenbettstation": "قسم ما بعد الولادة",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "بعد ذلك ننقلكِ إلى قسم ما بعد الولادة حيث يتم استقبالكِ بحفاوة. هناك ترافقكِ بشكل أساسي زميلاتنا في رعاية الأمهات والرضّع ومستشارات الرضاعة.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "من خلال زيارتنا اليومية في قسم ما بعد الولادة نواصل دعمكِ وإرشادكِ – في تعافيكِ والرضاعة وكل ما يخص مولودكِ.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "قابلاتنا",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "اعثري على القابلة المناسبة مع جميع بيانات التواصل",
+  "Lade Hebammenliste...": "جارٍ تحميل قائمة القابلات...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "لا توجد حالياً قابلات بخدمات محددة.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "هل تبحثين عن مكان تُقدَّر فيه مهاراتكِ وترافقين فيه معجزات صغيرة كل يوم؟",
+  "Dann bist du bei uns genau richtig.": "إذن أنتِ في المكان الصحيح.",
+  "Wir suchen Verstärkung:": "نبحث عن:",
+  "Dienstbeleghebamme (m/w/d)": "قابلة بنظام المناوبات التعاقدية",
+  "Bewerbung einreichen": "تقديم الطلب",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "أرسلي طلبكِ إلى عنوان البريد الإلكتروني التالي:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "يسعدنا التعرف عليكِ!",
+
+  // Film
+  "Film abspielen": "تشغيل الفيلم",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "يتم تحميل الفيلم من YouTube، وتُرسل خلال ذلك بيانات إلى Google.",
+
+  // Farbschema
+  "Farbschema": "نظام الألوان",
+  "Farbschema ändern": "تغيير نظام الألوان",
+  "Finger lange auf den Bildschirm legen": "اضغطي مطولاً على الشاشة",
+  "Rechte Maustaste irgendwo auf der Seite": "انقري بزر الفأرة الأيمن في أي مكان",
+  "Aktuell": "الحالي",
+  "Logo-Farben": "ألوان الشعار",
+  "Sand": "رملي",
+  "Beige": "بيج",
+  "Champagner": "شمبانيا",
+};
+
+export default dict;

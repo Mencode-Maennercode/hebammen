@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Home",
+  "Leistungen": "Services",
+  "Team": "Team",
+  "Über uns": "About us",
+  "Kontakt": "Contact",
+  "Anrufen": "Call",
+  "Hauptnavigation": "Main navigation",
+  "Sprache auswählen": "Select language",
+  "Schließen": "Close",
+  "Menü schließen": "Close menu",
+  "Mehr erfahren": "Learn more",
+  "Mehr dazu": "Learn more",
+  "Zur Startseite": "Back to home",
+  "Hebammen am Marienhospital Bonn": "Midwives at Marienhospital Bonn",
+  "Hebammen am Marienhospital Bonn Logo": "Midwives at Marienhospital Bonn logo",
+  "Navigation": "Navigation",
+  "Rechtliches": "Legal",
+  "Impressum": "Legal notice",
+  "Datenschutz": "Privacy policy",
+  "Alle Rechte vorbehalten.": "All rights reserved.",
+  "Instagram öffnen": "Open Instagram",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "A warm welcome to you",
+  "Ihre Hebammen in": "Your midwives in",
+  "Bonn": "Bonn",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "Giving birth is a personal and unforgettable experience. We accompany you with care and expertise on this special journey.",
+  "Kontakt aufnehmen": "Get in touch",
+  "Geburten jährlich": "births per year",
+  "Hingabe": "dedication",
+  "Erreichbarkeit": "availability",
+
+  // Aktuelles
+  "Aktuelles": "News",
+  "Neuigkeiten von uns": "News from us",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Stay informed about current events and important information.",
+  "Nach links scrollen": "Scroll left",
+  "Nach rechts scrollen": "Scroll right",
+
+  // Leistungen
+  "Unsere Leistungen": "Our services",
+  "Rundum gut betreut": "Cared for in every way",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "From pregnancy to aftercare – we support you in every phase with expertise and heart.",
+  "Vor der Geburt": "Before birth",
+  "Während der Geburt": "During birth",
+  "Nach der Geburt": "After birth",
+  "Hebammenliste": "List of midwives",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Thorough preparation for birth with proven methods and caring support.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "Giving birth is a personal and unforgettable experience. We are at your side with our expertise.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Competent and caring support for a good start into your new family life.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Find the right midwife from our team, with all contact details and areas of work.",
+  "Oft gestellte Fragen": "Frequently asked questions",
+  "Häufig gestellte Fragen": "Frequently asked questions",
+  "Häufige Fragen": "Frequently asked questions",
+  "FAQ": "FAQ",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Here you will find answers to frequently asked questions about our services.",
+
+  // Team
+  "Unser Team": "Our team",
+  "Lernen Sie uns kennen": "Get to know us",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Experienced midwives with heart and passion for their profession.",
+  "Werde Teil unseres Teams": "Join our team",
+  "Werde Teil unseres Teams!": "Join our team!",
+  "Vorheriges Teammitglied": "Previous team member",
+  "Nächstes Teammitglied": "Next team member",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "At your side with heart and expertise",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "We are a team of midwives working at St. Marien Hospital in Bonn as contracted on-duty midwives (Dienstbeleg system). Our team combines many years of experience with the most modern methods of obstetrics.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Every birth is unique, and we see it as our task to guide you individually and with empathy through this special time. Your well-being and that of your child always come first.",
+  "24/7 Erreichbar": "Available 24/7",
+  "Rund um die Uhr für Sie da": "There for you around the clock",
+  "Geprüfte Qualität": "Proven quality",
+  "Höchste Standards": "Highest standards",
+  "Einblick in unseren Kreißsaal": "A look inside our delivery room",
+
+  // Bewertungen
+  "Bewertungen": "reviews",
+  "Was Familien sagen": "What families say",
+  "von 5 Sternen auf Google": "out of 5 stars on Google",
+  "Mehr lesen": "Read more",
+  "Weniger anzeigen": "Show less",
+  "Alle Bewertungen auf Google": "All reviews on Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "We look forward to meeting you",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "Do you have questions or would you like to make an appointment? Get in touch with us!",
+  "Kontaktdaten": "Contact details",
+  "Termine Sprechstunde / Geburtsplanung": "Appointments: consultation / birth planning",
+  "Zentrale (Pforte)": "Main switchboard (reception)",
+  "E-Mail": "Email",
+  "Adresse": "Address",
+  "Folgen Sie uns": "Follow us",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "Stay up to date and follow us on Instagram!",
+  "Beitrag auf Instagram öffnen": "Open post on Instagram",
+  "Standort Marienhospital Bonn": "Location of Marienhospital Bonn",
+  "Karte laden": "Load map",
+  "Route planen": "Plan route",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "When the map is loaded, data is transmitted to Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "Ready for the next step?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Book your appointment to register for the birth, call 0228 / 505 2201 for a birth planning consultation, or send us your questions by email.",
+  "Zur Geburtsanmeldung": "Register for the birth",
+  "Geburtsplanung": "Birth planning",
+  "E-Mail schreiben": "Send an email",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "If your pregnancy is uncomplicated, your gynaecologist and your midwife remain your main contacts. If contractions start, your waters break or you need help urgently for another reason, please call the delivery room.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "If risks arise during pregnancy, our team of doctors will plan the birth with you in our antenatal outpatient clinic. Besides medical advice, we talk about your thoughts and needs.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "All this gives us a comprehensive picture of the current situation. This way we are prepared and can respond to you and your child in the best possible way.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Please bring a referral from your gynaecologist.",
+  "Für einen Termin:": "For an appointment:",
+  "Geburtseinleitung": "Induction of labour",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "If there is a medical reason, we induce labour in our delivery room. The method of induction is tailored to you, your body and your child.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "For the induction you will be admitted to the hospital, so you are connected to the delivery room for CTG monitoring at all times.",
+  "Stationärer Aufenthalt & weitere Angebote": "Hospital stay & further services",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "During a hospital stay we carry out CTG checks daily as needed and are there for your questions and for advice.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Some of our colleagues offer alternative therapies, including acupuncture, taping and laser therapy – all aimed at promoting the well-being of expectant mothers.",
+  "Weitere Angebote": "Further services",
+  "Geburtsanmeldung": "Birth registration",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "You can easily book your birth registration appointment online via the patient portal of the GFO Kliniken.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "Giving birth is a personal and unforgettable experience. It is important to us to create a calm and pleasant atmosphere for you as parents-to-be – professionally competent and personally close.",
+  "Ihre Begleitung im Kreißsaal": "Your support in the delivery room",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "Our 5 delivery rooms offer plenty of space to move into different positions during labour. With encouragement and breathing guidance we accompany you sensitively through the entire birth.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "Communication is very important to us. Any medically necessary measures are explained to you in detail in light of your individual situation – so that you always feel safe and well informed.",
+  "Begleitung im Kreißsaal": "Support in the delivery room",
+  "Schmerzerleichterung": "Pain relief",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "If you would like pain relief, we offer various methods: from warmth, massage, aromatherapy and homeopathy to pain medication and an epidural. You are welcome to bring your own scents in the form of oils.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "We are happy to advise you and choose together what suits your individual situation and stage of labour.",
+  "Unser Team für Sie": "Our team for you",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "As a team of midwives, we are primarily responsible for your care. We are supported by our medical assistants and our team of doctors. We also train midwifery students.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "As a Level 1 perinatal centre, we work closely with the paediatricians, who are on site and can be in the delivery room as quickly as possible when called.",
+  "Besondere Geburtssituationen": "Special birth situations",
+  "Frühgeburtlichkeit": "Premature birth",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "As a Level 1 perinatal centre, we offer the highest level of care in every week of pregnancy. We are there for you as early as with premature contractions, cervical insufficiency or abnormal CTGs.",
+  "Beckenendlagen & Zwillinge": "Breech presentation & twins",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "A natural birth is possible with us for breech babies or twins. We also offer external cephalic version from the 37th week of pregnancy.",
+  "Zustand nach Kaiserschnitt / VBAC": "Previous caesarean / VBAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "We do our best to make a vaginal birth possible for you. If a caesarean section becomes necessary, your birth partner may be present.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "For a breech presentation, twins or a previous caesarean, a birth planning consultation is necessary. Appointments at",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "The first hours and days after birth are special. We accompany you with care – from the very first moment in the delivery room and on the postnatal ward.",
+  "Die ersten Stunden": "The first hours",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "After the birth we continue to care for you in the delivery room for about 2 hours. We look after your well-being and that of your child.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "Skin-to-skin contact between you and your child is very important to us. We make sure bonding can happen right after the birth – this first moment together is irreplaceable.",
+  "Bonding nach der Geburt": "Bonding after birth",
+  "Stillen & Erstuntersuchung": "Breastfeeding & first examination",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "The first breastfeeding takes place in the delivery room – we are happy to help you with handling your baby and answer all your questions.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "We midwives carry out the first examination (U1) together with you. An intimate moment in which you can witness everything and ask questions.",
+  "Wochenbettstation": "Postnatal ward",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Afterwards we transfer you to the postnatal ward, where you will be warmly welcomed. There you will mainly be cared for by our colleagues from postnatal and infant care and by the lactation consultants.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "During our daily postnatal rounds we continue to support and advise you – for your recovery, breastfeeding and everything to do with your newborn.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Our midwives",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Find the right midwife with all contact details",
+  "Lade Hebammenliste...": "Loading list of midwives...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "There are currently no midwives with specific services listed.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "Are you looking for a place where your skills are valued and where you get to accompany little miracles every day?",
+  "Dann bist du bei uns genau richtig.": "Then you have come to the right place.",
+  "Wir suchen Verstärkung:": "We are looking for:",
+  "Dienstbeleghebamme (m/w/d)": "On-duty contracted midwife (m/f/d)",
+  "Bewerbung einreichen": "Apply",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Send your application to the following email address:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "We look forward to getting to know you!",
+
+  // Film
+  "Film abspielen": "Play film",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "The film is loaded from YouTube. Data is transmitted to Google in the process.",
+
+  // Farbschema
+  "Farbschema": "Colour scheme",
+  "Farbschema ändern": "change colour scheme",
+  "Finger lange auf den Bildschirm legen": "Press and hold anywhere on the screen",
+  "Rechte Maustaste irgendwo auf der Seite": "Right-click anywhere on the page",
+  "Aktuell": "Current",
+  "Logo-Farben": "Logo colours",
+  "Sand": "Sand",
+  "Beige": "Beige",
+  "Champagner": "Champagne",
+};
+
+export default dict;

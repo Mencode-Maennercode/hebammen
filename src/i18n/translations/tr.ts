@@ -1,0 +1,194 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Ana sayfa",
+  "Leistungen": "Hizmetler",
+  "Team": "Ekip",
+  "Über uns": "Hakkımızda",
+  "Kontakt": "İletişim",
+  "Anrufen": "Ara",
+  "Hauptnavigation": "Ana menü",
+  "Sprache auswählen": "Dil seçin",
+  "Schließen": "Kapat",
+  "Menü schließen": "Menüyü kapat",
+  "Mehr erfahren": "Daha fazla bilgi",
+  "Mehr dazu": "Daha fazla bilgi",
+  "Zur Startseite": "Ana sayfaya dön",
+  "Hebammen am Marienhospital Bonn": "Marienhospital Bonn Ebeleri",
+  "Hebammen am Marienhospital Bonn Logo": "Marienhospital Bonn Ebeleri logosu",
+  "Navigation": "Menü",
+  "Rechtliches": "Yasal bilgiler",
+  "Impressum": "Künye",
+  "Datenschutz": "Gizlilik politikası",
+  "Alle Rechte vorbehalten.": "Tüm hakları saklıdır.",
+  "Instagram öffnen": "Instagram'ı aç",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "Hoş geldiniz",
+  // Wortstellung: "Bonn'daki" (Zeile 1) + "ebeleriniz" (Zeile 2, hervorgehoben)
+  "Ihre Hebammen in": "Bonn'daki",
+  "Bonn": "ebeleriniz",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "Doğum, kişiye özel ve unutulmaz bir deneyimdir. Bu özel yolculukta size özenle ve uzmanlıkla eşlik ediyoruz.",
+  "Kontakt aufnehmen": "Bize ulaşın",
+  "Geburten jährlich": "yıllık doğum",
+  "Hingabe": "özveri",
+  "Erreichbarkeit": "ulaşılabilirlik",
+
+  // Aktuelles
+  "Aktuelles": "Güncel",
+  "Neuigkeiten von uns": "Bizden haberler",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Güncel gelişmeler ve önemli bilgilerden haberdar olun.",
+  "Nach links scrollen": "Sola kaydır",
+  "Nach rechts scrollen": "Sağa kaydır",
+
+  // Leistungen
+  "Unsere Leistungen": "Hizmetlerimiz",
+  "Rundum gut betreut": "Her açıdan iyi bakım",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "Hamilelikten doğum sonrası bakıma kadar her aşamada bilgi birikimimiz ve sevgimizle yanınızdayız.",
+  "Vor der Geburt": "Doğumdan önce",
+  "Während der Geburt": "Doğum sırasında",
+  "Nach der Geburt": "Doğumdan sonra",
+  "Hebammenliste": "Ebe listesi",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Kanıtlanmış yöntemler ve şefkatli destekle doğuma kapsamlı hazırlık.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "Doğum, kişiye özel ve unutulmaz bir deneyimdir. Uzmanlığımızla yanınızdayız.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Yeni aile hayatına iyi bir başlangıç için yetkin ve şefkatli destek.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Ekibimizden size uygun ebeyi tüm iletişim bilgileri ve çalışma alanlarıyla bulun.",
+  "Oft gestellte Fragen": "Sıkça sorulan sorular",
+  "Häufig gestellte Fragen": "Sıkça sorulan sorular",
+  "Häufige Fragen": "Sıkça sorulan sorular",
+  "FAQ": "SSS",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Hizmetlerimizle ilgili sıkça sorulan soruların yanıtlarını burada bulabilirsiniz.",
+
+  // Team
+  "Unser Team": "Ekibimiz",
+  "Lernen Sie uns kennen": "Bizi tanıyın",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Mesleğine gönül vermiş deneyimli ebeler.",
+  "Werde Teil unseres Teams": "Ekibimize katıl",
+  "Werde Teil unseres Teams!": "Ekibimize katıl!",
+  "Vorheriges Teammitglied": "Önceki ekip üyesi",
+  "Nächstes Teammitglied": "Sonraki ekip üyesi",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "Sevgi ve uzmanlıkla yanınızda",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "Biz ebeler, Bonn'daki St. Marien Hastanesi'nde vardiyalı sözleşmeli ebe sistemiyle (Dienstbeleg) çalışıyoruz. Ekibimiz uzun yılların deneyimini doğum yardımının en modern yöntemleriyle birleştiriyor.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Her doğum eşsizdir ve bu özel dönemde size kişisel olarak ve şefkatle eşlik etmeyi görevimiz olarak görüyoruz. Sizin ve bebeğinizin iyiliği her zaman önceliğimizdir.",
+  "24/7 Erreichbar": "7/24 ulaşılabilir",
+  "Rund um die Uhr für Sie da": "Günün her saati yanınızdayız",
+  "Geprüfte Qualität": "Onaylı kalite",
+  "Höchste Standards": "En yüksek standartlar",
+  "Einblick in unseren Kreißsaal": "Doğumhanemize bir bakış",
+
+  // Bewertungen
+  "Bewertungen": "değerlendirme",
+  "Was Familien sagen": "Aileler ne diyor",
+  "von 5 Sternen auf Google": "/ 5 yıldız (Google)",
+  "Mehr lesen": "Devamını oku",
+  "Weniger anzeigen": "Daha az göster",
+  "Alle Bewertungen auf Google": "Google'daki tüm değerlendirmeler",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "Sizi bekliyoruz",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "Sorularınız mı var ya da randevu almak mı istiyorsunuz? Bize ulaşın!",
+  "Kontaktdaten": "İletişim bilgileri",
+  "Termine Sprechstunde / Geburtsplanung": "Randevu: muayene / doğum planlaması",
+  "Zentrale (Pforte)": "Santral (danışma)",
+  "E-Mail": "E-posta",
+  "Adresse": "Adres",
+  "Folgen Sie uns": "Bizi takip edin",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "Güncel kalın ve bizi Instagram'da takip edin!",
+  "Beitrag auf Instagram öffnen": "Gönderiyi Instagram'da aç",
+  "Standort Marienhospital Bonn": "Marienhospital Bonn konumu",
+  "Karte laden": "Haritayı yükle",
+  "Route planen": "Yol tarifi al",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "Harita yüklendiğinde verileriniz Google'a aktarılır.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "Bir sonraki adıma hazır mısınız?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Doğum kaydı için randevunuzu alın, doğum planlama görüşmesi için 0228 / 505 2201 numarasını arayın ya da sorularınızı bize e-postayla gönderin.",
+  "Zur Geburtsanmeldung": "Doğum kaydına git",
+  "Geburtsplanung": "Doğum planlaması",
+  "E-Mail schreiben": "E-posta gönder",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "Sorunsuz bir hamilelikte ilk muhatabınız kadın doğum uzmanınız ve ebenizdir. Sancılar başlarsa, suyunuz gelirse ya da başka bir acil durum olursa lütfen doğumhaneyi telefonla arayın.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "Hamilelikte risk ortaya çıkarsa, gebe polikliniğimizde doktor ekibimiz sizinle birlikte doğumu planlar. Danışmanlığın yanı sıra düşüncelerinizi ve ihtiyaçlarınızı da konuşuruz.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "Tüm bunlar mevcut durum hakkında kapsamlı bir genel bakış sağlar. Böylece hazırlıklı oluruz ve size ve bebeğinize en iyi şekilde yaklaşabiliriz.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Lütfen uzman doktorunuzdan sevk belgesi getirin.",
+  "Für einen Termin:": "Randevu için:",
+  "Geburtseinleitung": "Doğum indüksiyonu",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "Tıbbi bir gereklilik olduğunda doğumu doğumhanemizde başlatıyoruz (indüksiyon). Yöntem size, vücudunuza ve bebeğinize göre belirlenir.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "İndüksiyon için hastaneye yatırılırsınız; böylece CTG kontrolleri için her an doğumhaneyle bağlantıda olursunuz.",
+  "Stationärer Aufenthalt & weitere Angebote": "Hastanede yatış ve diğer hizmetler",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "Hastanede kaldığınız süre boyunca ihtiyaca göre her gün CTG kontrolü yapıyor, sorularınız ve danışmanlık için yanınızda oluyoruz.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Bazı meslektaşlarımız akupunktur, bantlama ve lazer tedavisi gibi alternatif tedavi yöntemleri sunuyor – hepsi anne adaylarının iyi hissetmesi için.",
+  "Weitere Angebote": "Diğer hizmetler",
+  "Geburtsanmeldung": "Doğum kaydı",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "Doğum kaydı randevunuzu GFO Kliniken hasta portalı üzerinden kolayca online alabilirsiniz.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "Doğum, kişiye özel ve unutulmaz bir deneyimdir. Anne-baba adayları olarak size sakin ve huzurlu bir ortam sunmak bizim için önemlidir – mesleki yetkinlik ve insani yakınlıkla.",
+  "Ihre Begleitung im Kreißsaal": "Doğumhanede yanınızdayız",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "5 doğum salonumuz, sancı sırasında farklı pozisyonlar alabilmeniz için yeterli alan sunar. Cesaret verici sözler ve nefes rehberliğiyle doğumun her aşamasında size şefkatle eşlik ederiz.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "İletişim bizim için çok önemlidir. Tıbben gerekli tüm adımlar size durumunuza göre ayrıntılı olarak açıklanır – böylece kendinizi her an güvende ve bilgili hissedersiniz.",
+  "Begleitung im Kreißsaal": "Doğumhanede destek",
+  "Schmerzerleichterung": "Ağrı kesici yöntemler",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "Ağrınızın hafiflemesini isterseniz farklı yöntemler sunuyoruz: sıcaklık, masaj, aromaterapi ve homeopatiden ağrı kesici ilaçlara ve epidural anesteziye kadar. Kendi kokularınızı yağ olarak getirebilirsiniz.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "Size memnuniyetle danışmanlık yapar, durumunuza ve doğumun aşamasına uygun yöntemi birlikte seçeriz.",
+  "Unser Team für Sie": "Sizin için ekibimiz",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "Bakımınızdan öncelikle biz ebeler sorumluyuz. Tıbbi asistanlarımız ve doktor ekibimiz bize destek olur. Ayrıca ebelik öğrencileri yetiştiriyoruz.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "Seviye 1 perinatal merkez olarak, hastanede bulunan ve çağrıldığında en kısa sürede doğumhaneye gelen çocuk doktorlarıyla yakın çalışıyoruz.",
+  "Besondere Geburtssituationen": "Özel doğum durumları",
+  "Frühgeburtlichkeit": "Erken doğum",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "Seviye 1 perinatal merkez olarak hamileliğin her haftasında en yüksek bakım düzeyini sunuyoruz. Erken sancı, rahim ağzı yetmezliği ya da anormal CTG durumlarında da yanınızdayız.",
+  "Beckenendlagen & Zwillinge": "Makat geliş ve ikizler",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "Makat gelişte veya ikiz gebelikte bizde normal doğum mümkündür. Ayrıca 37. gebelik haftasından itibaren dıştan çevirme (versiyon) uyguluyoruz.",
+  "Zustand nach Kaiserschnitt / VBAC": "Önceki sezaryen / VBAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "Mümkünse normal doğum yapabilmeniz için elimizden geleni yapıyoruz. Sezaryen gerekirse refakatçiniz yanınızda olabilir.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "Makat geliş, ikiz gebelik veya önceki sezaryen durumunda doğum planlama görüşmesi gereklidir. Randevu için:",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "Doğumdan sonraki ilk saatler ve günler çok özeldir. Doğumhanedeki ilk andan itibaren ve lohusa servisinde size şefkatle eşlik ediyoruz.",
+  "Die ersten Stunden": "İlk saatler",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "Doğumdan sonra yaklaşık 2 saat boyunca doğumhanede bakımınızı sürdürüyoruz. Sizin ve bebeğinizin iyi olduğundan emin oluyoruz.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "Sizinle bebeğiniz arasındaki ten temasına çok önem veriyoruz. Doğumdan hemen sonra bağlanmayı (bonding) sağlıyoruz – bu ilk ortak an eşsizdir.",
+  "Bonding nach der Geburt": "Doğumdan sonra bağlanma",
+  "Stillen & Erstuntersuchung": "Emzirme ve ilk muayene",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "İlk emzirme doğumhanede gerçekleşir – bebeğinizi tutma konusunda size yardımcı olur, tüm sorularınızı yanıtlarız.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "İlk muayeneyi (U1) biz ebeler sizinle birlikte yaparız. Her şeyi görebileceğiniz ve soru sorabileceğiniz samimi bir an.",
+  "Wochenbettstation": "Lohusa servisi",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Ardından sizi sıcak bir şekilde karşılanacağınız lohusa servisine alıyoruz. Orada size ağırlıklı olarak lohusa ve bebek bakımı alanındaki meslektaşlarımız ile emzirme danışmanları eşlik eder.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "Günlük lohusa vizitlerimizle iyileşmeniz, emzirme ve yenidoğanınızla ilgili her konuda size destek ve danışmanlık vermeye devam ediyoruz.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Ebelerimiz",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Size uygun ebeyi tüm iletişim bilgileriyle bulun",
+  "Lade Hebammenliste...": "Ebe listesi yükleniyor...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "Şu anda belirli hizmetler sunan ebe bulunmamaktadır.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "Yeteneklerinin değer gördüğü ve her gün küçük mucizelere eşlik edebileceğin bir yer mi arıyorsun?",
+  "Dann bist du bei uns genau richtig.": "O zaman doğru yerdesin.",
+  "Wir suchen Verstärkung:": "Aradığımız pozisyon:",
+  "Dienstbeleghebamme (m/w/d)": "Vardiyalı sözleşmeli ebe (k/e/d)",
+  "Bewerbung einreichen": "Başvuru yap",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Başvurunu şu e-posta adresine gönder:",
+  "Wir freuen uns darauf, dich kennenzulernen!": "Seninle tanışmayı dört gözle bekliyoruz!",
+
+  // Film
+  "Film abspielen": "Filmi oynat",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "Film YouTube'dan yüklenir. Bu sırada veriler Google'a aktarılır.",
+
+  // Farbschema
+  "Farbschema": "Renk teması",
+  "Farbschema ändern": "renk temasını değiştir",
+  "Finger lange auf den Bildschirm legen": "Parmağınızı ekranda basılı tutun",
+  "Rechte Maustaste irgendwo auf der Seite": "Sayfada herhangi bir yere sağ tıklayın",
+  "Aktuell": "Mevcut",
+  "Logo-Farben": "Logo renkleri",
+  "Sand": "Kum",
+  "Beige": "Bej",
+  "Champagner": "Şampanya",
+};
+
+export default dict;

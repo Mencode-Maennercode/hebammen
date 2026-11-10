@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { asset } from '@/lib/site';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface TeamMember {
   name: string;
@@ -17,13 +19,20 @@ interface TeamCarouselProps {
 function MemberCard({ member, priority = false }: { member: TeamMember; priority?: boolean }) {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  // Die Seite ist statisch vorgerendert: Das Bild ist oft schon geladen, bevor
+  // React onLoad anhaengt – dann kaeme das Ereignis nie an. Deshalb beim
+  // Einhaengen pruefen, ob es bereits fertig ist.
+  const imgRef = useCallback((img: HTMLImageElement | null) => {
+    if (img?.complete && img.naturalWidth > 0) setImgLoaded(true);
+  }, []);
 
   return (
     <article className="group/card flex-shrink-0 w-[200px]">
       <div className="relative rounded-3xl overflow-hidden card-hover w-full h-[267px]">
         {!imgError && member.image ? (
           <img
-            src={member.image}
+            ref={imgRef}
+            src={asset(member.image)}
             alt={`${member.name} - ${member.role}`}
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover/card:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
             loading={priority ? 'eager' : 'lazy'}
@@ -59,6 +68,7 @@ const CARD_WIDTH = 224; // 200px card + 24px gap (gap-6)
 const SCROLL_SPEED = 0.5; // px per frame
 
 export default function TeamCarousel({ team }: TeamCarouselProps) {
+  const { t } = useI18n();
   const trackRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(0);
   const rafRef = useRef<number | null>(null);
@@ -123,6 +133,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
   return (
     <div
       className="relative group"
+      dir="ltr"
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
@@ -153,7 +164,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         <button
           onClick={() => step(-1)}
           className="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-dark transition-all hover:scale-110 shadow-lg"
-          aria-label="Vorheriges Teammitglied"
+          aria-label={t("Vorheriges Teammitglied")}
         >
           <ChevronLeft size={24} />
         </button>
@@ -175,7 +186,7 @@ export default function TeamCarousel({ team }: TeamCarouselProps) {
         <button
           onClick={() => step(1)}
           className="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-dark transition-all hover:scale-110 shadow-lg"
-          aria-label="Nächstes Teammitglied"
+          aria-label={t("Nächstes Teammitglied")}
         >
           <ChevronRight size={24} />
         </button>

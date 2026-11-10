@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HelpCircle, ChevronDown } from 'lucide-react';
 import { FAQEntry } from '@/lib/content-types';
 import { fetchFAQData } from '@/lib/google-api-client';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -13,6 +14,7 @@ const fadeInUp = {
 };
 
 export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEntry[]; compact?: boolean }) {
+  const { t } = useI18n();
   const [entries, setEntries] = useState<FAQEntry[]>(preloadedData || []);
   const [loading, setLoading] = useState(!preloadedData);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -79,13 +81,13 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
           >
             <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
               <HelpCircle size={20} />
-              <span>FAQ</span>
+              <span>{t("FAQ")}</span>
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-              Häufige Fragen
+              {t("Häufige Fragen")}
             </h2>
             <p className="max-w-2xl mx-auto text-lg text-gray-600">
-              Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.
+              {t("Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.")}
             </p>
           </motion.div>
         )}

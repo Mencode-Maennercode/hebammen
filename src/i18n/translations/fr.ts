@@ -1,0 +1,193 @@
+import type { Dict } from './index';
+
+const dict: Dict = {
+  // Navigation & allgemein
+  "Start": "Accueil",
+  "Leistungen": "Prestations",
+  "Team": "Équipe",
+  "Über uns": "À propos",
+  "Kontakt": "Contact",
+  "Anrufen": "Appeler",
+  "Hauptnavigation": "Navigation principale",
+  "Sprache auswählen": "Choisir la langue",
+  "Schließen": "Fermer",
+  "Menü schließen": "Fermer le menu",
+  "Mehr erfahren": "En savoir plus",
+  "Mehr dazu": "En savoir plus",
+  "Zur Startseite": "Retour à l'accueil",
+  "Hebammen am Marienhospital Bonn": "Sages-femmes du Marienhospital de Bonn",
+  "Hebammen am Marienhospital Bonn Logo": "Logo des sages-femmes du Marienhospital de Bonn",
+  "Navigation": "Navigation",
+  "Rechtliches": "Informations légales",
+  "Impressum": "Mentions légales",
+  "Datenschutz": "Protection des données",
+  "Alle Rechte vorbehalten.": "Tous droits réservés.",
+  "Instagram öffnen": "Ouvrir Instagram",
+
+  // Hero & Kennzahlen
+  "Herzlich willkommen bei uns": "Bienvenue chez nous",
+  "Ihre Hebammen in": "Vos sages-femmes à",
+  "Bonn": "Bonn",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir begleiten Sie einfühlsam und kompetent auf diesem besonderen Weg.": "La naissance est une expérience personnelle et inoubliable. Nous vous accompagnons avec bienveillance et compétence sur ce chemin si particulier.",
+  "Kontakt aufnehmen": "Nous contacter",
+  "Geburten jährlich": "naissances par an",
+  "Hingabe": "dévouement",
+  "Erreichbarkeit": "disponibilité",
+
+  // Aktuelles
+  "Aktuelles": "Actualités",
+  "Neuigkeiten von uns": "Nos actualités",
+  "Bleiben Sie informiert über aktuelle Ereignisse und wichtige Informationen.": "Restez informée des événements et des informations importantes.",
+  "Nach links scrollen": "Défiler vers la gauche",
+  "Nach rechts scrollen": "Défiler vers la droite",
+
+  // Leistungen
+  "Unsere Leistungen": "Nos prestations",
+  "Rundum gut betreut": "Un accompagnement complet",
+  "Von der Schwangerschaft bis zur Nachsorge – wir begleiten Sie in jeder Phase mit Fachwissen und Herz.": "De la grossesse au suivi postnatal – nous vous accompagnons à chaque étape avec savoir-faire et cœur.",
+  "Vor der Geburt": "Avant la naissance",
+  "Während der Geburt": "Pendant l'accouchement",
+  "Nach der Geburt": "Après la naissance",
+  "Hebammenliste": "Liste des sages-femmes",
+  "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.": "Une préparation approfondie à l'accouchement avec des méthodes éprouvées et un accompagnement bienveillant.",
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise zur Seite.": "La naissance est une expérience personnelle et inoubliable. Nous sommes à vos côtés avec notre expertise.",
+  "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.": "Un accompagnement compétent et bienveillant pour bien commencer votre nouvelle vie de famille.",
+  "Finden Sie die passende Hebamme aus unserem Team mit allen Kontaktdaten und Tätigkeitsbereichen.": "Trouvez la sage-femme qui vous convient dans notre équipe, avec ses coordonnées et ses domaines d'activité.",
+  "Oft gestellte Fragen": "Questions fréquentes",
+  "Häufig gestellte Fragen": "Questions fréquentes",
+  "Häufige Fragen": "Questions fréquentes",
+  "FAQ": "FAQ",
+  "Hier finden Sie Antworten auf oft gestellte Fragen rund um unsere Leistungen.": "Vous trouverez ici les réponses aux questions fréquentes sur nos prestations.",
+
+  // Team
+  "Unser Team": "Notre équipe",
+  "Lernen Sie uns kennen": "Faites notre connaissance",
+  "Erfahrene Hebammen mit Herz und Leidenschaft für ihren Beruf.": "Des sages-femmes expérimentées, passionnées par leur métier.",
+  "Werde Teil unseres Teams": "Rejoins notre équipe",
+  "Werde Teil unseres Teams!": "Rejoins notre équipe !",
+  "Vorheriges Teammitglied": "Membre précédente",
+  "Nächstes Teammitglied": "Membre suivante",
+
+  // Über uns
+  "Mit Herz und Kompetenz an Ihrer Seite": "À vos côtés avec cœur et compétence",
+  "Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.": "Nous sommes des sages-femmes exerçant à l'hôpital St. Marien de Bonn selon le système des sages-femmes de garde sous contrat. Notre équipe allie une longue expérience aux méthodes obstétricales les plus modernes.",
+  "Jede Geburt ist einzigartig, und wir verstehen es als unsere Aufgabe, Sie individuell und einfühlsam durch diese besondere Zeit zu begleiten. Ihr Wohlbefinden und das Ihres Kindes stehen dabei immer im Mittelpunkt.": "Chaque naissance est unique, et notre mission est de vous accompagner de façon personnelle et attentive durant cette période particulière. Votre bien-être et celui de votre enfant passent toujours en premier.",
+  "24/7 Erreichbar": "Joignables 24 h/24",
+  "Rund um die Uhr für Sie da": "Présentes jour et nuit pour vous",
+  "Geprüfte Qualität": "Qualité reconnue",
+  "Höchste Standards": "Les plus hauts standards",
+  "Einblick in unseren Kreißsaal": "Découvrez notre salle d'accouchement",
+
+  // Bewertungen
+  "Bewertungen": "avis",
+  "Was Familien sagen": "Ce que disent les familles",
+  "von 5 Sternen auf Google": "sur 5 étoiles sur Google",
+  "Mehr lesen": "Lire la suite",
+  "Weniger anzeigen": "Afficher moins",
+  "Alle Bewertungen auf Google": "Tous les avis sur Google",
+
+  // Kontakt
+  "Wir freuen uns auf Sie": "Au plaisir de vous rencontrer",
+  "Haben Sie Fragen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns!": "Vous avez des questions ou souhaitez prendre rendez-vous ? Contactez-nous !",
+  "Kontaktdaten": "Coordonnées",
+  "Termine Sprechstunde / Geburtsplanung": "Rendez-vous : consultation / projet de naissance",
+  "Zentrale (Pforte)": "Standard (accueil)",
+  "E-Mail": "E-mail",
+  "Adresse": "Adresse",
+  "Folgen Sie uns": "Suivez-nous",
+  "Bleiben Sie auf dem Laufenden und folgen Sie uns auf Instagram!": "Restez informée et suivez-nous sur Instagram !",
+  "Beitrag auf Instagram öffnen": "Ouvrir la publication sur Instagram",
+  "Standort Marienhospital Bonn": "Emplacement du Marienhospital de Bonn",
+  "Karte laden": "Charger la carte",
+  "Route planen": "Itinéraire",
+  "Beim Laden der Karte werden Daten an Google übertragen.": "Le chargement de la carte transmet des données à Google.",
+
+  // Abschluss
+  "Bereit für den nächsten Schritt?": "Prête pour la prochaine étape ?",
+  "Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.": "Prenez rendez-vous pour l'inscription à l'accouchement, appelez le 0228 / 505 2201 pour un entretien de projet de naissance ou envoyez-nous vos questions par e-mail.",
+  "Zur Geburtsanmeldung": "S'inscrire pour l'accouchement",
+  "Geburtsplanung": "Projet de naissance",
+  "E-Mail schreiben": "Écrire un e-mail",
+
+  // Vor der Geburt
+  "Bei einer unauffälligen Schwangerschaft liegt die Hauptkommunikation zunächst in den bewährten Händen Ihres Facharztes und Ihrer Hebamme. Sollte es zu Wehentätigkeit, Blasensprung oder anderweitigem akutem Bedarf kommen, melden Sie sich telefonisch im Kreißsaal.": "Lorsque la grossesse se déroule normalement, votre gynécologue et votre sage-femme restent vos principaux interlocuteurs. En cas de contractions, de perte des eaux ou d'un autre besoin urgent, appelez la salle d'accouchement.",
+  "Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.": "Si des risques apparaissent pendant la grossesse, notre équipe médicale planifie l'accouchement avec vous dans notre consultation prénatale. Au-delà des conseils, nous parlons de vos pensées et de vos besoins.",
+  "All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.": "Tout cela nous donne une vue d'ensemble de la situation. Nous sommes ainsi préparées et pouvons répondre au mieux à vos besoins et à ceux de votre enfant.",
+  "Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.": "Merci d'apporter une lettre d'orientation de votre médecin.",
+  "Für einen Termin:": "Pour un rendez-vous :",
+  "Geburtseinleitung": "Déclenchement de l'accouchement",
+  "Wir führen Geburtseinleitungen nach Feststellung einer gegebenen Indikation bei uns im Kreißsaal durch. Die Einleitungsmethode wird individuell auf Sie, Ihren Körper und Ihr Kind abgestimmt.": "Lorsqu'il existe une indication médicale, nous déclenchons l'accouchement dans notre salle d'accouchement. La méthode est adaptée à vous, à votre corps et à votre enfant.",
+  "Für die Einleitung werden Sie stationär aufgenommen. Zu den CTG-Kontrollen sind Sie somit jederzeit an den Kreißsaal angebunden.": "Pour le déclenchement, vous êtes hospitalisée et restez ainsi à tout moment reliée à la salle d'accouchement pour les contrôles par monitoring (CTG).",
+  "Stationärer Aufenthalt & weitere Angebote": "Hospitalisation & autres offres",
+  "Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.": "Pendant une hospitalisation, nous réalisons chaque jour des monitorings selon les besoins et restons disponibles pour vos questions et nos conseils.",
+  "Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.": "Certaines de nos collègues proposent des approches thérapeutiques alternatives, notamment l'acupuncture, le taping et la thérapie au laser – pour favoriser le bien-être des futures mamans.",
+  "Weitere Angebote": "Autres offres",
+  "Geburtsanmeldung": "Inscription à l'accouchement",
+  "Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.": "Prenez facilement rendez-vous en ligne pour votre inscription via le portail patients des cliniques GFO.",
+
+  // Waehrend der Geburt
+  "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Uns ist wichtig, Ihnen als werdenden Eltern eine ruhige und angenehme Atmosphäre zu schaffen – fachlich kompetent und menschlich nah.": "La naissance est une expérience personnelle et inoubliable. Il nous tient à cœur de créer pour vous, futurs parents, une atmosphère calme et agréable – avec compétence et proximité humaine.",
+  "Ihre Begleitung im Kreißsaal": "Votre accompagnement en salle d'accouchement",
+  "Unsere 5 Kreißsäle bieten genügend Raum, um unter Wehen verschiedene Positionen einzunehmen. Mit Zuspruch und Atemanleitung begleiten wir Sie einfühlsam durch den gesamten Geburtsablauf.": "Nos 5 salles d'accouchement offrent suffisamment d'espace pour adopter différentes positions pendant le travail. Par nos encouragements et nos conseils de respiration, nous vous accompagnons tout au long de l'accouchement.",
+  "Kommunikation ist uns sehr wichtig. Medizinisch notwendige Maßnahmen werden Ihnen vor dem Hintergrund der individuellen Situation genau erläutert – damit Sie sich jederzeit sicher und gut informiert fühlen.": "La communication est essentielle pour nous. Tout geste médical nécessaire vous est expliqué en détail selon votre situation – pour que vous vous sentiez à tout moment en sécurité et bien informée.",
+  "Begleitung im Kreißsaal": "Accompagnement en salle d'accouchement",
+  "Schmerzerleichterung": "Soulagement de la douleur",
+  "Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.": "Si vous souhaitez soulager la douleur, nous proposons plusieurs méthodes : chaleur, massage, aromathérapie et homéopathie, antalgiques médicamenteux ou péridurale. Vous pouvez apporter vos propres huiles parfumées.",
+  "Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.": "Nous vous conseillons volontiers et choisissons ensemble la solution adaptée à votre situation et à la phase du travail.",
+  "Unser Team für Sie": "Notre équipe pour vous",
+  "Wir als Hebammenteam sind primär für Ihre Betreuung zuständig. Verstärkt werden wir durch unsere Medizinischen Fachangestellten und unser Ärzteteam. Darüber hinaus bilden wir Hebammenstudierende aus.": "Notre équipe de sages-femmes est la première responsable de votre prise en charge. Nous sommes épaulées par nos assistantes médicales et notre équipe de médecins. Nous formons aussi des étudiantes sages-femmes.",
+  "Aufgrund der Level-1 Betreuung sind wir im engen Kontakt mit den Kinderärzten/-ärztinnen, die sich direkt im Haus befinden und auf Abruf schnellstmöglich im Kreißsaal sind.": "En tant que centre périnatal de niveau 1, nous travaillons en étroite collaboration avec les pédiatres présents sur place, qui rejoignent la salle d'accouchement au plus vite si besoin.",
+  "Besondere Geburtssituationen": "Situations particulières",
+  "Frühgeburtlichkeit": "Prématurité",
+  "Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.": "En tant que centre périnatal de niveau 1, nous offrons le plus haut niveau de soins à chaque semaine de grossesse. Nous sommes là dès les contractions précoces, une béance du col ou un monitoring anormal.",
+  "Beckenendlagen & Zwillinge": "Siège & jumeaux",
+  "Bei Beckenendlage oder Zwillingen ist eine natürliche Geburt bei uns möglich. Wir bieten außerdem eine äußere Wendung ab der 37. SSW an.": "En cas de présentation du siège ou de jumeaux, un accouchement par voie basse est possible chez nous. Nous proposons aussi une version externe à partir de la 37e semaine.",
+  "Zustand nach Kaiserschnitt / VBAC": "Après une césarienne / AVAC",
+  "Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.": "Nous faisons tout pour que vous puissiez accoucher par voie basse si possible. Si une césarienne est nécessaire, votre accompagnant peut être présent.",
+  "Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter": "En cas de siège, de jumeaux ou de césarienne antérieure, un entretien de projet de naissance est nécessaire. Rendez-vous au",
+
+  // Nach der Geburt
+  "Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.": "Les premières heures et les premiers jours après la naissance sont précieux. Nous vous accompagnons avec douceur – dès le premier instant en salle d'accouchement et en maternité.",
+  "Die ersten Stunden": "Les premières heures",
+  "Im Anschluss an die Geburt werden Sie für circa 2 Stunden durch uns im Kreißsaal weiter betreut. Wir schauen nach Ihrem Wohlbefinden und dem Ihres Kindes.": "Après la naissance, nous continuons à veiller sur vous en salle d'accouchement pendant environ 2 heures, pour votre bien-être et celui de votre enfant.",
+  "Der Körperkontakt zwischen Ihnen und Ihrem Kind liegt uns sehr am Herzen. Wir gewährleisten im direkten Anschluss an die Geburt das Bonding – dieser erste gemeinsame Moment ist unersetzlich.": "Le contact peau à peau entre vous et votre enfant nous tient à cœur. Nous assurons le bonding juste après la naissance – ce premier moment ensemble est irremplaçable.",
+  "Bonding nach der Geburt": "Bonding après la naissance",
+  "Stillen & Erstuntersuchung": "Allaitement & premier examen",
+  "Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.": "La première tétée a lieu en salle d'accouchement – nous vous aidons volontiers à manipuler votre bébé et répondons à toutes vos questions.",
+  "Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.": "Le premier examen du nouveau-né (U1) est réalisé par nous, les sages-femmes, avec vous. Un moment intime où vous pouvez tout voir et poser vos questions.",
+  "Wochenbettstation": "Maternité (suites de couches)",
+  "Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.": "Vous êtes ensuite transférée en maternité, où vous serez chaleureusement accueillie. Vous y serez principalement accompagnée par nos collègues des soins postnataux et néonatals ainsi que par les consultantes en lactation.",
+  "Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.": "Lors de notre visite quotidienne, nous continuons à vous soutenir et à vous conseiller – pour votre rétablissement, l'allaitement et tout ce qui concerne votre nouveau-né.",
+
+  // Hebammenliste
+  "Unsere Hebammen": "Nos sages-femmes",
+  "Finden Sie die passende Hebamme mit allen Kontaktdaten": "Trouvez la sage-femme qui vous convient, avec ses coordonnées",
+  "Lade Hebammenliste...": "Chargement de la liste des sages-femmes...",
+  "Aktuell sind keine Hebammen mit spezifischen Tätigkeiten verfügbar.": "Aucune sage-femme avec des prestations spécifiques n'est indiquée pour le moment.",
+
+  // Stellenangebot
+  "Du suchst einen Ort, an dem dein Können geschätzt wird und du jeden Tag kleine Wunder begleiten darfst?": "Tu cherches un lieu où tes compétences sont reconnues et où tu accompagnes chaque jour de petits miracles ?",
+  "Dann bist du bei uns genau richtig.": "Alors tu es au bon endroit.",
+  "Wir suchen Verstärkung:": "Nous recrutons :",
+  "Dienstbeleghebamme (m/w/d)": "Sage-femme de garde sous contrat (h/f/d)",
+  "Bewerbung einreichen": "Postuler",
+  "Schicke deine Bewerbung an folgende E-Mail-Adresse:": "Envoie ta candidature à l'adresse suivante :",
+  "Wir freuen uns darauf, dich kennenzulernen!": "Nous avons hâte de te rencontrer !",
+
+  // Film
+  "Film abspielen": "Lire le film",
+  "Der Film wird von YouTube geladen. Dabei werden Daten an Google übertragen.": "Le film est chargé depuis YouTube. Des données sont alors transmises à Google.",
+
+  // Farbschema
+  "Farbschema": "Palette de couleurs",
+  "Farbschema ändern": "changer de palette",
+  "Finger lange auf den Bildschirm legen": "Appui long sur l'écran",
+  "Rechte Maustaste irgendwo auf der Seite": "Clic droit n'importe où sur la page",
+  "Aktuell": "Actuelle",
+  "Logo-Farben": "Couleurs du logo",
+  "Sand": "Sable",
+  "Beige": "Beige",
+  "Champagner": "Champagne",
+};
+
+export default dict;
