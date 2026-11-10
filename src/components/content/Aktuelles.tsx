@@ -17,7 +17,7 @@ function formatDatum(datum: string, locale = 'de-DE'): string {
 }
 
 export default function Aktuelles({ preloadedData }: { preloadedData?: AktuellesEntry[] }) {
-  const { t, lang } = useI18n();
+  const { t, tc, lang } = useI18n();
   const [entries, setEntries] = useState<AktuellesEntry[]>(preloadedData || []);
   const [loading, setLoading] = useState(!preloadedData);
   const [selectedPost, setSelectedPost] = useState<AktuellesEntry | null>(null);
@@ -75,7 +75,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
 
   if (loading) {
     return (
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
@@ -90,13 +90,13 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
   }
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
+    <section className="py-12 md:py-20 bg-gradient-to-b from-white to-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-14"
         >
           <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
             <Calendar size={20} />
@@ -139,7 +139,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                   <div className="aspect-[16/10] relative overflow-hidden">
                     <Image
                       src={asset(entry.bildname)}
-                      alt={entry.titel}
+                      alt={tc(entry.titel)}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -147,7 +147,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                     <div className="absolute top-4 left-4">
                       <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-white text-sm font-medium">
                         <Clock size={14} />
-                        {entry.kategorie}
+                        {tc(entry.kategorie)}
                       </span>
                     </div>
                   </div>
@@ -156,16 +156,16 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                   {!entry.bildname && entry.kategorie && (
                     <span className="inline-flex items-center gap-1 bg-brand-soft px-3 py-1.5 rounded-full text-brand text-sm font-medium mb-3 block w-fit">
                       <Clock size={14} />
-                      {entry.kategorie}
+                      {tc(entry.kategorie)}
                     </span>
                   )}
                   {entry.datum && (
                     <p className="text-sm text-brand font-medium mb-2">{formatDatum(entry.datum, LOCALES[lang])}</p>
                   )}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand transition-colors">
-                    {entry.titel}
+                    {tc(entry.titel)}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">{entry.text}</p>
+                  <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">{tc(entry.text)}</p>
                   <div className="flex items-center gap-2 text-brand font-medium group-hover:gap-3 transition-all">
                     <span>{t("Mehr erfahren")}</span>
                     <ChevronRight size={18} />
@@ -203,7 +203,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 <div className="aspect-[16/9] relative">
                   <Image
                     src={asset(selectedPost.bildname)}
-                    alt={selectedPost.titel}
+                    alt={tc(selectedPost.titel)}
                     fill
                     className="object-cover"
                   />
@@ -219,7 +219,7 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                     {selectedPost.kategorie && (
                       <span className="inline-flex items-center gap-1 bg-brand-soft px-3 py-1.5 rounded-full text-brand text-sm font-medium">
                         <Clock size={14} />
-                        {selectedPost.kategorie}
+                        {tc(selectedPost.kategorie)}
                       </span>
                     )}
                   </div>
@@ -233,12 +233,12 @@ export default function Aktuelles({ preloadedData }: { preloadedData?: Aktuelles
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  {selectedPost.titel}
+                  {tc(selectedPost.titel)}
                 </h2>
 
                 <div className="prose prose-lg max-w-none">
                   <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                    {selectedPost.text}
+                    {tc(selectedPost.text)}
                   </p>
                 </div>
               </div>

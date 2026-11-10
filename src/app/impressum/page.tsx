@@ -131,6 +131,14 @@ export default function ImpressumSeite() {
         </p>
       </Abschnitt>
 
+      <Abschnitt titel="Bildnachweise">
+        <p>
+          Fotos des Teams und aus dem Kreißsaal: Hebammen am Marienhospital Bonn. Einzelne Stimmungsbilder und das
+          Video auf der Startseite stammen von <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>{' '}
+          (lizenzfrei nutzbar).
+        </p>
+      </Abschnitt>
+
       <p className="text-sm text-gray-500">
         Quelle: <a href="https://www.e-recht24.de/impressum-generator.html" target="_blank" rel="noopener noreferrer">e-recht24.de</a>
       </p>

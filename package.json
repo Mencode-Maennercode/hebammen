@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "fetch-content": "node scripts/fetch-content.mjs",
-    "prebuild": "node scripts/fetch-content.mjs && node scripts/fetch-instagram.mjs",
+    "prebuild": "node scripts/fetch-content.mjs && node scripts/translate-content.mjs && node scripts/fetch-instagram.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "fetch-instagram": "node scripts/fetch-instagram.mjs",
-    "i18n:check": "node scripts/i18n-check.mjs"
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "translate": "node scripts/translate-content.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

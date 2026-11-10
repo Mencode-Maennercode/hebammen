@@ -2,14 +2,15 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { translations, type LangCode } from './translations';
+import contentTranslations from '@/data/translations.json';
 
 /**
  * Mehrsprachigkeit ohne Fremddienst: Die deutschen Texte sind zugleich die
  * Schluessel (`t('Kontakt')`). Fehlt eine Uebersetzung, erscheint der deutsche
  * Text – die Seite bricht also nie. `npm run i18n:check` listet fehlende Texte.
  *
- * Inhalte aus dem Google Sheet (Team, Aktuelles, FAQ, Bewertungen) bleiben
- * Deutsch – sie werden von den Hebammen selbst gepflegt.
+ * Inhalte aus dem Google Sheet (Aktuelles, FAQ, Bewertungen) uebersetzt
+ * scripts/translate-content.mjs beim Build (tc()); Team-Daten bleiben unveraendert.
  */
 
 export const LANGUAGES: { code: LangCode; name: string; dir: 'ltr' | 'rtl' }[] = [
@@ -25,8 +26,8 @@ export const LANGUAGES: { code: LangCode; name: string; dir: 'ltr' | 'rtl' }[] =
 
 const STORAGE_KEY = 'hebammen-lang';
 
-type Ctx = { lang: LangCode; setLang: (l: LangCode) => void; t: (de: string) => string };
-const I18nContext = createContext<Ctx>({ lang: 'de', setLang: () => {}, t: (s) => s });
+type Ctx = { lang: LangCode; setLang: (l: LangCode) => void; t: (de: string) => string; tc: (de: string) => string };
+const I18nContext = createContext<Ctx>({ lang: 'de', setLang: () => {}, t: (s) => s, tc: (s) => s });
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<LangCode>('de');
@@ -67,7 +68,17 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [lang]
   );
 
-  const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
+  // Inhalte aus dem Google Sheet (FAQ, Aktuelles, Bewertungen): beim Build per Gemini uebersetzt
+  const tc = useCallback(
+    (de: string) => {
+      if (lang === 'de' || !de) return de;
+      const dict = (contentTranslations as Record<string, Record<string, string>>)[lang];
+      return dict?.[de.trim()] ?? de;
+    },
+    [lang]
+  );
+
+  const value = useMemo(() => ({ lang, setLang, t, tc }), [lang, setLang, t, tc]);
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 

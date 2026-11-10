@@ -95,7 +95,7 @@ export default function Home() {
   const googleReviews = content.reviews as any[];
   const overallRating = content.overallRating || 4.9;
   const totalReviews = content.totalReviews || 0;
-  const { lang: selectedLanguage, setLang, t } = useI18n();
+  const { lang: selectedLanguage, setLang, t, tc } = useI18n();
   const setSelectedLanguage = (code: string) => setLang(code as LangCode);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showHebammenListeModal, setShowHebammenListeModal] = useState(false);
@@ -486,13 +486,13 @@ useEffect(() => {
         <Aktuelles preloadedData={aktuellesData} />
 
         {/* Services Section */}
-        <section id="leistungen" className="py-24 md:py-32 bg-gradient-to-b from-white to-brand-cream">
+        <section id="leistungen" className="py-12 md:py-20 bg-gradient-to-b from-white to-brand-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-14"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <span>{t("Unsere Leistungen")}</span>
@@ -562,13 +562,13 @@ useEffect(() => {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="py-24 md:py-32 bg-brand-cream">
+        <section id="team" className="py-12 md:py-20 bg-brand-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-14"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <Users size={20} />
@@ -603,7 +603,7 @@ useEffect(() => {
         </section>
 
         {/* About Section */}
-        <section id="ueber-uns" className="py-24 md:py-32 bg-white overflow-hidden">
+        <section id="ueber-uns" className="py-12 md:py-20 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -680,13 +680,13 @@ useEffect(() => {
         </section>
 
         {/* Reviews Section */}
-        <section className="py-24 md:py-32 bg-gradient-to-b from-brand-cream to-white">
+        <section className="py-12 md:py-20 bg-gradient-to-b from-brand-cream to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-14"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <span>{t("Bewertungen")}</span>
@@ -705,7 +705,7 @@ useEffect(() => {
             <div className="grid md:grid-cols-3 gap-8">
               {(googleReviews.length > 0 ? googleReviews : reviews).map((review, index) => {
                 const isExpanded = expandedReviews.has(index);
-                const text = review.text;
+                const text = tc(review.text);
                 const shouldTruncate = text.length > 150;
                 const displayText = shouldTruncate && !isExpanded ? text.substring(0, 150) + '...' : text;
 
@@ -742,7 +742,7 @@ useEffect(() => {
                     )}
                     <div className="flex items-center justify-between">
                       <p className="font-semibold text-gray-900">{review.name}</p>
-                      <p className="text-sm text-gray-500">{review.date}</p>
+                      <p className="text-sm text-gray-500">{tc(review.date)}</p>
                     </div>
                   </motion.article>
                 );
@@ -770,13 +770,13 @@ useEffect(() => {
 
 
         {/* Contact Section */}
-        <section id="kontakt" className="py-24 md:py-32 bg-white">
+        <section id="kontakt" className="py-12 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-14"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
                 <MapPin size={20} />
@@ -916,7 +916,7 @@ useEffect(() => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-brand via-brand to-brand-dark relative overflow-hidden">
+        <section className="py-16 md:py-20 bg-gradient-to-br from-brand via-brand to-brand-dark relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
@@ -1240,10 +1240,6 @@ useEffect(() => {
                     {t("All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.")}
                   </p>
                   <p className="text-sm text-gray-500">{t("Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.")}</p>
-                  <p className="font-semibold text-gray-900">
-                    {t("Für einen Termin:")}{" "}
-                    <a href={`tel:${kontakt.termine.tel}`} className="text-brand hover:underline">0228 / 505 2201</a>
-                  </p>
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
                   <Image
@@ -1330,13 +1326,6 @@ useEffect(() => {
                 >
                   <Calendar size={18} />
                   {t("Zur Geburtsanmeldung")}
-                </a>
-                <a
-                  href={`tel:${kontakt.termine.tel}`}
-                  className="inline-flex items-center justify-center gap-2 border-2 border-brand text-brand px-6 py-3 rounded-full font-semibold hover:bg-brand-soft transition-all"
-                >
-                  <Phone size={18} />
-                  0228 / 505 2201
                 </a>
               </div>
             </div>

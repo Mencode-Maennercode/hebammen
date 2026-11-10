@@ -14,7 +14,7 @@ const fadeInUp = {
 };
 
 export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEntry[]; compact?: boolean }) {
-  const { t } = useI18n();
+  const { t, tc } = useI18n();
   const [entries, setEntries] = useState<FAQEntry[]>(preloadedData || []);
   const [loading, setLoading] = useState(!preloadedData);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -45,7 +45,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
 
   if (loading) {
     return (
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
@@ -70,14 +70,14 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
   }, {} as Record<string, FAQEntry[]>);
 
   return (
-    <section className={compact ? "" : "py-24 md:py-32 bg-white"}>
+    <section className={compact ? "" : "py-12 md:py-20 bg-white"}>
       <div className={compact ? "" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
         {!compact && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-14"
           >
             <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
               <HelpCircle size={20} />
@@ -101,7 +101,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1 }}
             >
-              <h3 className="text-2xl font-bold text-brand mb-6">{category}</h3>
+              <h3 className="text-2xl font-bold text-brand mb-6">{tc(category)}</h3>
               <div className="space-y-4">
                 {categoryEntries.map((entry, index) => (
                   <motion.div
@@ -117,7 +117,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
                       className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-brand-soft transition-colors"
                       aria-expanded={openIndex === groupIndex * 100 + index}
                     >
-                      <span className="font-semibold text-gray-900 pr-4">{entry.frage}</span>
+                      <span className="font-semibold text-gray-900 pr-4">{tc(entry.frage)}</span>
                       <motion.div
                         animate={{ rotate: openIndex === groupIndex * 100 + index ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
@@ -135,7 +135,7 @@ export default function FAQ({ preloadedData, compact }: { preloadedData?: FAQEnt
                           className="overflow-hidden"
                         >
                           <div className="px-6 pb-5 pt-0 text-gray-700 leading-relaxed">
-                            {entry.antwort}
+                            {tc(entry.antwort)}
                           </div>
                         </motion.div>
                       )}

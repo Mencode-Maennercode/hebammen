@@ -42,6 +42,12 @@ jobs:
           NEXT_PUBLIC_CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
         run: node scripts/fetch-content.mjs
 
+      # ── 4a. FAQ/Aktuelles/Bewertungen uebersetzen (Gemini, nur neue Texte) ─
+      - name: Translate content
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/translate-content.mjs
+
       # ── 4b. Instagram-Feed holen (Bilder werden lokal abgelegt) ───────────
       - name: Fetch Instagram feed
         env:
