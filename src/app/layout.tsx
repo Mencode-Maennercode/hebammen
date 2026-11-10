@@ -4,7 +4,6 @@ import "./globals.css";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import Matomo from "@/components/Matomo";
 import { I18nProvider } from "@/i18n/I18nProvider";
-import { LOGO } from "@/lib/site";
 
 // next/font laedt die Schrift beim Build und liefert sie selbst aus –
 // der Browser der Besucher spricht nie mit Google Fonts.
@@ -30,10 +29,6 @@ export const metadata: Metadata = {
   keywords: "Hebammen, Bonn, Marienhospital, Geburt, Schwangerschaft, Wochenbett, Geburtshilfe, Kreißsaal, Geburtsanmeldung",
   authors: [{ name: "Hebammen am Marienhospital Bonn" }],
   alternates: { canonical: "/" },
-  icons: {
-    icon: LOGO,
-    apple: LOGO,
-  },
   openGraph: {
     title: TITLE,
     description: "Die Geburt ist ein individuelles und unvergessliches Erlebnis. Wir stehen Ihnen mit unserer Expertise unterstützend zur Seite.",
@@ -62,7 +57,7 @@ export default function RootLayout({
         {/* Gespeichertes Farbschema und Schreibrichtung vor dem ersten Paint setzen (kein Aufblitzen) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var q=new URLSearchParams(location.search),d=document.documentElement;var t=q.get("theme")||localStorage.getItem("hebammen-theme");if(["logo","sand","beige","champagner"].indexOf(t)>-1)d.setAttribute("data-theme",t);var l=q.get("lang")||localStorage.getItem("hebammen-lang");if(l&&/^(en|tr|ar|ru|pl|fr|es)$/.test(l)){d.lang=l;if(l==="ar")d.dir="rtl"}}catch(e){}`,
+            __html: `try{var q=new URLSearchParams(location.search),d=document.documentElement;var t=q.get("theme")||localStorage.getItem("hebammen-theme");if(["logo","sand","beige","champagner","petrolsand"].indexOf(t)>-1)d.setAttribute("data-theme",t);var l=q.get("lang")||localStorage.getItem("hebammen-lang");if(l&&/^(en|tr|ar|ru|pl|fr|es)$/.test(l)){d.lang=l;if(l==="ar")d.dir="rtl"}}catch(e){}`,
           }}
         />
       </head>

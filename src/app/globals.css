@@ -73,6 +73,19 @@
   --foreground: #332b1f;
 }
 
+/* Farbschema "Petrol & Sand": tiefes Petrol als Markenfarbe, Sand/Champagner als Flaechen, Sandgold als Akzent */
+[data-theme="petrolsand"] {
+  --brand: #0E5A6B;
+  --brand-dark: #08404E;
+  --brand-light: #D8C6A5;
+  --brand-soft: #F1E8D8;
+  --brand-cream: #FAF5EA;
+  --brand-gold: #C9A872;
+  --brand-rgb: 14 90 107;
+  --brand-dark-rgb: 8 64 78;
+  --foreground: #14262b;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

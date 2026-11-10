@@ -14,6 +14,7 @@ export const THEMES = [
   { id: 'sand', name: 'Sand', swatch: ['#7F6D5E', '#C9BDB0', '#F0EBE4'] },
   { id: 'beige', name: 'Beige', swatch: ['#94806A', '#DCCFBD', '#F6EFE4'] },
   { id: 'champagner', name: 'Champagner', swatch: ['#B39B72', '#E9DDC3', '#FBF5E6'] },
+  { id: 'petrolsand', name: 'Petrol & Sand', swatch: ['#0E5A6B', '#C9A872', '#F1E8D8'] },
 ] as const;
 
 type ThemeId = (typeof THEMES)[number]['id'];

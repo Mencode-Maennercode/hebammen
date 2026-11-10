@@ -188,6 +188,7 @@ const dict: Dict = {
   "Sand": "Arena",
   "Beige": "Beis",
   "Champagner": "Champán",
+  "Petrol & Sand": "Petróleo y arena",
 };
 
 export default dict;
