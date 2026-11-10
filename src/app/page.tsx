@@ -19,7 +19,6 @@ import {
   ArrowRight,
   Play,
   Shield,
-  Sparkles,
   Calendar,
   HelpCircle,
   Film,
@@ -35,6 +34,9 @@ import content from "@/data/content.json";
 const LOGO_URL = "https://static.wixstatic.com/media/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png/v1/fill/w_209,h_205,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/446934_56e43f0c28704f46bb3b1b221dee9a3f~mv2.png";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+// Online-Geburtsanmeldung im GFO-Patientenportal
+const GEBURTSANMELDUNG_URL = "https://patientenportal.gfo-online.de/type?clinicId=7&departmentId=26";
 
 const PEXELS_IMAGES = {
   hero: "https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
@@ -215,7 +217,7 @@ useEffect(() => {
   const services = [
     {
       icon: Baby,
-      title: "Geburtsvorbereitung",
+      title: "Vor der Geburt",
       description: "Intensive Vorbereitung auf die Geburt mit bewährten Methoden und einfühlsamer Begleitung.",
       image: `${BASE_PATH}/Hebammen Bilder/vorgeburt/446934_415242dd384f414da7debbc433c51982~mv2.avif`,
     },
@@ -227,7 +229,7 @@ useEffect(() => {
     },
     {
       icon: Users,
-      title: "Wochenbettbetreuung & Stillberatung",
+      title: "Nach der Geburt",
       description: "Kompetente und einfühlsame Begleitung für einen guten Start in das neue Familienleben.",
       image: `${BASE_PATH}/Hebammen Bilder/nachgeburt/446934_78c921d93b4d47f4b6c3c6760bd5cedc~mv2.avif`,
     },
@@ -262,8 +264,7 @@ useEffect(() => {
   ];
 
   const stats = [
-    { number: "2000+", label: "Geburten begleitet" },
-    { number: "15+", label: "Jahre Erfahrung" },
+    { number: "2000+", label: "Geburten jährlich" },
     { number: "100%", label: "Hingabe" },
     { number: "24/7", label: "Erreichbarkeit" },
   ];
@@ -323,7 +324,7 @@ useEffect(() => {
                 </a>
               ))}
               <a
-                href="tel:+492285052205"
+                href="tel:+492285050"
                 className="flex items-center gap-2 bg-brand text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-dark transition-all hover:shadow-lg hover:scale-105"
               >
                 <Phone size={18} />
@@ -365,11 +366,11 @@ useEffect(() => {
                   </a>
                 ))}
                 <a
-                  href="tel:+492285052205"
+                  href="tel:+492285050"
                   className="flex items-center justify-center gap-2 bg-brand text-white px-5 py-3 rounded-full font-medium hover:bg-brand-dark transition-colors"
                 >
                   <Phone size={18} />
-                  <span>0228 - 505 2205</span>
+                  <span>0228 - 505 0</span>
                 </a>
                 {/* Mobile Language Selector */}
                 <div className="flex items-center gap-2 pt-2 border-t border-gray-100 language-selector">
@@ -461,7 +462,8 @@ useEffect(() => {
               loop
               playsInline
               preload="auto"
-              className="w-full h-full object-cover"
+              // Ausschnitt so gewählt, dass der Venenzugang am linken Bildrand nicht zu sehen ist
+              className="w-full h-full object-cover object-[72%_50%] md:object-center md:scale-[1.4] md:origin-right"
             >
               <source src={PEXELS_IMAGES.heroVideo} type="video/mp4" />
             </video>
@@ -476,8 +478,7 @@ useEffect(() => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-6"
             >
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium">
-                <Sparkles size={16} />
+              <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-6 py-2.5 rounded-full text-white text-lg sm:text-xl font-medium">
                 <span>Herzlich willkommen bei uns</span>
               </div>
 
@@ -520,7 +521,7 @@ useEffect(() => {
             viewport={{ once: true }}
             className="glass-effect rounded-3xl shadow-2xl p-8 md:p-12"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -551,7 +552,6 @@ useEffect(() => {
               className="text-center mb-16"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
-                <Heart size={20} />
                 <span>Unsere Leistungen</span>
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -589,12 +589,7 @@ useEffect(() => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                          <service.icon size={24} className="text-white" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
                       <p className="text-white/90">{service.description}</p>
                       <div className="mt-3 inline-flex items-center gap-2 text-white/90 text-sm font-medium">
                         <span>Mehr erfahren</span>
@@ -696,14 +691,13 @@ useEffect(() => {
                 className="space-y-6"
               >
                 <span className="inline-flex items-center gap-2 text-brand font-medium">
-                  <Sparkles size={20} />
                   <span>Über uns</span>
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
                   Mit Herz und Kompetenz an Ihrer Seite
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Wir sind Hebammen in Bonn und arbeiten im Dienstbelegsystem im Marienhospital Bonn. 
+                  Wir Hebammen sind in einem Dienstbelegsystem am St. Marien Hospital in Bonn tätig. 
                   Unser Team vereint langjährige Erfahrung mit modernsten Methoden der Geburtshilfe.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -755,7 +749,6 @@ useEffect(() => {
               className="text-center mb-16"
             >
               <span className="inline-flex items-center gap-2 text-brand font-medium mb-4">
-                <Star size={20} fill="currentColor" />
                 <span>Bewertungen</span>
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -869,16 +862,31 @@ useEffect(() => {
 
                   <div className="space-y-6">
                     <a
-                      href="tel:+492285052205"
+                      href="tel:+492285052201"
                       className="flex items-center gap-4 group"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Phone size={24} className="text-white" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">Kreißsaal</p>
+                        <p className="text-sm text-gray-500">Termine Sprechstunde / Geburtsplanung</p>
                         <p className="text-xl font-semibold text-gray-900 group-hover:text-brand transition-colors">
-                          0228 - 505 2205
+                          0228 - 505 2201
+                        </p>
+                      </div>
+                    </a>
+
+                    <a
+                      href="tel:+492285050"
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Phone size={24} className="text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Zentrale (Pforte)</p>
+                        <p className="text-xl font-semibold text-gray-900 group-hover:text-brand transition-colors">
+                          0228 - 505 0
                         </p>
                       </div>
                     </a>
@@ -1043,20 +1051,28 @@ useEffect(() => {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <Calendar size={48} className="text-white/80 mx-auto" />
               <h2 className="text-3xl md:text-5xl font-bold text-white">
                 Bereit für den nächsten Schritt?
               </h2>
               <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin und lernen Sie uns kennen.
+                Vereinbaren Sie Ihren Termin zur Geburtsanmeldung, melden Sie sich für ein Geburtsplanungsgespräch unter 0228 / 505 2201 oder schicken Sie uns Ihre Fragen per E-Mail.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-4">
                 <a
-                  href="tel:+492285052205"
+                  href={GEBURTSANMELDUNG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-white text-brand px-8 py-4 rounded-full font-semibold text-lg hover:bg-brand-soft transition-all hover:shadow-xl hover:scale-105"
                 >
+                  <Calendar size={20} />
+                  <span>Zur Geburtsanmeldung</span>
+                </a>
+                <a
+                  href="tel:+492285052201"
+                  className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all"
+                >
                   <Phone size={20} />
-                  <span>Jetzt anrufen</span>
+                  <span>Geburtsplanung</span>
                 </a>
                 <a
                   href="mailto:info@hebammen-marienhospital-bonn.de"
@@ -1299,7 +1315,7 @@ useEffect(() => {
       )}
 
       {/* Service Detail Modals */}
-      {selectedService === "Geburtsvorbereitung" && (
+      {selectedService === "Vor der Geburt" && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedService(null)}
@@ -1330,7 +1346,6 @@ useEffect(() => {
               </button>
               <div className="absolute bottom-6 left-8">
                 <div className="inline-flex items-center gap-2 text-white/80 text-sm font-medium mb-2">
-                  <Baby size={16} />
                   <span>Unsere Leistungen</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white">Vor der Geburt</h2>
@@ -1348,15 +1363,14 @@ useEffect(() => {
               {/* Geburtsplanung — image right */}
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Calendar size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Geburtsplanung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
                     Kommt es bei der Schwangerschaft zu Risiken, wird in unserer Schwangerenambulanz durch unser Ärzteteam eine Geburtsplanung durchgeführt. Neben der Beratung wird über Ihre Gedanken und Bedürfnisse gesprochen.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können auf Sie und Ihr Kind bestmöglich reagieren.
+                    All dies verschafft uns einen umfassenden Überblick über die aktuelle Situation. Somit sind wir vorbereitet und können bestmöglich auf Sie und Ihr Kind eingehen.
                   </p>
                   <p className="text-sm text-gray-500">Bitte bringen Sie eine Überweisung von Ihrem Facharzt mit.</p>
                   <p className="font-semibold text-gray-900">
@@ -1389,8 +1403,7 @@ useEffect(() => {
                   />
                 </div>
                 <div className="md:col-span-3 space-y-3">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Clock size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Geburtseinleitung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1406,8 +1419,7 @@ useEffect(() => {
 
               {/* Weitere Angebote — with small inline image */}
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Sparkles size={20} className="text-brand" />
+                <h3 className="text-xl font-bold text-gray-900">
                   Stationärer Aufenthalt &amp; weitere Angebote
                 </h3>
                 <div className="grid md:grid-cols-5 gap-6 items-start">
@@ -1416,7 +1428,7 @@ useEffect(() => {
                       Während eines stationären Aufenthalts führen wir täglich CTG-Kontrollen je nach Bedarf durch und stehen Ihnen bei Fragen und für eine Beratung zur Seite.
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Einige unserer Kolleginnen bieten therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.
+                      Einige unserer Kolleginnen bieten alternative therapeutische Ansätze an, darunter Akupunktur, Taping und Laser-Therapie – darauf ausgerichtet, das Wohlbefinden werdender Mütter zu fördern.
                     </p>
                   </div>
                   <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
@@ -1431,14 +1443,33 @@ useEffect(() => {
                 </div>
               </div>
 
+              <hr className="border-gray-100" />
+
+              {/* Geburtsanmeldung */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-gray-900">Geburtsanmeldung</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Ihren Termin zur Geburtsanmeldung vereinbaren Sie bequem online über das Patientenportal der GFO Kliniken.
+                </p>
+              </div>
+
               {/* CTA */}
-              <div className="pt-2 pb-2">
+              <div className="pt-2 pb-2 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="tel:+492285052205"
-                  className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
+                  href={GEBURTSANMELDUNG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
+                >
+                  <Calendar size={18} />
+                  Zur Geburtsanmeldung
+                </a>
+                <a
+                  href="tel:+492285052201"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-brand text-brand px-6 py-3 rounded-full font-semibold hover:bg-brand-soft transition-all"
                 >
                   <Phone size={18} />
-                  Jetzt anrufen
+                  0228 / 505 2201
                 </a>
               </div>
             </div>
@@ -1477,7 +1508,6 @@ useEffect(() => {
               </button>
               <div className="absolute bottom-6 left-8">
                 <div className="inline-flex items-center gap-2 text-white/80 text-sm font-medium mb-2">
-                  <Heart size={16} />
                   <span>Unsere Leistungen</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white">Während der Geburt</h2>
@@ -1495,8 +1525,7 @@ useEffect(() => {
               {/* Begleitung — image right */}
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Users size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Ihre Begleitung im Kreißsaal
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1531,12 +1560,11 @@ useEffect(() => {
                   />
                 </div>
                 <div className="md:col-span-3 space-y-3">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Shield size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Schmerzerleichterung
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA).
+                    Wünschen Sie Schmerzlinderung, stehen wir Ihnen mit verschiedenen Methoden zur Seite: von Wärme, Massage, Aromatherapie und Homöopathie über medikamentöse Schmerzmittel bis zur Periduralanästhesie (PDA). Eigene Düfte in Form von Öl dürfen Sie gerne mitbringen.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
                     Wir beraten Sie gerne und wählen gemeinsam das passende Mittel für Ihre individuelle Geburtssituation und -phase aus.
@@ -1548,8 +1576,7 @@ useEffect(() => {
 
               {/* Unser Team */}
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Heart size={20} className="text-brand" />
+                <h3 className="text-xl font-bold text-gray-900">
                   Unser Team für Sie
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1565,15 +1592,14 @@ useEffect(() => {
               {/* Besondere Situationen — with image */}
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-4">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Sparkles size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Besondere Geburtssituationen
                   </h3>
                   <div className="space-y-3">
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Frühgeburtlichkeit</h4>
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.
+                        Als Perinatalzentrum Level 1 bieten wir die höchste Versorgungsstufe in jeder Schwangerschaftswoche. Bereits bei vorzeitigen Wehen, Zervixinsuffizienz oder auffälligen CTGs sind wir für Sie da.
                       </p>
                     </div>
                     <div>
@@ -1588,6 +1614,10 @@ useEffect(() => {
                         Wir bemühen uns, dass Sie nach Möglichkeit vaginal gebären können. Sollte ein Kaiserschnitt notwendig sein, darf Ihre Begleitperson anwesend sein.
                       </p>
                     </div>
+                    <p className="text-sm font-medium text-gray-900 bg-brand-soft rounded-xl px-4 py-3">
+                      Bei Beckenendlage, Zwillingen oder Zustand nach Kaiserschnitt ist ein Geburtsplanungsgespräch notwendig. Termine unter{" "}
+                      <a href="tel:+492285052201" className="text-brand hover:underline whitespace-nowrap">0228 / 505 2201</a>.
+                    </p>
                   </div>
                 </div>
                 <div className="md:col-span-2 rounded-2xl overflow-hidden relative aspect-[4/3]">
@@ -1601,22 +1631,12 @@ useEffect(() => {
                 </div>
               </div>
 
-              {/* CTA */}
-              <div className="pt-2 pb-2">
-                <a
-                  href="tel:+492285052205"
-                  className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
-                >
-                  <Phone size={18} />
-                  Jetzt anrufen
-                </a>
-              </div>
             </div>
           </motion.div>
         </div>
       )}
 
-      {selectedService === "Wochenbettbetreuung & Stillberatung" && (
+      {selectedService === "Nach der Geburt" && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedService(null)}
@@ -1647,7 +1667,6 @@ useEffect(() => {
               </button>
               <div className="absolute bottom-6 left-8">
                 <div className="inline-flex items-center gap-2 text-white/80 text-sm font-medium mb-2">
-                  <Users size={16} />
                   <span>Unsere Leistungen</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white">Nach der Geburt</h2>
@@ -1659,14 +1678,13 @@ useEffect(() => {
 
               {/* Intro */}
               <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-brand pl-5">
-                Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal bis hin zur Wochenbettstation.
+                Die ersten Stunden und Tage nach der Geburt sind besonders. Wir begleiten Sie einfühlsam – vom ersten Moment im Kreißsaal und auf der Wochenbettstation.
               </p>
 
               {/* Bonding & erste Stunden — image right */}
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3 space-y-3">
-                  <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Heart size={20} className="text-brand" />
+                  <h3 className="text-xl font-bold text-gray-900">
                     Die ersten Stunden
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -1691,15 +1709,14 @@ useEffect(() => {
 
               {/* Stillen & U1 */}
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Baby size={20} className="text-brand" />
+                <h3 className="text-xl font-bold text-gray-900">
                   Stillen &amp; Erstuntersuchung
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
                   Das erste Anlegen erfolgt bei uns im Kreißsaal – wir unterstützen Sie gerne beim Handling und stehen für all Ihre Fragen zur Verfügung.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Die Erstuntersuchung (U1) wird von den Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.
+                  Die Erstuntersuchung (U1) wird von uns Hebammen gemeinsam mit Ihnen durchgeführt. Ein vertrauter Moment, bei dem Sie alles miterleben und nachfragen können.
                 </p>
               </div>
 
@@ -1707,12 +1724,11 @@ useEffect(() => {
 
               {/* Wochenbettstation */}
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  <Shield size={20} className="text-brand" />
+                <h3 className="text-xl font-bold text-gray-900">
                   Wochenbettstation
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden.
+                  Im Anschluss verlegen wir Sie auf die Wochenbettstation, wo Sie herzlich empfangen werden. Dort werden Sie hauptsächlich durch unsere Kolleginnen der Wochenbett- und Säuglingspflege sowie die Stillberaterinnen begleitet.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   Durch unsere tägliche Wochenbett-Visite stehen wir Ihnen weiterhin unterstützend und beratend zur Seite – für Ihre Genesung, das Stillen und alles rund um Ihr Neugeborenes.
@@ -1722,11 +1738,11 @@ useEffect(() => {
               {/* CTA */}
               <div className="pt-2 pb-2">
                 <a
-                  href="tel:+492285052205"
+                  href="mailto:info@hebammen-marienhospital-bonn.de"
                   className="inline-flex items-center gap-2 bg-brand text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-dark transition-all hover:scale-105 shadow-md"
                 >
-                  <Phone size={18} />
-                  Jetzt anrufen
+                  <Mail size={18} />
+                  E-Mail schreiben
                 </a>
               </div>
             </div>

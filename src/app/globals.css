@@ -47,6 +47,32 @@
   --foreground: #2a241f;
 }
 
+/* Farbschema "Beige": heller und wärmer als Sand */
+[data-theme="beige"] {
+  --brand: #94806A;
+  --brand-dark: #6E5C49;
+  --brand-light: #DCCFBD;
+  --brand-soft: #F6EFE4;
+  --brand-cream: #FDFAF4;
+  --brand-gold: #C4A36F;
+  --brand-rgb: 148 128 106;
+  --brand-dark-rgb: 110 92 73;
+  --foreground: #2e261e;
+}
+
+/* Farbschema "Champagner": noch heller als Beige */
+[data-theme="champagner"] {
+  --brand: #B39B72;
+  --brand-dark: #8A7348;
+  --brand-light: #E9DDC3;
+  --brand-soft: #FBF5E6;
+  --brand-cream: #FFFCF4;
+  --brand-gold: #D9C08A;
+  --brand-rgb: 179 155 114;
+  --brand-dark-rgb: 138 115 72;
+  --foreground: #332b1f;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

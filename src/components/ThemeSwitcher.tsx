@@ -11,6 +11,8 @@ export const THEMES = [
   { id: 'rose', name: 'Aktuell', swatch: ['#8B5A6B', '#C9A2AD', '#F5E6E8'] },
   { id: 'logo', name: 'Logo-Farben', swatch: ['#086183', '#98BDCB', '#DCEBF1'] },
   { id: 'sand', name: 'Sand', swatch: ['#7F6D5E', '#C9BDB0', '#F0EBE4'] },
+  { id: 'beige', name: 'Beige', swatch: ['#94806A', '#DCCFBD', '#F6EFE4'] },
+  { id: 'champagner', name: 'Champagner', swatch: ['#B39B72', '#E9DDC3', '#FBF5E6'] },
 ] as const;
 
 type ThemeId = (typeof THEMES)[number]['id'];
