@@ -32,7 +32,7 @@ import { KarteNachKlick, FilmNachKlick } from "@/components/KlickInhalt";
 import content from "@/data/content.json";
 import instagram from "@/data/instagram.json";
 import { BASE_PATH, LOGO, asset, kontakt, links } from "@/lib/site";
-import { LANGUAGES, useI18n } from "@/i18n/I18nProvider";
+import { LANGUAGES, LOCALES, useI18n } from "@/i18n/I18nProvider";
 import type { LangCode } from "@/i18n/translations";
 
 const PEXELS_IMAGES = {
@@ -42,7 +42,11 @@ const PEXELS_IMAGES = {
 
 const GEBURTSANMELDUNG_URL = links.geburtsanmeldung;
 
-type InstagramPost = { id: string; image: string; caption: string; permalink: string };
+type InstagramPost = { id: string; image: string; caption: string; permalink: string; timestamp?: string };
+
+// Kurztext fuer die Vorschau: Hashtags und Zeilenumbrueche entfernen
+const kurzText = (caption: string) =>
+  caption.replace(/#[\p{L}\p{N}_]+/gu, '').replace(/\s+/g, ' ').trim();
 const instagramPosts = (instagram.posts ?? []) as InstagramPost[];
 
 // Phone number formatting function
@@ -96,6 +100,7 @@ export default function Home() {
   const overallRating = content.overallRating || 4.9;
   const totalReviews = content.totalReviews || 0;
   const { lang: selectedLanguage, setLang, t, tc } = useI18n();
+  const dateLocale = LOCALES[selectedLanguage];
   const setSelectedLanguage = (code: string) => setLang(code as LangCode);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showHebammenListeModal, setShowHebammenListeModal] = useState(false);
@@ -868,25 +873,38 @@ useEffect(() => {
                   </p>
                   
                   {instagramPosts.length > 0 && (
-                    <div className="mb-6 grid grid-cols-3 gap-2 sm:gap-3">
-                      {instagramPosts.slice(0, 6).map((post) => (
-                        <a
-                          key={post.id}
-                          href={post.permalink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group relative aspect-square overflow-hidden rounded-xl bg-white/10"
-                          aria-label={t("Beitrag auf Instagram öffnen")}
-                        >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={asset(post.image)}
-                            alt={post.caption ? post.caption.slice(0, 120) : "Instagram"}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                        </a>
-                      ))}
+                    <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                      {instagramPosts.slice(0, 6).map((post) => {
+                        const text = kurzText(post.caption);
+                        return (
+                          <a
+                            key={post.id}
+                            href={post.permalink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex flex-col overflow-hidden rounded-xl bg-white/10 transition-colors hover:bg-white/20"
+                            aria-label={t("Beitrag auf Instagram öffnen")}
+                          >
+                            <span className="relative block aspect-square overflow-hidden">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={asset(post.image)}
+                                alt={text ? text.slice(0, 120) : "Instagram"}
+                                loading="lazy"
+                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                            </span>
+                            <span className="block p-2.5 text-left">
+                              {post.timestamp && (
+                                <span className="block text-[11px] font-medium uppercase tracking-wide text-white/70">
+                                  {new Date(post.timestamp).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })}
+                                </span>
+                              )}
+                              {text && <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-white/90">{text}</span>}
+                            </span>
+                          </a>
+                        );
+                      })}
                     </div>
                   )}
 
