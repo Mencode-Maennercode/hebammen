@@ -269,6 +269,7 @@ body {
 }
 
 /* Schema "Logo": Hero-Video ohne Farbüberlagerung, nur neutrale Abdunkelung für die Lesbarkeit */
-[data-theme="logo"] .video-overlay {
+[data-theme="logo"] .video-overlay,
+[data-theme="petrolsand"] .video-overlay {
   background: linear-gradient(to bottom, rgb(0 0 0 / 0.2) 0%, rgb(0 0 0 / 0.4) 100%);
 }
