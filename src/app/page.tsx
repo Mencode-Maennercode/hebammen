@@ -873,38 +873,33 @@ useEffect(() => {
                   </p>
                   
                   {instagramPosts.length > 0 && (
-                    <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                      {instagramPosts.slice(0, 6).map((post) => {
-                        const text = kurzText(post.caption);
-                        return (
-                          <a
-                            key={post.id}
-                            href={post.permalink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex flex-col overflow-hidden rounded-xl bg-white/10 transition-colors hover:bg-white/20"
-                            aria-label={t("Beitrag auf Instagram öffnen")}
-                          >
-                            <span className="relative block aspect-square overflow-hidden">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={asset(post.image)}
-                                alt={text ? text.slice(0, 120) : "Instagram"}
-                                loading="lazy"
-                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                              />
+                    // Die letzten 5 Beitraege als leicht ueberlappender Faecher:
+                    // Hover/Fokus holt ein Bild nach vorn, Klick oeffnet den Beitrag.
+                    <div className="mb-7 flex justify-center pt-2 pb-1" dir="ltr">
+                      {instagramPosts.slice(0, 5).map((post, i) => (
+                        <a
+                          key={post.id}
+                          href={post.permalink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ zIndex: 10 - i }}
+                          className={`group relative -ml-2 first:ml-0 sm:-ml-5 w-[22%] sm:w-[23%] max-w-[118px] aspect-square shrink-0 overflow-hidden rounded-xl ring-2 ring-white/80 shadow-lg transition-all duration-300 ease-out hover:!z-30 focus-visible:!z-30 hover:-translate-y-2 hover:scale-110 hover:rotate-0 focus-visible:-translate-y-2 focus-visible:scale-110 focus-visible:rotate-0 ${i % 2 ? 'rotate-2' : '-rotate-2'}`}
+                          aria-label={t("Beitrag auf Instagram öffnen")}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={asset(post.image)}
+                            alt={post.caption ? kurzText(post.caption).slice(0, 120) : "Instagram"}
+                            loading="lazy"
+                            className="h-full w-full object-cover"
+                          />
+                          {post.timestamp && (
+                            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-1.5 pb-1 pt-4 text-right text-[10px] font-semibold leading-none text-white sm:text-[11px]">
+                              {new Date(post.timestamp).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short' })}
                             </span>
-                            <span className="block p-2.5 text-left">
-                              {post.timestamp && (
-                                <span className="block text-[11px] font-medium uppercase tracking-wide text-white/70">
-                                  {new Date(post.timestamp).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })}
-                                </span>
-                              )}
-                              {text && <span className="mt-0.5 line-clamp-3 text-xs break-words leading-snug text-white/90">{text}</span>}
-                            </span>
-                          </a>
-                        );
-                      })}
+                          )}
+                        </a>
+                      ))}
                     </div>
                   )}
 
@@ -915,7 +910,7 @@ useEffect(() => {
                     className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/30 transition-colors"
                   >
                     <Instagram size={24} />
-                    <span className="font-medium break-words">@hebammen_<wbr />marienhospital_<wbr />bonn</span>
+                    <span className="text-sm sm:text-base font-medium break-words">@hebammen_<wbr />marienhospital_<wbr />bonn</span>
                   </a>
                 </div>
               </motion.div>
