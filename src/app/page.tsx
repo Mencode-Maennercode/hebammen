@@ -900,7 +900,7 @@ useEffect(() => {
                                   {new Date(post.timestamp).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })}
                                 </span>
                               )}
-                              {text && <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-white/90">{text}</span>}
+                              {text && <span className="mt-0.5 line-clamp-3 text-xs break-words leading-snug text-white/90">{text}</span>}
                             </span>
                           </a>
                         );
