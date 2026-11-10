@@ -54,6 +54,24 @@ jobs:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: node scripts/fetch-instagram.mjs
 
+      # ── 4c. Frische Daten ins Repo zurueckschreiben ────────────────────────
+      #       Content, Uebersetzungen, Team-/Aktuelles-Bilder und Instagram-Feed
+      #       werden hier mit Zugangsdaten geholt, die nur GitHub kennt. Damit
+      #       auch andere Hosts (Vercel, spaeter IONOS) den aktuellen Stand
+      #       bauen koennen, landet er im Repo. Pushes mit GITHUB_TOKEN loesen
+      #       keinen weiteren Workflow aus - es entsteht keine Schleife.
+      - name: Commit refreshed data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data public/team public/aktuelles public/instagram
+          if git diff --cached --quiet; then
+            echo "Keine Datenänderung."
+          else
+            git commit -m "Daten aktualisiert (Sheet, Übersetzung, Instagram)"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+
       # ── 5. Prüfen ob sich Inhalte geändert haben ───────────────────────────
       #       Beim Schedule-Trigger: Deploy nur wenn Hash != letzter Deploy-Hash
       #       Bei push/workflow_dispatch: immer deployen
