@@ -57,7 +57,7 @@ export default function RootLayout({
         {/* Gespeichertes Farbschema und Schreibrichtung vor dem ersten Paint setzen (kein Aufblitzen) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var q=new URLSearchParams(location.search),d=document.documentElement;var t=q.get("theme")||localStorage.getItem("hebammen-theme");if(["logo","sand","beige","champagner","petrolsand"].indexOf(t)>-1)d.setAttribute("data-theme",t);var l=q.get("lang")||localStorage.getItem("hebammen-lang");if(l&&/^(en|tr|ar|ru|pl|fr|es)$/.test(l)){d.lang=l;if(l==="ar")d.dir="rtl"}}catch(e){}`,
+            __html: `try{var q=new URLSearchParams(location.search),d=document.documentElement;var t=q.get("theme")||localStorage.getItem("hebammen-theme");if(["logo","sand","beige","champagner","petrolsand"].indexOf(t)>-1)d.setAttribute("data-theme",t);if(t==="custom"){var cv=JSON.parse(localStorage.getItem("hebammen-custom-vars")||"null");if(cv){for(var k in cv)d.style.setProperty(k,cv[k]);d.setAttribute("data-theme","custom")}}var l=q.get("lang")||localStorage.getItem("hebammen-lang");if(l&&/^(en|tr|ar|ru|pl|fr|es)$/.test(l)){d.lang=l;if(l==="ar")d.dir="rtl"}}catch(e){}`,
           }}
         />
       </head>
